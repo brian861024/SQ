@@ -13,5 +13,5 @@ public interface SqContactDao {
 //	2. 根據聯絡單ID找出聯絡單(單筆)
 	Optional<Contact> findContactByContactId(Integer contactId);
 //	3. 根據主旨找出聯絡單
-	Optional<Contact> findContactByTital(Integer tital);
+	Optional<Contact> findContactByTitle(String title);
 }

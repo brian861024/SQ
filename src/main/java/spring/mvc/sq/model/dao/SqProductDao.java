@@ -32,7 +32,7 @@ public interface SqProductDao {
 //	11.修改商品數量
 	Boolean updateProductQuantity(Integer productId, Integer productquantity);
 //	12.修改商品屬性
-	Boolean updateProductCategory(Integer productId, String productcategory);
+	Boolean updateProductCategory(Integer productId, Integer categoryId);
 //	13.修改商品描述
 	Boolean updateProductDescribe(Integer productId, String productdescribe);
 //  14.刪除商品

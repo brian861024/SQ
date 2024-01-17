@@ -6,7 +6,7 @@ public class Product {
 	private String productName; // 商品名稱
 	private Integer price; // 商品價格
 	private Integer stockquantity; //商品庫存
-	private String category; //商品分類
+	private Integer categoryId; //商品分類
 	private String describe; //商品描述
 	private Boolean isLaunch; // 是否上架
 	
@@ -20,7 +20,7 @@ public class Product {
 		this.productName = productName;
 		this.price = price;
 		this.stockquantity = stockquantity;
-		this.category = category;
+		this.categoryId = categoryId;
 		this.describe = describe;
 		this.isLaunch = isLaunch;
 	}
@@ -49,20 +49,20 @@ public class Product {
 		this.price = price;
 	}
 
-	public Integer getStockquantity() {
+	public Integer getStockQuantity() {
 		return stockquantity;
 	}
 
-	public void setStockquantity(Integer stockquantity) {
+	public void setStockQuantity(Integer stockquantity) {
 		this.stockquantity = stockquantity;
 	}
 
-	public String getCategory() {
-		return category;
+	public Integer getCategoryId() {
+		return categoryId;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
 	}
 	
 	public String getDescribe() {
@@ -84,7 +84,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", price=" + price
-				+ ", stockquantity=" + stockquantity + ", category=" + category + ", describe=" + describe
+				+ ", stockquantity=" + stockquantity + ", categoryId=" + categoryId + ", describe=" + describe
 				+ ", isLaunch=" + isLaunch + "]";
 	}
 	

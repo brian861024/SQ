@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/sq")
 public class SqController {
 	
+	// 導到首頁
 	@GetMapping("/index")
 	public String getMethodName(@RequestParam String param) {
-		return "/sq/frontend/frontend_index";
+		return "redirect:/sq/frontend/frontend_index";
 	}
 	
 	

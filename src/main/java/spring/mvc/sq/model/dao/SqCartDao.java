@@ -12,8 +12,7 @@ public interface SqCartDao {
 	void addCart(Cart cart);
 //	2.查詢所有購物車資料(多筆)
 	List<Cart> findAllCart();
-//	3. 根據cartId查詢購物車商品(單筆)
-	Optional<Cart> findCartIdbyId(Integer cartId);
+
 //	4. 根據使用者ID來查找其所有購物車資料(多筆)
 	List<Cart> findCartsByUserId(Integer userId);
 //	4. 根據is_Checkout狀態列出訂單(多筆)
@@ -36,5 +35,9 @@ public interface SqCartDao {
 	Boolean setProcessingCartById(Integer cartId);
 //  13.根據購物車ID將購物車設置為已結帳狀態(後台的事件)
 	Boolean checkoutCartById(Integer cartId);
+//  14.根據使用者名稱查找使用者
+	Optional<User> findUserById(Integer userId);
+//  15.根據產品ID來查找商品(單筆)	
+	Optional<Product> findProductbyId(Integer productId);
 	
 }

@@ -1,11 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>SpitirQuest</groupId>
   <artifactId>SpitirQuest</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   
-    	<properties>
+    <properties>
 		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>4.3.29.RELEASE</spring.version>
@@ -282,22 +282,17 @@
 			<artifactId>sfm-springjdbc</artifactId>
 			<version>8.2.3</version>
 		</dependency>
-		
-		<!--  -->
-		<dependency>
-  			<groupId>com.example</groupId>
-  			<artifactId>SpringBootStudentScore</artifactId>
-  			<version>0.0.1-SNAPSHOT</version>
-  		</dependency>
 
 		<dependency>
-			<groupId>SpringMVC</groupId>
-			<artifactId>SpringMVC</artifactId>
+			<groupId>SpiritQuest</groupId>
+			<artifactId>SpiritQuest</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
   	</dependencies>
   
-  <build>
+  
+  
+    <build>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -313,4 +308,6 @@
       </plugin>
     </plugins>
   </build>
+
+
 </project>

@@ -40,7 +40,7 @@ create table if not exists level_ref_service(
 create table if not exists Users (
   `UserId` INT NOT NULL auto_increment primary key,
   `Username` VARCHAR(45) NOT NULL,
-  `PasswordHash` VARCHAR(45) NOT NULL,
+  `Password` VARCHAR(45) NOT NULL,
   `level` INT NOT NULL,
   `Email` VARCHAR(45) NULL,
   `PhoneNumber` VARCHAR(20) NULL);
@@ -105,7 +105,7 @@ create table if not exists Contact (
   `ContactId` INT NOT NULL AUTO_INCREMENT primary key,
   `Name` VARCHAR(255) NOT NULL,
   `Email` VARCHAR(255) NOT NULL,
-  `Tital` VARCHAR(255) NOT NULL,
+  `Title` VARCHAR(255) NOT NULL,
   `Text` VARCHAR(255) NOT NULL);
 
 
@@ -133,7 +133,7 @@ INSERT INTO Products (productName, price, StockQuantity, Description, isLaunch, 
 
 -- password 已透過 AES 進行加密
 -- KEY = 0123456789abcdef0123456789abcdef
-INSERT INTO users (username, PasswordHash, level, Email, PhoneNumber) VALUES
+INSERT INTO users (username, Password, level, Email, PhoneNumber) VALUES
 ('user123', 'JqKLj+4Aw3DnndH0MHUQkg==', 1, 'aaa@gmail.com', 0922334455),
 ('user456', 'ormIciIAHZjZjQYphMuCHQ==', 2, 'bbb@gmail.com', 0911223344),
 ('user789', 'Nj8ZE1H01l0cDeX/GskzXg==', 1, 'ccc@gmail.com', 0977889944);
