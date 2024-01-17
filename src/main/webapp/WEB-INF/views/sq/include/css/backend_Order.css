@@ -1,0 +1,162 @@
+/* body area ============================= */
+body {
+    background-image: url(../../img/bg/bg.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-size: cover;
+}
+
+/* body area end ========================= */
+
+/* header area =========================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+    padding-right: 110px;
+    min-height: 120px;
+    background-color: #cfddf065;
+}
+
+.logo {
+    background-color: #ffffffd0;
+}
+
+.logoimg {
+    margin: 10px 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 100px;
+}
+
+.dropdown-menu {
+    background-color: #e7e7e7d2;
+}
+
+/* header area end ======================== */
+
+/* roll area ============================== */
+
+.roll-area {
+    padding: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.roll {
+    width: 95%;
+}
+
+.homeimg {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.homephoto {
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* roll area end ========================= */
+
+/* EVENTS SECTION ======================== */
+
+    /*<!-- 上方搜索列 -->*/
+.category {
+    color: rgba(32, 32, 32, 0.589);
+    background-color: #ffffff93;
+    width: 20%;
+    margin: 10px 20px;
+    border-radius:5px
+}
+
+.search {
+    display: flex;
+    height: 60px;
+    padding-left: 20%;
+    margin-bottom: 3%;
+    margin-top: 20px;
+}
+
+/*<!-- 左方導覽列 -->*/
+
+.left-prod-class-area {
+    display: inline-block;
+    text-align: center;
+    border-radius: 5px;
+    min-width: 250px;
+    margin: 10px;
+    min-height: 300px;
+    background: #ffffff50;
+    position: sticky
+}
+
+.prod-class-link{
+    color: #e6e6e6af;
+    text-decoration: none;
+    line-height: 2.5;
+}
+
+.prod-class-link:hover{
+    color: #bbbbbb65;
+    color: #e4e4e465;
+    box-shadow: 1px #ffffff3b;
+}
+
+.dropdown-toggle{
+    color: #e6e6e6af;
+}
+
+.dropdown-toggle:hover{
+    color: #e4e4e465;
+    box-shadow: 1px #ffffff3b;
+}
+
+.left-prod-class-dropdown-menu{
+    width: 250px;
+}
+
+/*<!-- 右方商品列表 -->*/
+
+.card-body{
+    width: 100%;
+}
+
+.order-card{
+    width:90%;
+    background: #f7f7f7a2;
+    padding: 10px;
+    margin: 30px 0;
+}
+
+.order-card-left-area{
+    width: 100%;
+}
+
+.order-card-right-area{
+    
+}
+
+.order-card-right-item{
+    display: flex;
+    justify-content:space-around;
+    margin: 20px 0;
+    width: 330px;
+}
+
+.order-card-form-prod-name{
+    width: 253.73px;
+}
+
+
+/* EVENTS SECTION end ==================== */
