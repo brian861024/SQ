@@ -11,9 +11,6 @@ public class User {
 	private Integer level;
 	private Integer phoneNumber;
 	
-	// 服務列表
-	private List<Service> services;
-	
 	public User() {
 		
 	}

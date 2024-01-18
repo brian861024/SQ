@@ -18,7 +18,6 @@
 	<!-- 配置資源處理器 -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
-	
 	<context:component-scan base-package="spring_mvc" />
 	
 	<!-- 設定 Spring AOP 切面程式自動實現代理 -->

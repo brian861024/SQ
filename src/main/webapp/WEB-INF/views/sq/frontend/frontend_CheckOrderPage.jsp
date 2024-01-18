@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -198,7 +197,7 @@
 
                                         <label for="stacked-password" style="color: rgb(255, 255, 255);">寄送地址：新北市新莊區中山路144號7樓-5</label>
 
-                                        <label for="stacked-password" style="color: rgb(255, 255, 255);">付款方式：線上刷卡</label>
+                                        <label for="stacked-password" style="color: rgb(255, 255, 255);">付款方式：轉帳</label>
 
                                         <label for="stacked-password" style="color: rgb(255, 255, 255);">寄送方式：郵寄</label>
                                         <hr>
