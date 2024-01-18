@@ -282,12 +282,6 @@
 			<artifactId>sfm-springjdbc</artifactId>
 			<version>8.2.3</version>
 		</dependency>
-
-		<dependency>
-			<groupId>SpiritQuest</groupId>
-			<artifactId>SpiritQuest</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
   	</dependencies>
   
   
