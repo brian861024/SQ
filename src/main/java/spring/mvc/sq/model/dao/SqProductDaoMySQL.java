@@ -69,7 +69,7 @@ public class SqProductDaoMySQL implements SqProductDao {
     @Override
     public void addProduct(Product product) {
         String sql = "INSERT INTO Products (ProductName, Price, StockQuantity, Description, isLaunch, CategoryId) VALUES (?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, product.getProductName(), product.getPrice(), product.getStockQuantity(),
+        jdbcTemplate.update(sql, product.getProductName(), product.getPrice(), product.getStockQty(),
                 product.getDescribe(), product.getIsLaunch(), product.getCategoryId());
     }
 
@@ -97,9 +97,9 @@ public class SqProductDaoMySQL implements SqProductDao {
 
     // 11. 更新產品庫存數量
     @Override
-    public Boolean updateProductQuantity(Integer productId, Integer productQuantity) {
-        String sql = "UPDATE Products SET StockQuantity = ? WHERE productId = ?";
-        return jdbcTemplate.update(sql, productQuantity, productId) > 0;
+    public Boolean updateProductQty(Integer productId, Integer productQty) {
+        String sql = "UPDATE Products SET StockQty = ? WHERE productId = ?";
+        return jdbcTemplate.update(sql, productQty, productId) > 0;
     }
 
     // 12. 更新產品分類

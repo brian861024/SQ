@@ -4,40 +4,27 @@ import java.util.List;
 
 public class User {
 
-	private Integer userId;
-	private String username;
-	private String password;
-	private String email;
-	private Integer level;
-	private Integer phoneNumber;
+	private Integer userId; // 使用者Id
+	private String username; // 使用者名稱
+	private String password; // 使用者密碼
+	private Integer levelId; // 使用者等級
+	private String email; // 使用者信箱
+	private String phoneNumber; // 使用者電話號碼
 	
 	public User() {
 		
 	}
 
-	//登入用
-	public User(Integer userId, String username, String password, String email, Integer level) {
+	public User(Integer userId, String username, String password, Integer levelId, String email, String phoneNumber) {
 		super();
 		this.userId = userId;
 		this.username = username;
 		this.password = password;
+		this.levelId = levelId;
 		this.email = email;
-		this.level = level;
-	}
-	
-	
-	public User(Integer userId, String username, String password, String email, Integer level, Integer phoneNumber,
-			Integer age, Integer gender) {
-		super();
-		this.userId = userId;
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.level = level;
 		this.phoneNumber = phoneNumber;
 	}
 
-	
 	public Integer getUserId() {
 		return userId;
 	}
@@ -58,8 +45,16 @@ public class User {
 		return password;
 	}
 
-	public void setPassword(String passwordHash) {
-		this.password = passwordHash;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Integer getLevelId() {
+		return levelId;
+	}
+
+	public void setLevelId(Integer levelId) {
+		this.levelId = levelId;
 	}
 
 	public String getEmail() {
@@ -70,19 +65,11 @@ public class User {
 		this.email = email;
 	}
 
-	public Integer getLevel() {
-		return level;
-	}
-
-	public void setLevel(Integer level) {
-		this.level = level;
-	}
-
-	public Integer getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	

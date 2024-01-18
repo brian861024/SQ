@@ -5,26 +5,26 @@ public class Product {
 	private Integer productId; // 商品代號
 	private String productName; // 商品名稱
 	private Integer price; // 商品價格
-	private Integer stockquantity; //商品庫存
-	private Integer categoryId; //商品分類
+	private Integer stockQty; //商品庫存
 	private String describe; //商品描述
 	private Boolean isLaunch; // 是否上架
+	private Integer categoryId; //商品分類
 	
 	public Product() {
 		
 	}
-	
-	public Product(Integer productId, String productName, Integer price, Integer stockquantity, String category,
-			String describe, Boolean isLaunch) {
+
+	public Product(Integer productId, String productName, Integer price, Integer stockQty, String describe,
+			Boolean isLaunch, Integer categoryId) {
 		this.productId = productId;
 		this.productName = productName;
 		this.price = price;
-		this.stockquantity = stockquantity;
-		this.categoryId = categoryId;
+		this.stockQty = stockQty;
 		this.describe = describe;
 		this.isLaunch = isLaunch;
+		this.categoryId = categoryId;
 	}
-	
+
 	public Integer getProductId() {
 		return productId;
 	}
@@ -49,22 +49,14 @@ public class Product {
 		this.price = price;
 	}
 
-	public Integer getStockQuantity() {
-		return stockquantity;
+	public Integer getStockQty() {
+		return stockQty;
 	}
 
-	public void setStockQuantity(Integer stockquantity) {
-		this.stockquantity = stockquantity;
+	public void setStockQty(Integer stockQty) {
+		this.stockQty = stockQty;
 	}
 
-	public Integer getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(Integer categoryId) {
-		this.categoryId = categoryId;
-	}
-	
 	public String getDescribe() {
 		return describe;
 	}
@@ -72,7 +64,7 @@ public class Product {
 	public void setDescribe(String describe) {
 		this.describe = describe;
 	}
-	
+
 	public Boolean getIsLaunch() {
 		return isLaunch;
 	}
@@ -81,11 +73,12 @@ public class Product {
 		this.isLaunch = isLaunch;
 	}
 
-	@Override
-	public String toString() {
-		return "Product [productId=" + productId + ", productName=" + productName + ", price=" + price
-				+ ", stockquantity=" + stockquantity + ", categoryId=" + categoryId + ", describe=" + describe
-				+ ", isLaunch=" + isLaunch + "]";
+	public Integer getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
 	}
 	
 }

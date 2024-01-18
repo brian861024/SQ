@@ -26,7 +26,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 	@Override
 	public void addUser(User user) {
 		String sql = "insert into user(username, password, level) values(?, ?, ?)";
-		jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), user.getLevel());
+		jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), user.getLevelId());
 	}
 
 	// 3. 更改使用者密碼

@@ -8,10 +8,11 @@ public class Cart {
 	private Integer cartId; // 購物車 Id
 	private Date checkoutTime; // 結帳時間
 	private Boolean isCheckout; // 是否結帳
-	private String deliveryStatus;
-	private String deliveryAddress;
+	private String deliveryStatus; // 運送狀態
+	private String deliveryAddress; // 運送地址
+	private Integer last5chars; // 帳號後五碼
 	private Integer userId; // 使用者 Id
-	private Integer amount;
+	private Integer amount; // 金額加總
 	
 	
 	private User user; // 使用者物件(關聯欄位)
@@ -80,6 +81,14 @@ public class Cart {
 		this.deliveryAddress = deliveryAddress;
 	}
 
+	public Integer getLast5chars() {
+		return last5chars;
+	}
+
+	public void setLast5chars(Integer last5chars) {
+		this.last5chars = last5chars;
+	}
+
 	public Integer getUserId() {
 		return userId;
 	}
@@ -111,5 +120,5 @@ public class Cart {
 	public void setCartItems(List<CartItem> cartItems) {
 		this.cartItems = cartItems;
 	}
-	
+
 }
