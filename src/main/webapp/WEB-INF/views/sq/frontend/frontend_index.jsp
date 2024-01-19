@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +8,7 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
     <meta charset="UTF-8">
-    <link rel="icon" href="../img/icon/logo.png" type="image/x-icon" />
+    <link rel="icon" href=<c:url value="/resources/img/icon/logo.png"/> type="image/x-icon" />
     <link rel="shortcut icon" href="" type="image/x-icon" />
     <title>SpiritQuest</title>
     <!-- jQuery載入 -->
@@ -23,19 +25,28 @@
         integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
         crossorigin="anonymous"></script>
     <!-- 這是所有頁面需要的版型樣式, 所以在此head區載入 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
-    <link rel="stylesheet" href="../include/css/frontend_index.css">
+    <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
+    <link rel="stylesheet" href=<c:url value="/resources/css/frontend_index.css" /> />
 </head>
 
-<body>
+<style>
+body {
+    background-image: url(<c:url value="/resources/img/bg/bg.jpg"/>);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-size: cover;
+}
+</style>
 
+<body>
     <!--======================================
           Header
     ==========================================-->
     <header>
         <!-- Header左側logo圖片 -->
         <div class="logo">
-            <a href="/frontend_header.html"><img src="../img/icon/logo.png" alt="" class="logoimg"></a>
+            <a href="/frontend_header.html"><img src=<c:url value="/resources/img/icon/logo.png"/> alt="" class="logoimg"></a>
         </div>
         <!-- Header右側按鍵 -->
         <nav class="navbar navbar-expand-lg navbar-light bg-opacity fs-5">
@@ -60,7 +71,7 @@
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Spirit<img src="./icon/list.svg" alt="">
+                                Spirit<img src=<c:url value="/icon/list.svg"/> alt="">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="./Liquor-whisky.html">Whiskey</a></li>
@@ -99,13 +110,13 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="/img/banner/ws.png" class="d-block w-100" alt="...">
+                        <img src=<c:url value="/resources/img/banner/ws.png"/> class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="/img/banner/st.png" class="d-block w-100" alt="...">
+                        <img src=<c:url value="/resources/img/banner/st.png"/> class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="/img/banner/gs.jpg" class="d-block w-100" alt="...">
+                        <img src=<c:url value="/resources/img/banner/gs.jpg"/> class="d-block w-100" alt="...">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -264,7 +275,7 @@
                     <div class="card-area">
 
                         <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="../img/cocktail/negroni.webp" alt="">
+                            <img src="/img/cocktail/negroni.webp" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Negroni</h5>
                                 <p class="card-text">
@@ -275,7 +286,7 @@
                         </div>
 
                         <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="../img/cocktail/mojido.webp" alt="">
+                            <img src="/img/cocktail/mojido.webp" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Mojido</h5>
                                 <p class="card-text">
@@ -286,7 +297,7 @@
                         </div>
 
                         <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="../img/cocktail/gintonic.webp" alt="">
+                            <img src="/img/cocktail/gintonic.webp" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Gin Tonic</h5>
                                 <p class="card-text">琴通寧是很受歡迎的調酒，做法也相當簡單，將琴酒混合通寧水（氣泡水）再加入檸檬片就完成。喝起來像是檸檬汽水，帶有些微苦味。
@@ -296,7 +307,7 @@
                         </div>
 
                         <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="../img/cocktail/pink-lady.webp" alt="">
+                            <img src="/img/cocktail/pink-lady.webp" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Pink Lady</h5>
                                 <p class="card-text">由調酒師獻給心儀的歌劇女主角，充滿浪漫氣息的一款調酒。基酒使用琴酒並加上紅石榴糖漿，最後加上蛋白或鮮奶油，打造出綿密的泡沫來升級口感。
@@ -306,7 +317,7 @@
                         </div>
 
                         <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="../img/cocktail/stdog.webp" alt="">
+                            <img src="/img/cocktail/stdog.webp" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Salty Dog</h5>
                                 <p class="card-text">
@@ -318,7 +329,7 @@
                         </div>
 
                         <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="../img/cocktail/Old-Fashioned-.webp" alt="">
+                            <img src="/img/cocktail/Old-Fashioned-.webp" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Old-Fashioned</h5>
                                 <p class="card-text">
@@ -330,7 +341,7 @@
                         </div>
 
                         <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="../img/cocktail/LongIslandIcedTea.webp" alt="">
+                            <img src="/img/cocktail/LongIslandIcedTea.webp" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Long-Island<br> Iced Tea</h5>
                                 <p class="card-text">
@@ -343,7 +354,7 @@
                         </div>
 
                         <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="../img/cocktail/Screwdriver.webp" alt="">
+                            <img src="/img/cocktail/Screwdriver.webp" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Screwdriver</h5>
                                 <p class="card-text">以伏特加作為基底，加入柳橙汁的簡單調酒，同樣適合普羅大眾。名稱來自從前一位美國工程師，把伏特加倒進柳橙汁裡，並隨手拿螺絲起子攪拌而成。
@@ -353,7 +364,7 @@
                         </div>
 
                         <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="../img/cocktail/Screwdriver.webp" alt="">
+                            <img src="/img/cocktail/Screwdriver.webp" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Screwdriver</h5>
                                 <p class="card-text">以伏特加作為基底，加入柳橙汁的簡單調酒，同樣適合普羅大眾。名稱來自從前一位美國工程師，把伏特加倒進柳橙汁裡，並隨手拿螺絲起子攪拌而成。
@@ -396,26 +407,26 @@
           Footer
     ==========================================-->
     <div class="footer">
-        <a href="https://reurl.cc/Ny4OOn" target="_blank" class="footer"><img src="../img/icon/warning.png" alt=""
+        <a href="https://reurl.cc/Ny4OOn" target="_blank" class="footer"><img src=<c:url value="/resources/img/icon/warning.png"/> alt=""
                 class="footer-banner"></a>
     </div>
     <footer>
         <div class="footer-icon-area">
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/9R70vx" target="_blank"><img src="../img/icon/telephone.svg" alt=""
+                <a href="https://reurl.cc/9R70vx" target="_blank"><img src=<c:url value="/resources/img/icon/telephone.svg"/> alt=""
                         class="footer-icon"></a>
             </div>
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/m0rzyV" target="_blank"><img src="../img/icon/line.svg" alt=""
+                <a href="https://reurl.cc/m0rzyV" target="_blank"><img src=<c:url value="/resources/img/icon/line.svg"/> alt=""
                         class="footer-icon">
                 </a>
             </div>
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/edLQMR" target="_blank"><img src="../img/icon/facebook.svg" alt=""
+                <a href="https://reurl.cc/edLQMR" target="_blank"><img src=<c:url value="/resources/img/icon/facebook.svg"/> alt=""
                         class="footer-icon"></a>
             </div>
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/L64e29" target="_blank"><img src="../img/icon/instagram.svg" alt=""
+                <a href="https://reurl.cc/L64e29" target="_blank"><img src=<c:url value="/resources/img/icon/instagram.svg"/> alt=""
                         class="footer-icon"></a>
             </div>
         </div>

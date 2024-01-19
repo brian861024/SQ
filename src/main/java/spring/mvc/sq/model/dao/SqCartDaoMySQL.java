@@ -15,6 +15,7 @@ import spring.mvc.sq.model.entity.Cart;
 import spring.mvc.sq.model.entity.Product;
 import spring.mvc.sq.model.entity.User;
 
+@Repository
 public class SqCartDaoMySQL implements SqCartDao{
 
 	@Autowired
