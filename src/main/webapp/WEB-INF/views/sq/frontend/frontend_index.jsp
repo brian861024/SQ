@@ -46,7 +46,7 @@ body {
     <header>
         <!-- Header左側logo圖片 -->
         <div class="logo">
-            <a href="/frontend_header.html"><img src=<c:url value="/resources/img/icon/logo.png"/> alt="" class="logoimg"></a>
+            <a href="/SpitirQuest/mvc/user/frontend/main"><img src=<c:url value="/resources/img/icon/logo.png"/> alt="" class="logoimg"></a>
         </div>
         <!-- Header右側按鍵 -->
         <nav class="navbar navbar-expand-lg navbar-light bg-opacity fs-5">
@@ -60,7 +60,7 @@ body {
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item" style="margin-right: 10px;">
                             <a class="nav-link active" aria-current="page"
-                                href="/frontend/frontend_index.html">SpiritQuest</a>
+                                href="/SpitirQuest/mvc/user/frontend/main">SpiritQuest</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/frontend/frontend_Cart.html">Cart</a>
