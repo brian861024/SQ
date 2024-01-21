@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
-encoding//src/main/webapp/WEB-INF/views/sq/frontend/frontend_Notice.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/sq/frontend/LiquorLibrary/liquor.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/sq/frontend/LiquorLibrary/vodka.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/sq/frontend/LiquorLibrary/whiskey.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/sq/frontend/frontend_notice.jsp=UTF-8

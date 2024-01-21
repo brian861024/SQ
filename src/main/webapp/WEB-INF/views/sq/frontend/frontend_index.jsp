@@ -46,7 +46,7 @@ body {
     <header>
         <!-- Header左側logo圖片 -->
         <div class="logo">
-            <a href="/SpitirQuest/mvc/user/frontend/main"><img src=<c:url value="/resources/img/icon/logo.png"/> alt="" class="logoimg"></a>
+            <a href="/SpiritQuest/mvc/sq/index"><img src=<c:url value="/resources/img/icon/logo.png"/> alt="" class="logoimg"></a>
         </div>
         <!-- Header右側按鍵 -->
         <nav class="navbar navbar-expand-lg navbar-light bg-opacity fs-5">
@@ -60,33 +60,32 @@ body {
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item" style="margin-right: 10px;">
                             <a class="nav-link active" aria-current="page"
-                                href="/SpitirQuest/mvc/user/frontend/main">SpiritQuest</a>
+                                href="/SpiritQuest/mvc/sq/index">SpiritQuest</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/frontend/frontend_Cart.html">Cart</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/cart">購物車</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/frontend/frontend_Order.html">Order</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/order">訂單查詢</a>
                         </li>
                         <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="/SpiritQuest/mvc/sq/liquor" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Spirit<img src=<c:url value="/icon/list.svg"/> alt="">
+                                酒類圖書館<img src=<c:url value="/icon/list.svg"/> alt="">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="./Liquor-whisky.html">Whiskey</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-rum.html">Rum</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-gin.html">Gin</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-tequila.html">Tequila</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-vadka.html">Vodka</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-liqueur.html">Liqueur</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/whiskey">Whiskey</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/rum">Rum</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/gin">Gin</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/tequila">Tequila</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/vodka">Vodka</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liqueur">Liqueur</a></li>
                                 <hr class="dropdown-divider">
-                                <li><a class="dropdown-item" href="#">Cocktail</a></li>
-                                <li><a class="dropdown-item" href="#">Plum Wine</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">Liquor</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/frontend/frontend_login.html">login</a>
+                            <a class="nav-link" href="/SpiritQuest/mvc/sq/login">login</a>
                         </li>
                     </ul>
                 </div>
@@ -199,20 +198,18 @@ body {
                         <li><a class="dropdown-item" href="">蘇格蘭威士忌</a></li>
                         <li><a class="dropdown-item" href="">日本威士忌</a></li>
                         <li><a class="dropdown-item" href="">台灣威士忌</a></li>
-                        <hr class="dropdown-divider">
+                   <!-- <hr class="dropdown-divider">
                         <li><a class="dropdown-item" href="#">雪莉桶</a></li>
                         <li><a class="dropdown-item" href="#">波本桶</a></li>
                         <hr class="dropdown-divider">
                         <li><a class="dropdown-item" href="#">泥煤</a></li>
-                        <li><a class="dropdown-item" href="#">煙燻</a></li>
-                    </ul>
+                        <li><a class="dropdown-item" href="#">煙燻</a></li> -->
+                    </ul> 
 
                     <hr class="dropdown-divider">
                     <!-- 導覽列按鈕 清酒 -->
 
-
                     <a class="prod-class-link" href="#">清酒</a>
-
 
                     <hr class="dropdown-divider">
                     <!-- 導覽列按鈕 果實酒 -->
@@ -264,6 +261,7 @@ body {
 
                     <hr class="dropdown-divider">
                 </div>
+                <!-- =============================================================================== -->
                 <!-- 右方商品列表 -->
                 <div style="display: block; text-align: center;">
 
@@ -413,20 +411,20 @@ body {
     <footer>
         <div class="footer-icon-area">
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/9R70vx" target="_blank"><img src=<c:url value="/resources/img/icon/telephone.svg"/> alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/telephone.svg"/> alt=""
                         class="footer-icon"></a>
             </div>
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/m0rzyV" target="_blank"><img src=<c:url value="/resources/img/icon/line.svg"/> alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/line.svg"/> alt=""
                         class="footer-icon">
                 </a>
             </div>
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/edLQMR" target="_blank"><img src=<c:url value="/resources/img/icon/facebook.svg"/> alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/facebook.svg"/> alt=""
                         class="footer-icon"></a>
             </div>
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/L64e29" target="_blank"><img src=<c:url value="/resources/img/icon/instagram.svg"/> alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/instagram.svg"/> alt=""
                         class="footer-icon"></a>
             </div>
         </div>

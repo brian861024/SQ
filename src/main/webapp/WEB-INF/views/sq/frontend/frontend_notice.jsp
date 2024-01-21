@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=BIG5" pageEncoding="BIG5"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +8,7 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
     <meta charset="UTF-8">
-    <link rel="icon" href="../img/icon/logo.png" type="image/x-icon" />
+    <link rel="icon" href=<c:url value="/resources/img/icon/logo.png"/> type="image/x-icon" />
     <link rel="shortcut icon" href="" type="image/x-icon" />
     <title>SpiritQuest</title>
     <!-- jQuery載入 -->
@@ -23,19 +25,29 @@
         integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
         crossorigin="anonymous"></script>
     <!-- 這是所有頁面需要的版型樣式, 所以在此head區載入 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
     <link rel="stylesheet" href="../include/css/frontend_Notice.css">
 </head>
 
+<style>
+body {
+    background-image: url(<c:url value="/resources/img/bg/bg.jpg"/>);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-size: cover;
+}
+</style>
+
 <body>
 
-    <!--======================================
+   <!--======================================
           Header
     ==========================================-->
     <header>
         <!-- Header左側logo圖片 -->
         <div class="logo">
-            <a href="/frontend_header.html"><img src="../img/icon/logo.png" alt="" class="logoimg"></a>
+            <a href="/SpiritQuest/mvc/sq/index"><img src=<c:url value="/resources/img/icon/logo.png"/> alt="" class="logoimg"></a>
         </div>
         <!-- Header右側按鍵 -->
         <nav class="navbar navbar-expand-lg navbar-light bg-opacity fs-5">
@@ -49,40 +61,38 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item" style="margin-right: 10px;">
                             <a class="nav-link active" aria-current="page"
-                                href="/frontend/frontend_index.html">SpiritQuest</a>
+                                href="/SpiritQuest/mvc/sq/index">SpiritQuest</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/frontend/frontend_Cart.html">Cart</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/cart">購物車</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/frontend/frontend_Order.html">Order</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/order">訂單查詢</a>
                         </li>
                         <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="/SpiritQuest/mvc/sq/liquor" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Spirit<img src="./icon/list.svg" alt="">
+                                酒類圖書館<img src=<c:url value="/icon/list.svg"/> alt="">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="./Liquor-whisky.html">Whiskey</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-rum.html">Rum</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-gin.html">Gin</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-tequila.html">Tequila</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-vadka.html">Vodka</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-liqueur.html">Liqueur</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/whiskey">Whiskey</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/rum">Rum</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/gin">Gin</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/tequila">Tequila</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/vodka">Vodka</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liqueur">Liqueur</a></li>
                                 <hr class="dropdown-divider">
-                                <li><a class="dropdown-item" href="#">Cocktail</a></li>
-                                <li><a class="dropdown-item" href="#">Plum Wine</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">Liquor</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/frontend/frontend_login.html">login</a>
+                            <a class="nav-link" href="/SpiritQuest/mvc/sq/login">login</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-
     <!--======================================
           Roll Area
     ==========================================-->

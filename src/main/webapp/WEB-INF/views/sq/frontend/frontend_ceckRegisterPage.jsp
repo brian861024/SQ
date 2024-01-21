@@ -26,7 +26,7 @@
         crossorigin="anonymous"></script>
     <!-- 這是所有頁面需要的版型樣式, 所以在此head區載入 -->
     <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
-    <link rel="stylesheet" href=<c:url value="/resources/css/frontend_index.css" /> />
+    <link rel="stylesheet" href="../include/css/frontend_Login.css">
 </head>
 
 <style>
@@ -37,18 +37,17 @@ body {
     background-position: top;
     background-size: cover;
 }
-
 </style>
 
 <body>
 
-    <!--======================================
+   <!--======================================
           Header
     ==========================================-->
     <header>
         <!-- Header左側logo圖片 -->
         <div class="logo">
-            <a href=<c:url value="/frontend_index.html"/>><img src=<c:url value="/img/icon/logo.png"/> alt="" class="logoimg"></a>
+            <a href="/SpiritQuest/mvc/sq/index"><img src=<c:url value="/resources/img/icon/logo.png"/> alt="" class="logoimg"></a>
         </div>
         <!-- Header右側按鍵 -->
         <nav class="navbar navbar-expand-lg navbar-light bg-opacity fs-5">
@@ -62,33 +61,32 @@ body {
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item" style="margin-right: 10px;">
                             <a class="nav-link active" aria-current="page"
-                                href="/frontend/frontend_index.html">SpiritQuest</a>
+                                href="/SpiritQuest/mvc/sq/index">SpiritQuest</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/frontend/frontend_Cart.html">Cart</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/cart">購物車</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/frontend/frontend_Order.html">Order</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/order">訂單查詢</a>
                         </li>
                         <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="/SpiritQuest/mvc/sq/liquor" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Spirit<img src="./icon/list.svg" alt="">
+                                酒類圖書館<img src=<c:url value="/icon/list.svg"/> alt="">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="./Liquor-whisky.html">Whiskey</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-rum.html">Rum</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-gin.html">Gin</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-tequila.html">Tequila</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-vadka.html">Vodka</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-liqueur.html">Liqueur</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/whiskey">Whiskey</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/rum">Rum</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/gin">Gin</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/tequila">Tequila</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/vodka">Vodka</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liqueur">Liqueur</a></li>
                                 <hr class="dropdown-divider">
-                                <li><a class="dropdown-item" href="#">Cocktail</a></li>
-                                <li><a class="dropdown-item" href="#">Plum Wine</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">Liquor</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/frontend/frontend_login.html">login</a>
+                            <a class="nav-link" href="/SpiritQuest/mvc/sq/login">login</a>
                         </li>
                     </ul>
                 </div>
@@ -97,7 +95,7 @@ body {
     </header>
 
     <!--======================================
-          Cart
+          login
     ==========================================-->
 
     <div class="Event_Section">
@@ -194,40 +192,31 @@ body {
                         <hr class="dropdown-divider">
                     </div>
 
-                    <!-- 右邊購物車區域 -->
-                    <div class="right-cart-area">
-                        <div class="cart-area-title">
-                            <div class="cart-area-title-color-bar"> </div>
-                            <h2 style="margin: 0;"> 購物車 </h2>
-                        </div>
+                    <!-- 右邊登入表單 -->
+                    <div class="right-login-area">
+                        <div class="login-area-title">
+                            <div class="login-area-title-color-bar"> </div>
+                            <h2 style="margin: 0;"> 會員資料確認 </h2>
+                        </div >
+                        <div class="login-register-form-area">
+                            <div class="login-form-area">
+                                <form class="pure-form pure-form-stacked">
+                                    <fieldset>  
+                                        <label for="stacked-email" style="color: rgb(255, 255, 255);">Email：aaa@gmail.com</label>
 
-                        <div class="cart-item-area">
-                            <!-- 購物車物件 -->
-                            <div class="card prod-card">
-                                <div class="prod-card-img-area">
-                                    <img class="prod-card-img" src="../img/cocktail/gintonic.webp" alt="">
-                                </div>
-                                <div class="card-body">
-                                    <h2 class="card-title">Gin Tonic</h2>
-                                    <hr class="dropdown-divider">
-                                    <p />
-                                    <p class="card-text">琴通寧是很受歡迎的調酒，做法也相當簡單，將琴酒混合通寧水（氣泡水）再加入檸檬片就完成。喝起來像是檸檬汽水，帶有些微苦味。
-                                    </p>
-                                    <!-- 讓修改按鈕對齊 -->
-                                    <div style="display: flex;justify-content: end;align-items: center;">
-                                        <p style="margin: 5px 10px;">數量：<input type="number"
-                                                style="width: 50px;margin:0 10px;" id="quantity" name="quantity"
-                                                value="1"></p>
-                                        <button type="submit" class="pure-button">修改數量</button>
-                                        <button type="submit" class="pure-button">刪除</button>
-                                    </div>
-                                </div>
+                                        <label for="stacked-password" style="color: rgb(255, 255, 255);">密碼：</label>
+
+                                        <label for="stacked-password" style="color: rgb(255, 255, 255);">地址：台北市信義區忠孝東路3段111號2樓</label>
+
+                                        <label for="stacked-password" style="color: rgb(255, 255, 255);">生日：1997/1/1</label>
+                                        <hr>
+                                        <hr>
+                                        <button type="submit" class="pure-button">確認</button>   
+                                        <button type="submit" class="pure-button">返回修改</button>                                  
+                                    </fieldset>
+                                </form>
                             </div>
 
-                            <div style="display: flex;justify-content: flex-end;">
-                                <button type="submit" class="pure-button">結帳</button>
-                                <button type="submit" class="pure-button" style="margin-right: 100px;">刪除購物車</button>
-                            </div>
                         </div>
                     </div>
                 </div>

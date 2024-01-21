@@ -3,7 +3,6 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
     <!-- Head 區域 -->
     <meta name="viewport"
@@ -27,7 +26,7 @@
         crossorigin="anonymous"></script>
     <!-- 這是所有頁面需要的版型樣式, 所以在此head區載入 -->
     <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
-    <link rel="stylesheet" href=<c:url value="/resources/css/frontend_Login.css" /> />
+    <link rel="stylesheet" href="../include/css/frontend_Prod.css">
 </head>
 
 <style>
@@ -41,7 +40,8 @@ body {
 </style>
 
 <body>
-    <!--======================================
+
+   <!--======================================
           Header
     ==========================================-->
     <header>
@@ -95,7 +95,7 @@ body {
     </header>
 
     <!--======================================
-          login
+          Cart
     ==========================================-->
 
     <div class="Event_Section">
@@ -127,42 +127,78 @@ body {
                     </form>
                 </div>
 
-                <!-- 下方區域 -->
-
                 <div class="main-area" style="display: flex;">
                     <!-- 左方導覽列 -->
                     <div class="left-prod-class-area">
+                    
+                    <!-- 公告消息 -->
+                    <p class="w3-padding-large" style="margin: 10px;margin-top: 20px;">
+                        <h5>公告消息</h5>
+                        </p>
+    
+                        <hr class="dropdown-divider">
+                        <!-- 公告 -->
+                        <a class="prod-class-link" href="#">《主題酒單》醉暖聖誕節🎄微醺的季節 又來囉❗️</a>
+    
+                        <hr class="dropdown-divider">
+                        <!-- 公告 -->
+    
+                        <a class="prod-class-link" href="#"> 《好朋友專區》我來惹~ 好朋友幫您把包裹變免運！</a>
+    
+                        <hr class="dropdown-divider">
+                        <!-- 商品分類 -->
                         <p class="w3-padding-large" style="margin: 10px;margin-top: 20px;">
-                        <h5>會員管理</h5>
+                        <h5>商品分類</h5>
                         </p>
 
                         <hr class="dropdown-divider">
-                        <!-- 導覽列按鈕 購物車 -->
+                        <!-- 導覽列按鈕 威士忌 -->
 
-                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/cart">購物車</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            威士忌<img src="./icon/list.svg" alt="">
+                        </a>
+                        <ul class="dropdown-menu left-prod-class-dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="">蘇格蘭威士忌</a></li>
+                            <li><a class="dropdown-item" href="">日本威士忌</a></li>
+                            <li><a class="dropdown-item" href="">台灣威士忌</a></li>
+                            <hr class="dropdown-divider">
+                            <li><a class="dropdown-item" href="#">雪莉桶</a></li>
+                            <li><a class="dropdown-item" href="#">波本桶</a></li>
+                            <hr class="dropdown-divider">
+                            <li><a class="dropdown-item" href="#">泥煤</a></li>
+                            <li><a class="dropdown-item" href="#">煙燻</a></li>
+                        </ul>
 
                         <hr class="dropdown-divider">
-                        <!-- 導覽列按鈕 歷史訂單 -->
+                        <!-- 導覽列按鈕 清酒 -->
 
-                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/order">訂單查詢</a>
+
+                        <a class="prod-class-link" href="#">清酒</a>
+
 
                         <hr class="dropdown-divider">
-                        <!-- 導覽列按鈕 收藏商品 -->
+                        <!-- 導覽列按鈕 果實酒 -->
 
-                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/favoriteProd">收藏商品</a>
+                        <a class="prod-class-link" href="#">果實酒</a>
 
                         <hr class="dropdown-divider">
                         <!-- 導覽列按鈕 葡萄酒 -->
 
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            修改會員資料<img src="./icon/list.svg" alt="">
+                            葡萄酒<img src="./icon/list.svg" alt="">
                         </a>
                         <ul class="dropdown-menu left-prod-class-dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserInfo">修改基本資料</a></li>
+                            <li><a class="dropdown-item" href="">Whiskey</a></li>
+                            <li><a class="dropdown-item" href="">Rum</a></li>
+                            <li><a class="dropdown-item" href="">Gin</a></li>
+                            <li><a class="dropdown-item" href="">Tequila</a></li>
+                            <li><a class="dropdown-item" href="">Vodka</a></li>
+                            <li><a class="dropdown-item" href="">Liqueur</a></li>
                             <hr class="dropdown-divider">
-                            <li><a class="dropdown-item" href="#">查詢密碼</a></li>
-                            <li><a class="dropdown-item" href="#">修改認證信箱</a></li>
+                            <li><a class="dropdown-item" href="#">Cocktail</a></li>
+                            <li><a class="dropdown-item" href="#">Plum Wine</a></li>
                         </ul>
 
                         <hr class="dropdown-divider">
@@ -170,55 +206,88 @@ body {
 
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            當前會員優惠
+                            調酒<img src="./icon/list.svg" alt="">
                         </a>
+                        <ul class="dropdown-menu left-prod-class-dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="">Whiskey</a></li>
+                            <li><a class="dropdown-item" href="">Rum</a></li>
+                            <li><a class="dropdown-item" href="">Gin</a></li>
+                            <li><a class="dropdown-item" href="">Tequila</a></li>
+                            <li><a class="dropdown-item" href="">Vodka</a></li>
+                            <li><a class="dropdown-item" href="">Liqueur</a></li>
+                            <hr class="dropdown-divider">
+                            <li><a class="dropdown-item" href="#">Cocktail</a></li>
+                            <li><a class="dropdown-item" href="#">Plum Wine</a></li>
+                        </ul>
 
                         <hr class="dropdown-divider">
                         <!-- 導覽列按鈕 酒器 -->
 
-                        <a class="prod-class-link" href="#">聯絡客服</a>
+                        <a class="prod-class-link" href="#">酒器</a>
 
                         <hr class="dropdown-divider">
                     </div>
 
-                    <!-- 右邊登入表單 -->
-                    <div class="right-login-area">
-                        <div class="login-area-title">
-                            <div class="login-area-title-color-bar"> </div>
-                            <h2 style="margin: 0;"> 會員登入 </h2>
-                        </div >
-                        <div class="login-register-form-area">
-                            <div class="login-form-area">
-                            
-                            
-                                <form class="pure-form pure-form-stacked" id="loginForm" method="post" action="/SpiritQuest/mvc/sq/login" >
-                                    <fieldset>
-                                        <label for="stacked-email" style="color: rgb(255, 255, 255);">Email</label>
-                                        <input type="email" id="stacked-email" placeholder="Email"
-                                            class="pure-input-1" />
-                                        <span class="pure-form-message">This is a required field.</span>
-                                        <label for="stacked-password" style="color: rgb(255, 255, 255);">密碼</label>
-                                        <input type="password" id="stacked-password" placeholder="Password"
-                                            class="pure-input-1" />
-                                        <hr>
-                                        <hr>
-                                        <label for="stacked-password" style="color: rgb(255, 255, 255);">驗證碼</label>
-                                        <input id="stacked-password" placeholder="請輸入右圖數字" />
-                                        
-                                        <a type="submit" class="pure-button" href="/SpiritQuest/mvc//user/login">Login</a>                                    
-                                        <a href="" style="text-decoration: none;"><h5 class="forget-password-label">忘記密碼?</h5></a>
-                                    </fieldset>
-                                </form>
-                                
-                                
-                            </div>
-                            <div class="register-form-area">
-                                <div class="forget-password" style="color: rgba(253, 253, 253, 0.788);">
-                                    尚未註冊?<a type="submit" class="pure-button" style="margin: 20px;"  href="/SpiritQuest/mvc/sq/register" >Register</a>
+                    <!-- 右邊商品名稱區域 -->
+                    <div class="right-prod-area">
+                        <div class="prod-area-title">
+                            <div class="prod-area-title-color-bar"> </div>
+                            <h2 style="margin: 0;"> 商品名稱 </h2>
+                        </div>
+                        <!-- 商品 -->
+                        <div class="prod-item-area">
+                            <div class="card prod-card">
+                                <!-- 商品名稱區域的商品圖片部分 -->
+                                <div>
+                                    <div class="prod-card-img-area"><img class="prod-card-img"
+                                            src="../img/cocktail/gintonic.webp" alt=""></div>
+                                    <div class="prod-card-little-img-area">
+                                        <div class="prod-card-little-img-item"><img class="prod-card-little-img"
+                                                src="../img/cocktail/gintonic.webp" alt=""></div>
+                                        <div class="prod-card-little-img-item"><img class="prod-card-little-img"
+                                                src="../img/cocktail/gintonic.webp" alt=""></div>
+                                        <div class="prod-card-little-img-item"><img class="prod-card-little-img"
+                                                src="../img/cocktail/gintonic.webp" alt=""></div>
+                                        <div class="prod-card-little-img-item"><img class="prod-card-little-img"
+                                                src="../img/cocktail/gintonic.webp" alt=""></div>
+
+                                    </div>
                                 </div>
+                                <div class="card-body">
+                                    <h2 class="card-title">Gin Tonic</h2>
+                                    <hr class="dropdown-divider">
+                                    <p />
+                                    <div style="margin:15px ;">
+                                        <p class="card-text">
+                                        <h3>$100</h3>
+                                        </p>
+                                        <p class="card-text">酒精濃度(%)：40%
+                                        </p>
+                                        <p class="card-text">容量： 700ml
+                                        </p>
+                                        <p class="card-text">
+                                            琴通寧是很受歡迎的調酒，做法也相當簡單，將琴酒混合通寧水（氣泡水）再加入檸檬片就完成。喝起來像是檸檬汽水，帶有些微苦味。
+                                        </p>
+                                    </div>
+                                    <p />
+                                    <hr class="dropdown-divider">
+                                    <p />
+                                    <div>
+                                        <p style="margin: 5px 10px;">數量：<input type="number"
+                                                style="width: 50px;margin:0 10px;" id="quantity" name="quantity"
+                                                value="1"></p>
+                                        <button type="submit" class="pure-button">加入購物車</button>
+                                        <button type="submit" class="pure-button">直接購買</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="display: flex;justify-content: flex-end;">
+                                <button type="submit" class="pure-button" style="margin-right: 100px;">回商品列表</button>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
     </div>

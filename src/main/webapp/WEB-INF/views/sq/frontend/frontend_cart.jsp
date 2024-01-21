@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,14 +8,14 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
     <meta charset="UTF-8">
-    <link rel="icon" href="/img/icon/logo.png" type="image/x-icon" />
+    <link rel="icon" href=<c:url value="/resources/img/icon/logo.png"/> type="image/x-icon" />
     <link rel="shortcut icon" href="" type="image/x-icon" />
     <title>SpiritQuest</title>
-    <!-- 幾乎大多數頁面需要jQuery, 所以在此head區載入 -->
+    <!-- jQuery載入 -->
     <script src="js/jquery-3.4.1.min.js"></script>
-    <!-- 幾乎所有頁面需要w3.css, 所以在此head區載入 -->
+    <!-- w3.css載入 -->
     <link rel="stylesheet" href="css/w3.css">
-    <!-- 幾乎所有頁面需要Bootstrap, 所以在此head區載入 -->
+    <!-- Bootstrap載入 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"
@@ -23,9 +25,19 @@
         integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
         crossorigin="anonymous"></script>
     <!-- 這是所有頁面需要的版型樣式, 所以在此head區載入 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
-    <link rel="stylesheet" href="../include/css/frontend_Login.css">
+    <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
+    <link rel="stylesheet" href=<c:url value="/resources/css/frontend_Cart.css" /> />
 </head>
+
+<style>
+body {
+    background-image: url(<c:url value="/resources/img/bg/bg.jpg"/>);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-size: cover;
+}
+</style>
 
 <body>
 
@@ -35,7 +47,7 @@
     <header>
         <!-- Header左側logo圖片 -->
         <div class="logo">
-            <a href="/frontend_header.html"><img src="/img/icon/logo.png" alt="" class="logoimg"></a>
+            <a href="/SpiritQuest/mvc/sq/index"><img src=<c:url value="/resources/img/icon/logo.png"/> alt="" class="logoimg"></a>
         </div>
         <!-- Header右側按鍵 -->
         <nav class="navbar navbar-expand-lg navbar-light bg-opacity fs-5">
@@ -48,36 +60,33 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item" style="margin-right: 10px;">
-                            <a class="nav-link active" aria-current="page" href="/frontend/frontend_index.html">SpiritQuest</a>
+                            <a class="nav-link active" aria-current="page"
+                                href="/SpiritQuest/mvc/sq/index">SpiritQuest</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/frontend/frontend_Cart.html">Cart</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/cart">購物車</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/frontend/frontend_Order.html">Order</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./booze.html">Booze</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/order">訂單查詢</a>
                         </li>
                         <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="/SpiritQuest/mvc/sq/liquor" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Spirit<img src="./icon/list.svg" alt="">
+                                酒類圖書館<img src=<c:url value="/icon/list.svg"/> alt="">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="./Liquor-whisky.html">Whiskey</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-rum.html">Rum</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-gin.html">Gin</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-tequila.html">Tequila</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-vadka.html">Vodka</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-liqueur.html">Liqueur</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/whiskey">Whiskey</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/rum">Rum</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/gin">Gin</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/tequila">Tequila</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/vodka">Vodka</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liqueur">Liqueur</a></li>
                                 <hr class="dropdown-divider">
-                                <li><a class="dropdown-item" href="#">Cocktail</a></li>
-                                <li><a class="dropdown-item" href="#">Plum Wine</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">Liquor</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/frontend/frontend_login.html">login</a>
+                            <a class="nav-link" href="/SpiritQuest/mvc/sq/login">login</a>
                         </li>
                     </ul>
                 </div>
@@ -86,7 +95,7 @@
     </header>
 
     <!--======================================
-          login
+          Cart
     ==========================================-->
 
     <div class="Event_Section">
@@ -183,23 +192,40 @@
                         <hr class="dropdown-divider">
                     </div>
 
-                    <!-- 右邊登入表單 -->
-                    <div class="right-login-area">
-                        <div class="login-area-title">
-                            <div class="login-area-title-color-bar"> </div>
-                            <h2 style="margin: 0;"> 聯絡我們 </h2>
-                        </div >
-                        <div class="contect-form-area">
-                            <form class="pure-form">
-                                <fieldset>
-                                    <input type="text" class="pure-input-1-2" style="margin-top: 10px;height: 50px;" placeholder="稱呼" />
-                                    <input type="text" class="pure-input-1-2" style="margin-top: 10px;height: 50px;" placeholder="聯絡電話/信箱" />
-                                    <input type="text" class="pure-input-1-2" style="margin:10px 0;height: 50px;" placeholder="主旨" />
-                                    <textarea class="pure-input-1-2" style="height: 400px;" placeholder="文字輸入區"></textarea>
-                                </fieldset>
-                                <hr class="dropdown-divider">
-                                <button type="submit" class="pure-button">送出</button>
-                            </form>
+                    <!-- 右邊購物車區域 -->
+                    <div class="right-cart-area">
+                        <div class="cart-area-title">
+                            <div class="cart-area-title-color-bar"> </div>
+                            <h2 style="margin: 0;"> 購物車 </h2>
+                        </div>
+
+                        <div class="cart-item-area">
+                            <!-- 購物車物件 -->
+                            <div class="card prod-card">
+                                <div class="prod-card-img-area">
+                                    <img class="prod-card-img" src="../img/cocktail/gintonic.webp" alt="">
+                                </div>
+                                <div class="card-body">
+                                    <h2 class="card-title">Gin Tonic</h2>
+                                    <hr class="dropdown-divider">
+                                    <p />
+                                    <p class="card-text">琴通寧是很受歡迎的調酒，做法也相當簡單，將琴酒混合通寧水（氣泡水）再加入檸檬片就完成。喝起來像是檸檬汽水，帶有些微苦味。
+                                    </p>
+                                    <!-- 讓修改按鈕對齊 -->
+                                    <div style="display: flex;justify-content: end;align-items: center;">
+                                        <p style="margin: 5px 10px;">數量：<input type="number"
+                                                style="width: 50px;margin:0 10px;" id="quantity" name="quantity"
+                                                value="1"></p>
+                                        <button type="submit" class="pure-button">修改數量</button>
+                                        <button type="submit" class="pure-button">刪除</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="display: flex;justify-content: flex-end;">
+                                <button type="submit" class="pure-button">結帳</button>
+                                <button type="submit" class="pure-button" style="margin-right: 100px;">刪除購物車</button>
+                            </div>
                         </div>
                     </div>
                 </div>

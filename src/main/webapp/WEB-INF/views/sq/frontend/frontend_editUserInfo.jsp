@@ -1,19 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=BIG5"pageEncoding="BIG5"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant-TW">
+
 <head>
-    <!-- Head å€åŸŸ -->
+    <!-- Head °Ï°ì -->
     <meta name="viewport"
         content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
     <meta charset="UTF-8">
-    <link rel="icon" href="/img/icon/logo.png" type="image/x-icon" />
+    <link rel="icon" href=<c:url value="/resources/img/icon/logo.png"/> type="image/x-icon" />
     <link rel="shortcut icon" href="" type="image/x-icon" />
     <title>SpiritQuest</title>
-    <!-- å¹¾ä¹å¤§å¤šæ•¸é é¢éœ€è¦jQuery, æ‰€ä»¥åœ¨æ­¤headå€è¼‰å…¥ -->
+    <!-- jQuery¸ü¤J -->
     <script src="js/jquery-3.4.1.min.js"></script>
-    <!-- å¹¾ä¹æ‰€æœ‰é é¢éœ€è¦w3.css, æ‰€ä»¥åœ¨æ­¤headå€è¼‰å…¥ -->
+    <!-- w3.css¸ü¤J -->
     <link rel="stylesheet" href="css/w3.css">
-    <!-- å¹¾ä¹æ‰€æœ‰é é¢éœ€è¦Bootstrap, æ‰€ä»¥åœ¨æ­¤headå€è¼‰å…¥ -->
+    <!-- Bootstrap¸ü¤J -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"
@@ -22,22 +25,32 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
         integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
         crossorigin="anonymous"></script>
-    <!-- é€™æ˜¯æ‰€æœ‰é é¢éœ€è¦çš„ç‰ˆå‹æ¨£å¼, æ‰€ä»¥åœ¨æ­¤headå€è¼‰å…¥ -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
-    <link rel="stylesheet" href="../include/css/frontend_Cart.css">
+    <!-- ³o¬O©Ò¦³­¶­±»İ­nªºª©«¬¼Ë¦¡, ©Ò¥H¦b¦¹head°Ï¸ü¤J -->
+    <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
+    <link rel="stylesheet" href="../include/css/frontend_UserEditInfo.css">
 </head>
+
+<style>
+body {
+    background-image: url(<c:url value="/resources/img/bg/bg.jpg"/>);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-size: cover;
+}
+</style>
 
 <body>
 
-    <!--======================================
+   <!--======================================
           Header
     ==========================================-->
     <header>
-        <!-- Headerå·¦å´logoåœ–ç‰‡ -->
+        <!-- Header¥ª°¼logo¹Ï¤ù -->
         <div class="logo">
-            <a href="/frontend_header.html"><img src="/img/icon/logo.png" alt="" class="logoimg"></a>
+            <a href="/SpiritQuest/mvc/sq/index"><img src=<c:url value="/resources/img/icon/logo.png"/> alt="" class="logoimg"></a>
         </div>
-        <!-- Headerå³å´æŒ‰éµ -->
+        <!-- Header¥k°¼«öÁä -->
         <nav class="navbar navbar-expand-lg navbar-light bg-opacity fs-5">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -49,36 +62,32 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item" style="margin-right: 10px;">
                             <a class="nav-link active" aria-current="page"
-                                href="/frontend/frontend_index.html">SpiritQuest</a>
+                                href="/SpiritQuest/mvc/sq/index">SpiritQuest</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/frontend/frontend_Cart.html">Cart</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/cart">ÁÊª«¨®</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/frontend/frontend_Order.html">Order</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./booze.html">Booze</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/order">­q³æ¬d¸ß</a>
                         </li>
                         <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="/SpiritQuest/mvc/sq/liquor" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Spirit<img src="./icon/list.svg" alt="">
+                                °sÃş¹Ï®ÑÀ]<img src=<c:url value="/icon/list.svg"/> alt="">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="./Liquor-whisky.html">Whiskey</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-rum.html">Rum</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-gin.html">Gin</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-tequila.html">Tequila</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-vadka.html">Vodka</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-liqueur.html">Liqueur</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/whiskey">Whiskey</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/rum">Rum</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/gin">Gin</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/tequila">Tequila</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/vodka">Vodka</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liqueur">Liqueur</a></li>
                                 <hr class="dropdown-divider">
-                                <li><a class="dropdown-item" href="#">Cocktail</a></li>
-                                <li><a class="dropdown-item" href="#">Plum Wine</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">Liquor</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/frontend/frontend_login.html">login</a>
+                            <a class="nav-link" href="/SpiritQuest/mvc/sq/login">login</a>
                         </li>
                     </ul>
                 </div>
@@ -87,31 +96,31 @@
     </header>
 
     <!--======================================
-          Cart
+          login
     ==========================================-->
 
     <div class="Event_Section">
         <section>
             <div class="container">
-                <!-- ä¸Šæ–¹æœç´¢åˆ— -->
+                <!-- ¤W¤è·j¯Á¦C -->
                 <div class="search">
                     <select class="category">
-                        <option value="0" class="select1">è«‹é¸æ“‡åˆ†é¡</option>
-                        <option>å¨å£«å¿Œ</option>
-                        <option>æ¸…é…’</option>
-                        <option>æœå¯¦é…’</option>
-                        <option>è‘¡è„é…’</option>
-                        <option>èª¿é…’</option>
-                        <option>é…’å™¨</option>
+                        <option value="0" class="select1">½Ğ¿ï¾Ü¤ÀÃş</option>
+                        <option>«Â¤h§Ò</option>
+                        <option>²M°s</option>
+                        <option>ªG¹ê°s</option>
+                        <option>¸²µå°s</option>
+                        <option>½Õ°s</option>
+                        <option>°s¾¹</option>
                     </select>
                     <select class="category">
-                        <option value="0" class="select1">è«‹é¸æ“‡åƒ¹æ ¼</option>
+                        <option value="0" class="select1">½Ğ¿ï¾Ü»ù®æ</option>
                         <option>&nbsp&nbsp&nbsp0&nbsp&nbsp&nbsp ~ 1000</option>
                         <option>1000 ~ 2000</option>
                         <option>2000 ~ 3000</option>
                         <option>3000 ~ 4000</option>
                         <option>4000 ~ 5000</option>
-                        <option>5000 ä»¥ä¸Š</option>
+                        <option>5000 ¥H¤W</option>
                     </select>
                     <form class="d-flex" style="width: 50%;margin: 10px">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -119,50 +128,50 @@
                     </form>
                 </div>
 
-                <!-- ä¸‹æ–¹å€åŸŸ -->
+                <!-- ¤U¤è°Ï°ì -->
 
                 <div class="main-area" style="display: flex;">
-                    <!-- å·¦æ–¹å°è¦½åˆ— -->
+                    <!-- ¥ª¤è¾ÉÄı¦C -->
                     <div class="left-prod-class-area">
                         <p class="w3-padding-large" style="margin: 10px;margin-top: 20px;">
-                        <h5>æœƒå“¡ç®¡ç†</h5>
+                        <h5>·|­ûºŞ²z</h5>
                         </p>
 
                         <hr class="dropdown-divider">
-                        <!-- å°è¦½åˆ—æŒ‰éˆ• è³¼ç‰©è»Š -->
+                        <!-- ¾ÉÄı¦C«ö¶s ÁÊª«¨® -->
 
-                        <a class="prod-class-link" href="/frontend/frontend_Cart.html">è³¼ç‰©è»Š</a>
-
-                        <hr class="dropdown-divider">
-                        <!-- å°è¦½åˆ—æŒ‰éˆ• æ­·å²è¨‚å–® -->
-
-                        <a class="prod-class-link" href="/frontend/frontend_Order.html">è¨‚å–®æŸ¥è©¢</a>
+                        <a class="prod-class-link" href="/frontend/frontend_Cart.html">ÁÊª«¨®</a>
 
                         <hr class="dropdown-divider">
-                        <!-- å°è¦½åˆ—æŒ‰éˆ• æ”¶è—å•†å“ -->
+                        <!-- ¾ÉÄı¦C«ö¶s ¾ú¥v­q³æ -->
 
-                        <a class="prod-class-link" href="/frontend/frontend_FavoriteProd.html">æ”¶è—å•†å“</a>
+                        <a class="prod-class-link" href="/frontend/frontend_Order.html">­q³æ¬d¸ß</a>
 
                         <hr class="dropdown-divider">
-                        <!-- å°è¦½åˆ—æŒ‰éˆ• è‘¡è„é…’ -->
+                        <!-- ¾ÉÄı¦C«ö¶s ¦¬ÂÃ°Ó«~ -->
+
+                        <a class="prod-class-link" href="#">¦¬ÂÃ°Ó«~</a>
+
+                        <hr class="dropdown-divider">
+                        <!-- ¾ÉÄı¦C«ö¶s ¸²µå°s -->
 
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            ä¿®æ”¹æœƒå“¡è³‡æ–™<img src="./icon/list.svg" alt="">
+                            ­×§ï·|­û¸ê®Æ<img src="./icon/list.svg" alt="">
                         </a>
                         <ul class="dropdown-menu left-prod-class-dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="">ä¿®æ”¹åŸºæœ¬è³‡æ–™</a></li>
+                            <li><a class="dropdown-item" href="">­×§ï°ò¥»¸ê®Æ</a></li>
                             <hr class="dropdown-divider">
-                            <li><a class="dropdown-item" href="#">æŸ¥è©¢å¯†ç¢¼</a></li>
-                            <li><a class="dropdown-item" href="#">ä¿®æ”¹èªè­‰ä¿¡ç®±</a></li>
+                            <li><a class="dropdown-item" href="#">¬d¸ß±K½X</a></li>
+                            <li><a class="dropdown-item" href="#">­×§ï»{ÃÒ«H½c</a></li>
                         </ul>
 
                         <hr class="dropdown-divider">
-                        <!-- å°è¦½åˆ—æŒ‰éˆ• èª¿é…’ -->
+                        <!-- ¾ÉÄı¦C«ö¶s ½Õ°s -->
 
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            ç•¶å‰æœƒå“¡å„ªæƒ <img src="./icon/list.svg" alt="">
+                            ·í«e·|­ûÀu´f<img src="./icon/list.svg" alt="">
                         </a>
                         <ul class="dropdown-menu left-prod-class-dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="">Whiskey</a></li>
@@ -177,40 +186,54 @@
                         </ul>
 
                         <hr class="dropdown-divider">
-                        <!-- å°è¦½åˆ—æŒ‰éˆ• é…’å™¨ -->
+                        <!-- ¾ÉÄı¦C«ö¶s °s¾¹ -->
 
-                        <a class="prod-class-link" href="#">è¯çµ¡å®¢æœ</a>
+                        <a class="prod-class-link" href="#">Ápµ¸«ÈªA</a>
 
                         <hr class="dropdown-divider">
                     </div>
 
-                    <!-- å³é‚Šè³¼ç‰©è»Šå€åŸŸ -->
-                    <div class="right-cart-area">
-                        <div class="cart-area-title">
-                            <div class="cart-area-title-color-bar"> </div>
-                            <h2 style="margin: 0;"> æ”¶è—å•†å“ </h2>
-                        </div>
-                        <div class="cart-item-area">
-
-                            <div class="card prod-card">
-                                <div>
-                                    <img class="prod-card-img" src="../img/cocktail/gintonic.webp" alt="">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Gin Tonic</h5>
-                                    <hr class="dropdown-divider">
-                                    <p class="card-text">ç´é€šå¯§æ˜¯å¾ˆå—æ­¡è¿çš„èª¿é…’ï¼Œåšæ³•ä¹Ÿç›¸ç•¶ç°¡å–®ï¼Œå°‡ç´é…’æ··åˆé€šå¯§æ°´ï¼ˆæ°£æ³¡æ°´ï¼‰å†åŠ å…¥æª¸æª¬ç‰‡å°±å®Œæˆã€‚å–èµ·ä¾†åƒæ˜¯æª¸æª¬æ±½æ°´ï¼Œå¸¶æœ‰äº›å¾®è‹¦å‘³ã€‚
-                                    </p>
-                                    <div class="heart-area">é…’ç²¾æ¿ƒåº¦ï¼š<img src="./icon/heart.svg" alt="" class="heart"></div>
-                                    <hr class="dropdown-divider">
-                                    <div style="display: flex;justify-content: end;">
-                                        <button type="submit" class="pure-button">ç§»é™¤</button>
-                                    </div>
-                                </div>
+                    <!-- ¥kÃäµn¤Jªí³æ -->
+                    <div class="right-login-area">
+                        <div class="login-area-title">
+                            <div class="login-area-title-color-bar"> </div>
+                            <h2 style="margin: 0;"> ·|­û¸ê®Æ­×§ï </h2>
+                        </div >
+                        <div class="login-register-form-area">
+                            <div class="login-form-area">
+                                <form class="pure-form pure-form-stacked">
+                                    <fieldset>
+                                        <label for="stacked-email" style="color: rgb(255, 255, 255);">Email(µn¤J±b¸¹)</label>
+                                        <input type="email" id="stacked-email" placeholder="Email"
+                                            class="pure-input-1" />
+                                        <hr>
+                                        <hr>
+                                        <hr>
+                                        <label for="stacked-name" style="color: rgb(255, 255, 255);">ÂÂ©m¦W</label>
+                                        <input id="stacked-name" placeholder="Name"
+                                            class="pure-input-1" />
+                                        <label for="stacked-name" style="color: rgb(255, 255, 255);">­×§ï«á©m¦W</label>
+                                        <input id="stacked-name" placeholder="Name"
+                                            class="pure-input-1" />
+                                        <hr>
+                                        <label for="stacked-PhoneNuber" style="color: rgb(255, 255, 255);">ÂÂ¹q¸Ü¸¹½X</label>
+                                        <input  id="stacked-PhoneNuber" placeholder="PhoneNuber"
+                                            class="pure-input-1" />
+                                            <label for="stacked-PhoneNuber" style="color: rgb(255, 255, 255);">­×§ï«á¹q¸Ü¸¹½X</label>
+                                        <input  id="stacked-PhoneNuber" placeholder="PhoneNuber"
+                                            class="pure-input-1" />
+                                        <hr>
+                                        <hr>
+                                        <button type="submit" class="pure-button">´£¥æ</button>                                    
+                                        <a href="" style="text-decoration: none;"><h5 class="forget-password-label">§Ñ°O±K½X?</h5></a>
+                                    </fieldset>
+                                </form>
                             </div>
 
-                            <div style="display: flex;justify-content: flex-end;">
-                                <button type="submit" class="pure-button" style="margin-right: 100px;">æ¸…ç©ºæ”¶è—å•†å“ </button>
+                            <div class="register-form-area">
+                                <div class="forget-password" style="color: rgba(253, 253, 253, 0.788);">
+                                    ­×§ï«H½c?<button type="submit" class="pure-button" style="margin: 20px;">ÂI¦¹</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -222,6 +245,7 @@
     <!--======================================
           Footer
     ==========================================-->
+
     <div class="footer">
         <a href="https://reurl.cc/Ny4OOn" target="_blank" class="footer"><img src="../img/icon/warning.png" alt=""
                 class="footer-banner"></a>
