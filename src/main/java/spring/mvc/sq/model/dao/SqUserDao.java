@@ -15,9 +15,9 @@ public interface SqUserDao {
 //-----透過使用者ID查找使用者-----
 	public Optional<User> findUserById(Integer userId);
 //-----新增使用者-----
-	Optional<User> addUser(User user);
+	void addUser(User user);
 //-----新增使用者-----
-	Optional<User> addEmp(User user);
+	void addEmp(User user);
 //-----修改密碼-----
 	Boolean updateUserPassword(Integer usererId, String newPassword);
 //-----修改使用者名稱-----
