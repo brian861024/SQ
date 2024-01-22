@@ -19,7 +19,7 @@ import spring.mvc.sq.model.dao.*;
 
 @Repository
 public class SqUserDaoMySQL implements SqUserDao {
-
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
@@ -30,34 +30,42 @@ public class SqUserDaoMySQL implements SqUserDao {
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
 	}
 	
-	//-----
+	//-----透過使用者ID查找使用者-----
 	@Override
 	public Optional<User> findUserById(Integer userId) {
-		String sql = "select userId, username, password, level, authType, authId from user where userId = ?";
+	        String sql = "select userId, username, password, levelId, email, phoneNumber from user WHERE userId = ?";
+	        // 使用 queryForObject 方法，指定 RowMapper
+	        try {
+	            User user = jdbcTemplate.queryForObject(sql, new Object[]{userId}, new BeanPropertyRowMapper<>(User.class));
+	            return Optional.ofNullable(user);
+	        } catch (EmptyResultDataAccessException ex) {
+	            // 如果查詢結果為空，返回空的 Optional
+	            return Optional.empty();
+	    }
 	}
-
+	
 	//-----新增使用者-----
 	@Override
 	public void addUser(User user) {
 		String sql = "insert into user(username, password, levelId, email, phoneNumber) values(?, ?, 1, ?, ?)";
-		jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), user.getLevelId());
+		jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), 1, user.getEmail(), user.getPhoneNumber());
 	}
 	
 	//-----新增員工-----
 	@Override
 	public void addEmp(User user) {
 		String sql = "insert into user(username, password, levelId, email, phoneNumber) values(?, ?, 2, ?, ?)";
-		jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), user.getLevelId());
+		jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), 2, user.getEmail(), user.getPhoneNumber());
 	}
 	
 	//-----更改使用者密碼-----
 	@Override
 	public Boolean updateUserPassword(Integer userId, String newPassword) {
 		String sql = "update user set password = ? where userId = ?";
-		int rowcount = jdbcTemplate.update(sql, newPassword, userId);
+		int rowcount = jdbcTemplate.update(sql, userId, newPassword);
 		return rowcount > 0;
 	}
-
+	
 	//-----更改使用者名稱-----
 	@Override
 	public Boolean updateUserName(Integer userId, String newName) {
@@ -65,7 +73,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 		int rowcount = jdbcTemplate.update(sql, newName, userId);
 		return rowcount > 0;
 	}
-
+	
 	//-----更改使用者信箱-----
 	@Override
 	public Boolean updateUserEmail(Integer userId, String newEmail) {
@@ -73,7 +81,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 		int rowcount = jdbcTemplate.update(sql, newEmail, userId);
 		return rowcount > 0;
 	}
-
+	
 	//-----更改使用者Tel-----
 	@Override
 	public Boolean updateUserNumber(Integer userId, String newNumber) {

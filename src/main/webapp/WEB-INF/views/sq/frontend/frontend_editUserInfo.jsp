@@ -1,33 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=BIG5"pageEncoding="BIG5"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html>
 
 <head>
-    <!-- Head ∞œ∞Ï -->
-    <meta name="viewport"
-        content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
-    <meta charset="UTF-8">
-    <link rel="icon" href=<c:url value="/resources/img/icon/logo.png"/> type="image/x-icon" />
-    <link rel="shortcut icon" href="" type="image/x-icon" />
-    <title>SpiritQuest</title>
-    <!-- jQuery∏¸§J -->
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <!-- w3.css∏¸§J -->
-    <link rel="stylesheet" href="css/w3.css">
-    <!-- Bootstrap∏¸§J -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"
-        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
-        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
-        crossorigin="anonymous"></script>
-    <!-- ≥o¨O©“¶≥≠∂≠±ª›≠n™∫™©´¨ºÀ¶°, ©“•H¶b¶πhead∞œ∏¸§J -->
-    <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
-    <link rel="stylesheet" href="../include/css/frontend_UserEditInfo.css">
+<!-- Head ÂçÄÂüü -->
+<meta name="viewport"
+	content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+<meta charset="UTF-8">
+<link rel="icon" href=<c:url value="/resources/img/icon/logo.png"/>
+	type="image/x-icon" />
+<link rel="shortcut icon" href="" type="image/x-icon" />
+<title>SpiritQuest</title>
+<!-- jQueryËºâÂÖ• -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<!-- w3.cssËºâÂÖ• -->
+<link rel="stylesheet" href="css/w3.css">
+<!-- BootstrapËºâÂÖ• -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"
+	integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+	integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+	crossorigin="anonymous"></script>
+<!-- ÈÄôÊòØÊâÄÊúâÈ†ÅÈù¢ÈúÄË¶ÅÁöÑÁâàÂûãÊ®£Âºè, ÊâÄ‰ª•Âú®Ê≠§headÂçÄËºâÂÖ• -->
+<link rel="stylesheet"
+	href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
+<link rel="stylesheet"
+	href=<c:url value="/resources/css/frontend_editUserInfo.css" /> />
 </head>
 
 <style>
@@ -46,11 +54,11 @@ body {
           Header
     ==========================================-->
     <header>
-        <!-- Header•™∞ºlogoπœ§˘ -->
+        <!-- HeaderÂ∑¶ÂÅ¥logoÂúñÁâá -->
         <div class="logo">
             <a href="/SpiritQuest/mvc/sq/index"><img src=<c:url value="/resources/img/icon/logo.png"/> alt="" class="logoimg"></a>
         </div>
-        <!-- Header•k∞º´ˆ¡‰ -->
+        <!-- HeaderÂè≥ÂÅ¥ÊåâÈçµ -->
         <nav class="navbar navbar-expand-lg navbar-light bg-opacity fs-5">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -65,25 +73,28 @@ body {
                                 href="/SpiritQuest/mvc/sq/index">SpiritQuest</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/cart">¡ ™´®Æ</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/cart">Ë≥ºÁâ©Ëªä</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/order">≠q≥Ê¨d∏ﬂ</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/order">Ë®ÇÂñÆÊü•Ë©¢</a>
                         </li>
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle" href="/SpiritQuest/mvc/sq/liquor" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                ∞s√˛πœÆ—¿]<img src=<c:url value="/icon/list.svg"/> alt="">
+                                ÈÖíÈ°ûÂúñÊõ∏È§®<img src=<c:url value="/icon/list.svg"/> alt="">
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            	
+                            	<li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">Á∏ΩÈ°û</a></li>
+                            	<hr class="dropdown-divider">
+                            	
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/whiskey">Whiskey</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/rum">Rum</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/gin">Gin</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/tequila">Tequila</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/vodka">Vodka</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liqueur">Liqueur</a></li>
-                                <hr class="dropdown-divider">
-                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">Liquor</a></li>
+
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -102,25 +113,25 @@ body {
     <div class="Event_Section">
         <section>
             <div class="container">
-                <!-- §W§Ë∑jØ¡¶C -->
+                <!-- ‰∏äÊñπÊêúÁ¥¢Âàó -->
                 <div class="search">
                     <select class="category">
-                        <option value="0" class="select1">Ω–øÔæ‹§¿√˛</option>
-                        <option>´¬§hß“</option>
-                        <option>≤M∞s</option>
-                        <option>™GπÍ∞s</option>
-                        <option>∏≤µÂ∞s</option>
-                        <option>Ω’∞s</option>
-                        <option>∞sæπ</option>
+                        <option value="0" class="select1">Ë´ãÈÅ∏ÊìáÂàÜÈ°û</option>
+                        <option>Â®ÅÂ£´Âøå</option>
+                        <option>Ê∏ÖÈÖí</option>
+                        <option>ÊûúÂØ¶ÈÖí</option>
+                        <option>Ëë°ËêÑÈÖí</option>
+                        <option>Ë™øÈÖí</option>
+                        <option>ÈÖíÂô®</option>
                     </select>
                     <select class="category">
-                        <option value="0" class="select1">Ω–øÔæ‹ª˘ÆÊ</option>
+                        <option value="0" class="select1">Ë´ãÈÅ∏ÊìáÂÉπÊ†º</option>
                         <option>&nbsp&nbsp&nbsp0&nbsp&nbsp&nbsp ~ 1000</option>
                         <option>1000 ~ 2000</option>
                         <option>2000 ~ 3000</option>
                         <option>3000 ~ 4000</option>
                         <option>4000 ~ 5000</option>
-                        <option>5000 •H§W</option>
+                        <option>5000 ‰ª•‰∏ä</option>
                     </select>
                     <form class="d-flex" style="width: 50%;margin: 10px">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -128,111 +139,98 @@ body {
                     </form>
                 </div>
 
-                <!-- §U§Ë∞œ∞Ï -->
+                <!-- ‰∏ãÊñπÂçÄÂüü -->
 
                 <div class="main-area" style="display: flex;">
-                    <!-- •™§Ëæ…ƒ˝¶C -->
+<!-- ==================================================================================================== -->                
+                    <!-- Â∑¶ÊñπÂ∞éË¶ΩÂàó -->
                     <div class="left-prod-class-area">
                         <p class="w3-padding-large" style="margin: 10px;margin-top: 20px;">
-                        <h5>∑|≠˚∫ﬁ≤z</h5>
+                        <h5>ÊúÉÂì°ÁÆ°ÁêÜ</h5>
                         </p>
 
                         <hr class="dropdown-divider">
-                        <!-- æ…ƒ˝¶C´ˆ∂s ¡ ™´®Æ -->
-
-                        <a class="prod-class-link" href="/frontend/frontend_Cart.html">¡ ™´®Æ</a>
-
-                        <hr class="dropdown-divider">
-                        <!-- æ…ƒ˝¶C´ˆ∂s æ˙•v≠q≥Ê -->
-
-                        <a class="prod-class-link" href="/frontend/frontend_Order.html">≠q≥Ê¨d∏ﬂ</a>
+                        
+                        <!-- Â∞éË¶ΩÂàóÊåâÈàï Ë≥ºÁâ©Ëªä -->
+                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/cart">Ë≥ºÁâ©Ëªä</a>
 
                         <hr class="dropdown-divider">
-                        <!-- æ…ƒ˝¶C´ˆ∂s ¶¨¬√∞”´~ -->
-
-                        <a class="prod-class-link" href="#">¶¨¬√∞”´~</a>
+                        
+                        <!-- Â∞éË¶ΩÂàóÊåâÈàï Ê≠∑Âè≤Ë®ÇÂñÆ -->
+                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/order">Ë®ÇÂñÆÊü•Ë©¢</a>
 
                         <hr class="dropdown-divider">
-                        <!-- æ…ƒ˝¶C´ˆ∂s ∏≤µÂ∞s -->
+                        
+                        <!-- Â∞éË¶ΩÂàóÊåâÈàï Êî∂ËóèÂïÜÂìÅ -->
+                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/favoriteProd">Êî∂ËóèÂïÜÂìÅ</a>
 
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <hr class="dropdown-divider">
+                      
+                        <!-- Â∞éË¶ΩÂàóÊåâÈàï ‰øÆÊîπÊúÉÂì°Ë≥áÊñô -->
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            ≠◊ßÔ∑|≠˚∏ÍÆ∆<img src="./icon/list.svg" alt="">
+                            ‰øÆÊîπÊúÉÂì°Ë≥áÊñô<img src=<c:url value="/resources/img/icon/list.svg"/> alt="">
                         </a>
                         <ul class="dropdown-menu left-prod-class-dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="">≠◊ßÔ∞Ú•ª∏ÍÆ∆</a></li>
+                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserInfo">‰øÆÊîπÂü∫Êú¨Ë≥áÊñô</a></li>
                             <hr class="dropdown-divider">
-                            <li><a class="dropdown-item" href="#">¨d∏ﬂ±KΩX</a></li>
-                            <li><a class="dropdown-item" href="#">≠◊ßÔª{√“´HΩc</a></li>
+                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/findpassword">Êü•Ë©¢ÂØÜÁ¢º</a></li>
+
                         </ul>
 
                         <hr class="dropdown-divider">
-                        <!-- æ…ƒ˝¶C´ˆ∂s Ω’∞s -->
-
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            ∑Ì´e∑|≠˚¿u¥f<img src="./icon/list.svg" alt="">
-                        </a>
-                        <ul class="dropdown-menu left-prod-class-dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="">Whiskey</a></li>
-                            <li><a class="dropdown-item" href="">Rum</a></li>
-                            <li><a class="dropdown-item" href="">Gin</a></li>
-                            <li><a class="dropdown-item" href="">Tequila</a></li>
-                            <li><a class="dropdown-item" href="">Vodka</a></li>
-                            <li><a class="dropdown-item" href="">Liqueur</a></li>
-                            <hr class="dropdown-divider">
-                            <li><a class="dropdown-item" href="#">Cocktail</a></li>
-                            <li><a class="dropdown-item" href="#">Plum Wine</a></li>
-                        </ul>
-
-                        <hr class="dropdown-divider">
-                        <!-- æ…ƒ˝¶C´ˆ∂s ∞sæπ -->
-
-                        <a class="prod-class-link" href="#">¡pµ∏´»™A</a>
+                        
+                        <!-- Â∞éË¶ΩÂàóÊåâÈàï Áï∂ÂâçÊúÉÂì°ÂÑ™ÊÉ†
+                        <a class="prod-class-link" href="#" >Áï∂ÂâçÊúÉÂì°ÂÑ™ÊÉ†</a>
+             
+                        <hr class="dropdown-divider"> -->
+                        
+                        <!-- Â∞éË¶ΩÂàóÊåâÈàï ËÅØÁµ°ÂÆ¢Êúç -->
+                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/contact">ËÅØÁµ°ÂÆ¢Êúç</a>
 
                         <hr class="dropdown-divider">
                     </div>
-
-                    <!-- •k√‰µn§J™Ì≥Ê -->
+<!-- ==================================================================================================== --> 
+                    <!-- Âè≥ÈÇäÁôªÂÖ•Ë°®ÂñÆ -->
                     <div class="right-login-area">
                         <div class="login-area-title">
                             <div class="login-area-title-color-bar"> </div>
-                            <h2 style="margin: 0;"> ∑|≠˚∏ÍÆ∆≠◊ßÔ </h2>
+                            <h2 style="margin: 0;"> ÊúÉÂì°Ë≥áÊñô‰øÆÊîπ </h2>
                         </div >
                         <div class="login-register-form-area">
                             <div class="login-form-area">
                                 <form class="pure-form pure-form-stacked">
                                     <fieldset>
-                                        <label for="stacked-email" style="color: rgb(255, 255, 255);">Email(µn§J±b∏π)</label>
+                                        <label for="stacked-email" style="color: rgb(255, 255, 255);">Email(ÁôªÂÖ•Â∏≥Ëôü)</label>
                                         <input type="email" id="stacked-email" placeholder="Email"
                                             class="pure-input-1" />
                                         <hr>
                                         <hr>
                                         <hr>
-                                        <label for="stacked-name" style="color: rgb(255, 255, 255);">¬¬©m¶W</label>
+                                        <label for="stacked-name" style="color: rgb(255, 255, 255);">ËàäÂßìÂêç</label>
                                         <input id="stacked-name" placeholder="Name"
                                             class="pure-input-1" />
-                                        <label for="stacked-name" style="color: rgb(255, 255, 255);">≠◊ßÔ´·©m¶W</label>
+                                        <label for="stacked-name" style="color: rgb(255, 255, 255);">‰øÆÊîπÂæåÂßìÂêç</label>
                                         <input id="stacked-name" placeholder="Name"
                                             class="pure-input-1" />
                                         <hr>
-                                        <label for="stacked-PhoneNuber" style="color: rgb(255, 255, 255);">¬¬πq∏‹∏πΩX</label>
+                                        <label for="stacked-PhoneNuber" style="color: rgb(255, 255, 255);">ËàäÈõªË©±ËôüÁ¢º</label>
                                         <input  id="stacked-PhoneNuber" placeholder="PhoneNuber"
                                             class="pure-input-1" />
-                                            <label for="stacked-PhoneNuber" style="color: rgb(255, 255, 255);">≠◊ßÔ´·πq∏‹∏πΩX</label>
+                                            <label for="stacked-PhoneNuber" style="color: rgb(255, 255, 255);">‰øÆÊîπÂæåÈõªË©±ËôüÁ¢º</label>
                                         <input  id="stacked-PhoneNuber" placeholder="PhoneNuber"
                                             class="pure-input-1" />
                                         <hr>
                                         <hr>
-                                        <button type="submit" class="pure-button">¥£•Ê</button>                                    
-                                        <a href="" style="text-decoration: none;"><h5 class="forget-password-label">ß—∞O±KΩX?</h5></a>
+                                        <button type="submit" class="pure-button">Êèê‰∫§</button>                                    
+                                        <a href="" style="text-decoration: none;"><h5 class="forget-password-label">ÂøòË®òÂØÜÁ¢º?</h5></a>
                                     </fieldset>
                                 </form>
                             </div>
 
-                            <div class="register-form-area">
+                           		<div class="register-form-area">
                                 <div class="forget-password" style="color: rgba(253, 253, 253, 0.788);">
-                                    ≠◊ßÔ´HΩc?<button type="submit" class="pure-button" style="margin: 20px;">¬I¶π</button>
+                                    ÂøòË®òÂØÜÁ¢º?<a type="submit" class="pure-button" style="margin: 20px;">ÈªûÊ≠§</a>
                                 </div>
                             </div>
                         </div>
@@ -245,35 +243,34 @@ body {
     <!--======================================
           Footer
     ==========================================-->
-
     <div class="footer">
-        <a href="https://reurl.cc/Ny4OOn" target="_blank" class="footer"><img src="../img/icon/warning.png" alt=""
+        <a href="https://reurl.cc/Ny4OOn" target="_blank" class="footer"><img src=<c:url value="/resources/img/icon/warning.png"/> alt=""
                 class="footer-banner"></a>
     </div>
     <footer>
         <div class="footer-icon-area">
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/9R70vx" target="_blank"><img src="../img/icon/telephone.svg" alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/telephone.svg"/> alt=""
                         class="footer-icon"></a>
             </div>
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/m0rzyV" target="_blank"><img src="../img/icon/line.svg" alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/line.svg"/> alt=""
                         class="footer-icon">
                 </a>
             </div>
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/edLQMR" target="_blank"><img src="../img/icon/facebook.svg" alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/facebook.svg"/> alt=""
                         class="footer-icon"></a>
             </div>
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/L64e29" target="_blank"><img src="../img/icon/instagram.svg" alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/instagram.svg"/> alt=""
                         class="footer-icon"></a>
             </div>
         </div>
         <div class="footer-text" style="text-align: end;">
             <h3 style="margin: 0 4rem;color: #a0a0a09d;">@ 2023 </h3>
         </div>
-
+        
     </footer>
 
 

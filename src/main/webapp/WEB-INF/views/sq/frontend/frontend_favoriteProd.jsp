@@ -26,7 +26,7 @@
         crossorigin="anonymous"></script>
     <!-- 這是所有頁面需要的版型樣式, 所以在此head區載入 -->
     <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
-    <link rel="stylesheet" href="../include/css/frontend_Cart.css">
+    <link rel="stylesheet" href=<c:url value="/resources/css/frontend_FavoriteProd.css" /> />
 </head>
 
 <style>
@@ -75,14 +75,17 @@ body {
                                 酒類圖書館<img src=<c:url value="/icon/list.svg"/> alt="">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            	
+                            	<li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">總類</a></li>
+                            	<hr class="dropdown-divider">
+                            	
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/whiskey">Whiskey</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/rum">Rum</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/gin">Gin</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/tequila">Tequila</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/vodka">Vodka</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liqueur">Liqueur</a></li>
-                                <hr class="dropdown-divider">
-                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">Liquor</a></li>
+
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -130,6 +133,7 @@ body {
                 <!-- 下方區域 -->
 
                 <div class="main-area" style="display: flex;">
+<!-- ==================================================================================================== -->                
                     <!-- 左方導覽列 -->
                     <div class="left-prod-class-area">
                         <p class="w3-padding-large" style="margin: 10px;margin-top: 20px;">
@@ -137,61 +141,47 @@ body {
                         </p>
 
                         <hr class="dropdown-divider">
+                        
                         <!-- 導覽列按鈕 購物車 -->
-
-                        <a class="prod-class-link" href="/frontend/frontend_Cart.html">購物車</a>
+                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/cart">購物車</a>
 
                         <hr class="dropdown-divider">
+                        
                         <!-- 導覽列按鈕 歷史訂單 -->
-
-                        <a class="prod-class-link" href="/frontend/frontend_Order.html">訂單查詢</a>
+                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/order">訂單查詢</a>
 
                         <hr class="dropdown-divider">
+                        
                         <!-- 導覽列按鈕 收藏商品 -->
-
-                        <a class="prod-class-link" href="/frontend/frontend_FavoriteProd.html">收藏商品</a>
+                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/favoriteProd">收藏商品</a>
 
                         <hr class="dropdown-divider">
-                        <!-- 導覽列按鈕 葡萄酒 -->
-
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                      
+                        <!-- 導覽列按鈕 修改會員資料 -->
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            修改會員資料<img src="./icon/list.svg" alt="">
+                            修改會員資料<img src=<c:url value="/resources/img/icon/list.svg"/> alt="">
                         </a>
                         <ul class="dropdown-menu left-prod-class-dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="">修改基本資料</a></li>
+                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserInfo">修改基本資料</a></li>
                             <hr class="dropdown-divider">
-                            <li><a class="dropdown-item" href="#">查詢密碼</a></li>
-                            <li><a class="dropdown-item" href="#">修改認證信箱</a></li>
+                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/findpassword">查詢密碼</a></li>
+
                         </ul>
 
                         <hr class="dropdown-divider">
-                        <!-- 導覽列按鈕 調酒 -->
-
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            當前會員優惠<img src="./icon/list.svg" alt="">
-                        </a>
-                        <ul class="dropdown-menu left-prod-class-dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="">Whiskey</a></li>
-                            <li><a class="dropdown-item" href="">Rum</a></li>
-                            <li><a class="dropdown-item" href="">Gin</a></li>
-                            <li><a class="dropdown-item" href="">Tequila</a></li>
-                            <li><a class="dropdown-item" href="">Vodka</a></li>
-                            <li><a class="dropdown-item" href="">Liqueur</a></li>
-                            <hr class="dropdown-divider">
-                            <li><a class="dropdown-item" href="#">Cocktail</a></li>
-                            <li><a class="dropdown-item" href="#">Plum Wine</a></li>
-                        </ul>
-
-                        <hr class="dropdown-divider">
-                        <!-- 導覽列按鈕 酒器 -->
-
-                        <a class="prod-class-link" href="#">聯絡客服</a>
+                        
+                        <!-- 導覽列按鈕 當前會員優惠
+                        <a class="prod-class-link" href="#" >當前會員優惠</a>
+             
+                        <hr class="dropdown-divider"> -->
+                        
+                        <!-- 導覽列按鈕 聯絡客服 -->
+                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/contact">聯絡客服</a>
 
                         <hr class="dropdown-divider">
                     </div>
-
+<!-- ==================================================================================================== --> 
                     <!-- 右邊購物車區域 -->
                     <div class="right-cart-area">
                         <div class="cart-area-title">
@@ -231,33 +221,33 @@ body {
           Footer
     ==========================================-->
     <div class="footer">
-        <a href="https://reurl.cc/Ny4OOn" target="_blank" class="footer"><img src="../img/icon/warning.png" alt=""
+        <a href="https://reurl.cc/Ny4OOn" target="_blank" class="footer"><img src=<c:url value="/resources/img/icon/warning.png"/> alt=""
                 class="footer-banner"></a>
     </div>
     <footer>
         <div class="footer-icon-area">
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/9R70vx" target="_blank"><img src="../img/icon/telephone.svg" alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/telephone.svg"/> alt=""
                         class="footer-icon"></a>
             </div>
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/m0rzyV" target="_blank"><img src="../img/icon/line.svg" alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/line.svg"/> alt=""
                         class="footer-icon">
                 </a>
             </div>
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/edLQMR" target="_blank"><img src="../img/icon/facebook.svg" alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/facebook.svg"/> alt=""
                         class="footer-icon"></a>
             </div>
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/L64e29" target="_blank"><img src="../img/icon/instagram.svg" alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/instagram.svg"/> alt=""
                         class="footer-icon"></a>
             </div>
         </div>
         <div class="footer-text" style="text-align: end;">
             <h3 style="margin: 0 4rem;color: #a0a0a09d;">@ 2023 </h3>
         </div>
-
+        
     </footer>
 
 

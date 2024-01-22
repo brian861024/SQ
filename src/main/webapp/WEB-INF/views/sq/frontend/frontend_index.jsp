@@ -73,15 +73,18 @@ body {
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 酒類圖書館<img src=<c:url value="/icon/list.svg"/> alt="">
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            	
+                            	<li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">總類</a></li>
+                            	<hr class="dropdown-divider">
+                            	
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/whiskey">Whiskey</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/rum">Rum</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/gin">Gin</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/tequila">Tequila</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/vodka">Vodka</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liqueur">Liqueur</a></li>
-                                <hr class="dropdown-divider">
-                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">Liquor</a></li>
+
                             </ul>
                         </li>
                         <li class="nav-item">

@@ -5,29 +5,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Head 區域 -->
-    <meta name="viewport"
-        content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
-    <meta charset="UTF-8">
-    <link rel="icon" href=<c:url value="/resources/img/icon/logo.png"/> type="image/x-icon" />
-    <link rel="shortcut icon" href="" type="image/x-icon" />
-    <title>SpiritQuest</title>
-    <!-- jQuery載入 -->
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <!-- w3.css載入 -->
-    <link rel="stylesheet" href="css/w3.css">
-    <!-- Bootstrap載入 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"
-        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
-        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
-        crossorigin="anonymous"></script>
-    <!-- 這是所有頁面需要的版型樣式, 所以在此head區載入 -->
-    <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
-	<link rel="stylesheet" href=<c:url value="/resources/css/frontend_Register.css" /> />
+<!-- Head 區域 -->
+<meta name="viewport"
+	content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+<meta charset="UTF-8">
+<link rel="icon" href=<c:url value="/resources/img/icon/logo.png"/>
+	type="image/x-icon" />
+<link rel="shortcut icon" href="" type="image/x-icon" />
+<title>SpiritQuest</title>
+<!-- jQuery載入 -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<!-- w3.css載入 -->
+<link rel="stylesheet" href="css/w3.css">
+<!-- Bootstrap載入 -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"
+	integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+	integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+	crossorigin="anonymous"></script>
+<!-- 這是所有頁面需要的版型樣式, 所以在此head區載入 -->
+<link rel="stylesheet"
+	href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
+<link rel="stylesheet"
+	href=<c:url value="/resources/css/backend_addEmp.css" /> />
 </head>
 
 <style>
@@ -47,6 +55,9 @@ body {
 
 <body>
 
+	<!--======================================
+          Header
+    ==========================================-->
    <!--======================================
           Header
     ==========================================-->
@@ -139,55 +150,73 @@ body {
 				<!-- 下方區域 -->
 
 				<div class="main-area" style="display: flex;">
-<!-- ==================================================================================================== -->                
-                    <!-- 左方導覽列 -->
-                    <div class="left-prod-class-area">
-                        <p class="w3-padding-large" style="margin: 10px;margin-top: 20px;">
-                        <h5>會員管理</h5>
-                        </p>
+					<!-- 左方導覽列 -->
+					
+					<div class="left-prod-class-area">
+						<p class="w3-padding-large"
+							style="margin: 10px; margin-top: 20px;">
+						<h5>會員管理</h5>
+						</p>
 
-                        <hr class="dropdown-divider">
-                        
-                        <!-- 導覽列按鈕 購物車 -->
-                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/cart">購物車</a>
+						<hr class="dropdown-divider">
+						<!-- 導覽列按鈕 購物車 -->
 
-                        <hr class="dropdown-divider">
-                        
-                        <!-- 導覽列按鈕 歷史訂單 -->
-                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/order">訂單查詢</a>
+						<a class="prod-class-link" href="/frontend/frontend_Cart.html">購物車</a>
 
-                        <hr class="dropdown-divider">
-                        
-                        <!-- 導覽列按鈕 收藏商品 -->
-                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/favoriteProd">收藏商品</a>
+						<hr class="dropdown-divider">
+						<!-- 導覽列按鈕 歷史訂單 -->
 
-                        <hr class="dropdown-divider">
-                      
-                        <!-- 導覽列按鈕 修改會員資料 -->
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            修改會員資料<img src=<c:url value="/resources/img/icon/list.svg"/> alt="">
-                        </a>
-                        <ul class="dropdown-menu left-prod-class-dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserInfo">修改基本資料</a></li>
-                            <hr class="dropdown-divider">
-                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/findpassword">查詢密碼</a></li>
+						<a class="prod-class-link" href="/frontend/frontend_Order.html">訂單查詢</a>
 
-                        </ul>
+						<hr class="dropdown-divider">
+						<!-- 導覽列按鈕 收藏商品 -->
 
-                        <hr class="dropdown-divider">
-                        
-                        <!-- 導覽列按鈕 當前會員優惠
-                        <a class="prod-class-link" href="#" >當前會員優惠</a>
-             
-                        <hr class="dropdown-divider"> -->
-                        
-                        <!-- 導覽列按鈕 聯絡客服 -->
-                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/contact">聯絡客服</a>
+						<a class="prod-class-link" href="#">收藏商品</a>
 
-                        <hr class="dropdown-divider">
-                    </div>
-<!-- ==================================================================================================== --> 
+						<hr class="dropdown-divider">
+						<!-- 導覽列按鈕 葡萄酒 -->
+
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							修改會員資料<img src="./icon/list.svg" alt="">
+						</a>
+						
+						<ul class="dropdown-menu left-prod-class-dropdown-menu"
+							aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="">修改基本資料</a></li>
+							<hr class="dropdown-divider">
+							<li><a class="dropdown-item" href="#">查詢密碼</a></li>
+							<li><a class="dropdown-item" href="#">修改認證信箱</a></li>
+						</ul>
+
+						<hr class="dropdown-divider">
+						<!-- 導覽列按鈕 調酒 -->
+
+						<a class="prod-class-link" href="#" id="navbarDropdown"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							當前會員優惠
+						</a>
+						<ul class="dropdown-menu left-prod-class-dropdown-menu"
+							aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="">Whiskey</a></li>
+							<li><a class="dropdown-item" href="">Rum</a></li>
+							<li><a class="dropdown-item" href="">Gin</a></li>
+							<li><a class="dropdown-item" href="">Tequila</a></li>
+							<li><a class="dropdown-item" href="">Vodka</a></li>
+							<li><a class="dropdown-item" href="">Liqueur</a></li>
+							<hr class="dropdown-divider">
+							<li><a class="dropdown-item" href="#">Cocktail</a></li>
+							<li><a class="dropdown-item" href="#">Plum Wine</a></li>
+						</ul>
+
+						<hr class="dropdown-divider">
+						<!-- 導覽列按鈕 酒器 -->
+
+						<a class="prod-class-link" href="#">聯絡客服</a>
+
+						<hr class="dropdown-divider">
+					</div>
+
 					<!-- 右邊登入表單 -->
 					<div class="right-login-area">
 						<div class="login-area-title">
@@ -199,7 +228,7 @@ body {
 <!-- ================================================================================================ -->						
 <!-- ================================================================================================ -->
 								<form class="pure-form pure-form-stacked" id="registerForm"
-									method="POST" action="/SpiritQuest/mvc/user/register">
+									method="POST" action="./register">
 									<fieldset>
 										<label for="stacked-name" style="color: rgb(255, 255, 255);">姓名</label>
 										<input id="stacked-name" name="username" placeholder="Name"
@@ -226,21 +255,20 @@ body {
 										
 										<label for="stacked-password2" style="color: rgb(255, 255, 255);">確認密碼</label>
 										
-										<input type="password" id="stacked-password2" name="userpassword2"
+										<input
+											type="password" id="stacked-password2" name="userpassword2"
 											placeholder="再輸入一次密碼" class="pure-input-1" />
 										
 										<label for="stacked-name" style="color: red;">${ loginMessage }</label>
 											
 										<hr>
 										<hr>
-										<label for="stacked-code" style="color: rgb(255, 255, 255);>驗證碼</label>
-										<input  "name="code" id="stacked-code"placeholder="請輸入下圖數字"/>
-										<img src="/SpiritQuest/mvc/user/getcode" alt="驗證碼">
-										<div>
-										<button type="submit" class="pure-button" >Register</button>
-										<a href="" style="text-decoration: none;">
-										</div>
-										<h5 class="forget-password-label">忘記密碼?</h5></a>
+										<label for="stacked-code" style="color: rgb(255, 255, 255);"
+											name="code">驗證碼</label> <input id="stacked-code"
+											placeholder="請輸入右圖數字" /> <a type="submit"
+											class="pure-button" onclick="location.href='/SpiritQuest/mvc/sq/register';">Register</a>
+										<a href="" style="text-decoration: none;"><h5
+												class="forget-password-label">忘記密碼?</h5></a>
 									</fieldset>
 								</form>
 <!-- ================================================================================================ -->
@@ -260,39 +288,6 @@ body {
 			</div>
 	</div>
 	</div>
-
-	<!--======================================
-          Footer
-    ==========================================-->
-	    <div class="footer">
-        <a href="https://reurl.cc/Ny4OOn" target="_blank" class="footer"><img src=<c:url value="/resources/img/icon/warning.png"/> alt=""
-                class="footer-banner"></a>
-    </div>
-    <footer>
-        <div class="footer-icon-area">
-            <div class="footer-icon-block">
-                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/telephone.svg"/> alt=""
-                        class="footer-icon"></a>
-            </div>
-            <div class="footer-icon-block">
-                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/line.svg"/> alt=""
-                        class="footer-icon">
-                </a>
-            </div>
-            <div class="footer-icon-block">
-                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/facebook.svg"/> alt=""
-                        class="footer-icon"></a>
-            </div>
-            <div class="footer-icon-block">
-                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/instagram.svg"/> alt=""
-                        class="footer-icon"></a>
-            </div>
-        </div>
-        <div class="footer-text" style="text-align: end;">
-            <h3 style="margin: 0 4rem;color: #a0a0a09d;">@ 2023 </h3>
-        </div>
-
-	</footer>
 
 
 </body>

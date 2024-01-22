@@ -57,6 +57,12 @@ public class SqController {
 		public String goToEditUserInfo() {
 			return "sq/frontend/frontend_editUserInfo";	
 		}
+		
+	//進入修改會員資料頁面
+		@RequestMapping("/findpassword")
+		public String goToFindpassword() {
+			return "sq/frontend/frontend_findpassword";	
+		}
 
 	//進入聯絡我們頁面
 		@RequestMapping("/contact")

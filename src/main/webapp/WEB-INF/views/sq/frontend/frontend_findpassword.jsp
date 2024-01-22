@@ -3,6 +3,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <!-- Head 區域 -->
     <meta name="viewport"
@@ -26,7 +27,7 @@
         crossorigin="anonymous"></script>
     <!-- 這是所有頁面需要的版型樣式, 所以在此head區載入 -->
     <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
-    <link rel="stylesheet" href=<c:url value="/resources/css/frontend_Login.css" /> />
+	<link rel="stylesheet" href=<c:url value="/resources/css/frontend_editUserInfo.css" /> />
 </head>
 
 <style>
@@ -182,23 +183,34 @@ body {
                         <hr class="dropdown-divider">
                     </div>
 <!-- ==================================================================================================== --> 
+
                     <!-- 右邊登入表單 -->
                     <div class="right-login-area">
                         <div class="login-area-title">
                             <div class="login-area-title-color-bar"> </div>
-                            <h2 style="margin: 0;"> 聯絡我們 </h2>
+                            <h2 style="margin: 0;"> 會員密碼查找 </h2>
                         </div >
-                        <div class="contect-form-area">
-                            <form class="pure-form">
-                                <fieldset>
-                                    <input type="text" class="pure-input-1-2" style="margin-top: 10px;height: 50px;" placeholder="稱呼" />
-                                    <input type="text" class="pure-input-1-2" style="margin-top: 10px;height: 50px;" placeholder="聯絡電話/信箱" />
-                                    <input type="text" class="pure-input-1-2" style="margin:10px 0;height: 50px;" placeholder="主旨" />
-                                    <textarea class="pure-input-1-2" style="height: 400px;" placeholder="文字輸入區"></textarea>
-                                </fieldset>
-                                <hr class="dropdown-divider">
-                                <button type="submit" class="pure-button">送出</button>
-                            </form>
+                        <div class="login-register-form-area">
+                            <div class="login-form-area">
+                                <form class="pure-form pure-form-stacked">
+                                    <fieldset>
+                                        <label for="stacked-email" style="color: rgb(255, 255, 255);">Email(登入帳號)</label>
+                                        <input type="email" id="stacked-email" placeholder="Email"
+                                            class="pure-input-1" />
+                                        <hr>
+                                        <hr>
+                                        <label for="stacked-PhoneNuber" style="color: rgb(255, 255, 255);">註冊時電話號碼</label>
+                                        <input  id="stacked-PhoneNuber" placeholder="PhoneNuber"
+                                            class="pure-input-1" />
+
+                                        <hr>
+                                        <hr>
+                                        <button type="submit" class="pure-button">提交</button>  
+                                                                            
+                                    </fieldset>
+                                </form>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -236,7 +248,7 @@ body {
         <div class="footer-text" style="text-align: end;">
             <h3 style="margin: 0 4rem;color: #a0a0a09d;">@ 2023 </h3>
         </div>
-
+        
     </footer>
 
 

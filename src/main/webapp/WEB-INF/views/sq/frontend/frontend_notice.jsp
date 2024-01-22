@@ -26,7 +26,7 @@
         crossorigin="anonymous"></script>
     <!-- 這是所有頁面需要的版型樣式, 所以在此head區載入 -->
     <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
-    <link rel="stylesheet" href="../include/css/frontend_Notice.css">
+    <link rel="stylesheet" href=<c:url value="/resources/css/frontend_Notice.css" /> />
 </head>
 
 <style>
@@ -75,14 +75,17 @@ body {
                                 酒類圖書館<img src=<c:url value="/icon/list.svg"/> alt="">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            	
+                            	<li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">總類</a></li>
+                            	<hr class="dropdown-divider">
+                            	
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/whiskey">Whiskey</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/rum">Rum</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/gin">Gin</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/tequila">Tequila</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/vodka">Vodka</a></li>
                                 <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liqueur">Liqueur</a></li>
-                                <hr class="dropdown-divider">
-                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">Liquor</a></li>
+
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -309,26 +312,26 @@ body {
           Footer
     ==========================================-->
     <div class="footer">
-        <a href="https://reurl.cc/Ny4OOn" target="_blank" class="footer"><img src="../img/icon/warning.png" alt=""
+        <a href="https://reurl.cc/Ny4OOn" target="_blank" class="footer"><img src=<c:url value="/resources/img/icon/warning.png"/> alt=""
                 class="footer-banner"></a>
     </div>
     <footer>
         <div class="footer-icon-area">
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/9R70vx" target="_blank"><img src="../img/icon/telephone.svg" alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/telephone.svg"/> alt=""
                         class="footer-icon"></a>
             </div>
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/m0rzyV" target="_blank"><img src="../img/icon/line.svg" alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/line.svg"/> alt=""
                         class="footer-icon">
                 </a>
             </div>
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/edLQMR" target="_blank"><img src="../img/icon/facebook.svg" alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/facebook.svg"/> alt=""
                         class="footer-icon"></a>
             </div>
             <div class="footer-icon-block">
-                <a href="https://reurl.cc/L64e29" target="_blank"><img src="../img/icon/instagram.svg" alt=""
+                <a href="" target="_blank"><img src=<c:url value="/resources/img/icon/instagram.svg"/> alt=""
                         class="footer-icon"></a>
             </div>
         </div>

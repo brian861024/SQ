@@ -1,4 +1,11 @@
 /* body area ============================= */
+body {
+    background-image: url(../../img/bg/bg.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-size: cover;
+}
 
 /* body area end ========================= */
 
@@ -64,6 +71,11 @@ header {
 
 /* EVENTS SECTION ======================== */
 
+.Event_Section{
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
     /*<!-- 上方搜索列 -->*/
 .category {
     color: rgba(32, 32, 32, 0.589);
@@ -93,6 +105,10 @@ header {
     position: sticky
 }
 
+.left-prod-class-dropdown-menu{
+    width: 250px;
+}
+
 .prod-class-link{
     color: #e6e6e6af;
     text-decoration: none;
@@ -114,32 +130,58 @@ header {
     box-shadow: 1px #ffffff3b;
 }
 
-.left-prod-class-dropdown-menu{
-    width: 250px;
-}
+/*<!-- 右方登入表單 -->*/
 
-/*<!-- 右方文章內容 -->*/
-
-.notice-text-title {
-    background: #ffffff50;
-    margin: 0 auto;
-    width: 90%;
-    display: flex;
-    flex-flow: wrap;
-    justify-content: center
-}
-
-.notice-text-content {
-    background: #ffffff50;
-    color: #ffffffd3;
-    margin: 20px auto;
+.right-login-area{
+    margin-left: 50px;
     width: 80%;
-    height: 100%;
-    display: flex;
-    flex-flow: wrap;
-    justify-content: center
 }
 
+.login-register-form-area{
+   display: flex; 
+}
+
+.login-form-area {
+    margin-top: 30px;
+    width:35%;
+}
+
+.login-area-title{
+    color: #ffffffcb;
+    display: flex;
+    align-items: center;
+
+}
+
+.login-area-title-color-bar{
+    height: 36px;
+    width: 5px;
+    background-color: #ffffff;
+    margin-right: 25px;
+}
+
+.register-form-area{
+    margin-left: 80px;
+    padding: 45px;
+}
+
+.pure-button{
+    margin: 20px 0;
+    background-color: rgba(255, 255, 255, 0.459);
+}
+
+.pure-button:hover{
+    background-color: #ffffffbd;
+}
+
+.forget-password-label{
+    color: #e6e6e6af;
+}
+
+
+.forget-password-label:hover{
+    color: #ffffffce;
+}
 /* EVENTS SECTION end ==================== */
 
 /* footer area =========================== */

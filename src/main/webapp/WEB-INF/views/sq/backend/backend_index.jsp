@@ -359,38 +359,6 @@
         </div>
     </section>
 
-    <!--======================================
-          Footer
-    ==========================================-->
-    <div class="footer">
-        <a href="https://reurl.cc/Ny4OOn" target="_blank" class="footer"><img src="../img/icon/warning.png" alt=""
-                class="footer-banner"></a>
-    </div>
-    <footer>
-        <div class="footer-icon-area">
-            <div class="footer-icon-block">
-                <a href="https://reurl.cc/9R70vx" target="_blank"><img src="../img/icon/telephone.svg" alt=""
-                        class="footer-icon"></a>
-            </div>
-            <div class="footer-icon-block">
-                <a href="https://reurl.cc/m0rzyV" target="_blank"><img src="../img/icon/line.svg" alt=""
-                        class="footer-icon">
-                </a>
-            </div>
-            <div class="footer-icon-block">
-                <a href="https://reurl.cc/edLQMR" target="_blank"><img src="../img/icon/facebook.svg" alt=""
-                        class="footer-icon"></a>
-            </div>
-            <div class="footer-icon-block">
-                <a href="https://reurl.cc/L64e29" target="_blank"><img src="../img/icon/instagram.svg" alt=""
-                        class="footer-icon"></a>
-            </div>
-        </div>
-        <div class="footer-text" style="text-align: end;">
-            <h3 style="margin: 0 4rem;color: #a0a0a09d;">@ 2023 </h3>
-        </div>
-
-    </footer>
 
 </body>
 

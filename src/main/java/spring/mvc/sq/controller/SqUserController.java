@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
@@ -114,6 +115,7 @@ public class SqUserController {
 	//。用戶名或信箱不可重複
 	//。兩次的註冊密碼要相同
 	@RequestMapping("/register")
+	//@ResponseBody
 	public String register(@RequestParam("username") String username,
 						   @RequestParam("userpassword") String password,
 						   @RequestParam("userpassword2") String password2,
@@ -122,6 +124,10 @@ public class SqUserController {
 						   @RequestParam("usertel") String phoneNumber,
 						   @RequestParam("code") String code,
 						   HttpSession session, Model model) throws Exception  {
+		
+		System.out.println(username);
+		
+		
 		//比對驗證碼
 		if(!code.equals(session.getAttribute("code")+"")) {
 			session.invalidate(); // session 過期失效
@@ -247,6 +253,19 @@ public class SqUserController {
 	    model.addAttribute("loginMessage", "查無此信箱");
 	    return "sq/edit";
 	}
+	
+@GetMapping("/123")
+@ResponseBody
+public String updateUserPassword(Integer userId, String newPassword) {
+    // 請注意這裡的第二個參數應該是字符串，而不是整數
+	userId = 1;
+	newPassword = "123789";
+    sqUserDao.updateUserPassword(userId, newPassword);
+    return "success";
+}
+	
+}
+
 //====================== 會員管理後臺 ======================
 //======================================================
 	
@@ -255,5 +274,5 @@ public class SqUserController {
 	
 //======================================================
 
-}	
+	
 
