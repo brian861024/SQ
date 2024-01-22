@@ -97,7 +97,7 @@ body {
         <div class="card-area">
 
             <div class="card" style="width:auto; max-width: 30rem;background: #ffffffb7;">
-                <img src=<c:url value="/resources/img/liquor/whiskey/(限量) 皇家禮炮21年王者之鑽 700ml(1).png"/> alt="">
+                <img src=<c:url value="/resources/img/liquor/whiskey/ROYALSALUTE21YEARS.png"/> alt="">
                 <div class="card-body">
                     <a href="/SpiritQuest/mvc/user/sq/whiskey" target="_blank" class="card-title" style="color: rgba(0, 0, 0, 0.767); text-decoration: none;">
                         <h5 class="card-title" >威士忌 &nbsp Whisky</h5>
@@ -135,7 +135,7 @@ body {
                 </div>
             </div>
             <div class="card" style="width:auto; max-width: 30rem;background: #ffffffb7;">
-                <img src=<c:url value="/resources/img/liquor/vodka/瑞典 ABS 絕對伏特加 原味 700ml (詢問優惠價)_结果_preview_rev_1.png"/> alt="">
+                <img src=<c:url value="/resources/img/liquor/vodka/asb.png"/> alt="">
                 <div class="card-body">
                     <a href="/SpiritQuest/mvc/user/sq/vodka" target="_blank" style="color: rgba(0, 0, 0, 0.767); text-decoration: none;">
                        <h5 class="card-title">伏特加 &nbsp Vodka</h5></a>
@@ -149,7 +149,7 @@ body {
                 </div>
             </div>
             <div class="card" style="width:auto; max-width: 30rem;background: #ffffffb7;">
-                <img src=<c:url value="/resources/img/liquor/tequila/墨西哥_銀快活龍舌蘭酒_700ml_40_-removebg-preview.png"/> alt="">
+                <img src=<c:url value="/resources/img/liquor/tequila/silver.png"/> alt="">
                 <div class="card-body">
                     <a href="/SpiritQuest/mvc/user/sq/tequila" target="_blank" style="color: rgba(0, 0, 0, 0.767);text-decoration: none; ">     <h5 class="card-title">龍舌蘭 &nbsp Tequila</h5>
                     </a>
@@ -182,7 +182,7 @@ body {
                 </div>
             </div>
             <div class="card" style="width:auto; max-width:30rem;background: #ffffffb7;">
-                <img src=<c:url value="/resources/img/liquor/rum/百家得-1000-removebg-preview.png"/> alt="">
+                <img src=<c:url value="/resources/img/liquor/rum/bacardi.png"/> alt="">
                 <div class="card-body">
                     <a href="/SpiritQuest/mvc/user/sq/rum"  target="_blank" style="color: rgba(0, 0, 0, 0.767); text-decoration: none;"><h5 class="card-title">朗姆酒 &nbsp Rum</h5>
                     </a>

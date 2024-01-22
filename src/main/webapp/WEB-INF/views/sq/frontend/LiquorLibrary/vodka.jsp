@@ -100,7 +100,7 @@ body {
 
 </div>
         <div class="liquor-area">
-            <div class="liquor-img-area" style="padding: 0 38px;"><img src="./img/liquor/vodka/雪樹伏特加 1000ml_结果.png" alt="" class="liquor-img"></div>
+            <div class="liquor-img-area" style="padding: 0 38px;"><img src=<c:url value="/resources/img/liquor/vodka/tree.png"/> alt="" class="liquor-img"></div>
             <div class="liquor-text-area">
                 <div class="liquor-text-block">
                     <div class="liquor-text-block">

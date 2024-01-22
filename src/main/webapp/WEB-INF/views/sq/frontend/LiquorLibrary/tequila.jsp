@@ -100,7 +100,7 @@ body {
 
 </div>
 <div class="liquor-area">
-    <div class="liquor-img-area"><img src="./img/liquor/tequila/墨西哥_銀快活龍舌蘭酒_700ml_40_-removebg-preview.png" alt="" class="liquor-img"></div>
+    <div class="liquor-img-area"><img src=<c:url value="/resources/img/liquor/tequila/silver.png"/> alt="" class="liquor-img"></div>
     <div class="liquor-text-area">
         <div class="liquor-text-block">
             <div class="liquor-text-block">
@@ -174,4 +174,4 @@ body {
 
 </body>
 
-</html>
+</html>"

@@ -98,7 +98,7 @@ body {
     <!-- main area============================== -->
     <main>
         <div class="liquor-area">
-            <div class="liquor-img-area" style="text-align: left;"><img src="./img/liquor/rum/哈瓦那_窖藏3年蘭姆酒_750ml_40_-removebg-preview.png"/> alt=""
+            <div class="liquor-img-area" style="text-align: left;"><img src=<c:url value="/resources/img/liquor/rum/havana.png"/>  alt=""
                     class="liquor-img" style="padding: 0 38px; "></div>
             <div class="liquor-text-area">
                 <div class="liquor-text-block">
@@ -131,7 +131,7 @@ body {
             </div>
         </div>
         <div class="liquor-area">
-            <div class="liquor-img-area"><img src="./img/liquor/rum/百家得-1000-removebg-preview.png" alt=""
+            <div class="liquor-img-area"><img src=<c:url value="/resources/img/liquor/rum/bacardi.png"/> alt=""
                     class="liquor-img"></div>
             <div class="liquor-text-area">
                 <div class="liquor-text-block">
