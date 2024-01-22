@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `mytopicsdb`.`user` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 4
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `mytopicsdb`.`cart` (
   `checkoutTime` DATETIME NULL DEFAULT NULL,
   `isCheckout` TINYINT NULL DEFAULT 0 COMMENT '0:未結帳,1:結帳', 
   `deliveryStatus` ENUM('處理中', '運送中', '已完成', '已取消') NULL DEFAULT NULL,
-  `deliveryAddress` VARCHAR(255) NOT NULL,
+  `deliveryAddress` VARCHAR(255) NULL DEFAULT NULL,
   `userId` INT NOT NULL,
   `amount` INT NOT NULL,
   PRIMARY KEY (`cartId`),
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `mytopicsdb`.`cart` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `mytopicsdb`.`category` (
   `categoryName` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`categoryId`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 9
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `mytopicsdb`.`product` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `mytopicsdb`.`cartItem` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 7
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -177,15 +177,14 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `mytopicsdb`.`favorite`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mytopicsdb`.`favorite` ;
+DROP TABLE IF EXISTS `mytopicsdb`.`favorite`;
 
 CREATE TABLE IF NOT EXISTS `mytopicsdb`.`favorite` (
   `favoriteId` INT NOT NULL AUTO_INCREMENT,
   `userId` INT NOT NULL,
   `productId` INT NOT NULL,
   PRIMARY KEY (`favoriteId`),
-  UNIQUE INDEX `userId_UNIQUE` (`userId` ASC) VISIBLE,
-  UNIQUE INDEX `productId_UNIQUE` (`productId` ASC) VISIBLE,
+  UNIQUE INDEX `unique_user_product` (`userId`, `productId`) VISIBLE,
   CONSTRAINT `favorite_userId`
     FOREIGN KEY (`userId`)
     REFERENCES `mytopicsdb`.`user` (`userId`)
@@ -195,10 +194,10 @@ CREATE TABLE IF NOT EXISTS `mytopicsdb`.`favorite` (
     FOREIGN KEY (`productId`)
     REFERENCES `mytopicsdb`.`product` (`productId`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+    ON UPDATE NO ACTION
+) ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8mb4
+  COLLATE = utf8mb4_0900_ai_ci;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

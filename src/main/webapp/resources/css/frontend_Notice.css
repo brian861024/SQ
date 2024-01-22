@@ -1,0 +1,182 @@
+/* body area ============================= */
+
+/* body area end ========================= */
+
+/* header area =========================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+    padding-right: 110px;
+    min-height: 120px;
+    background-color: #cfddf065;
+}
+
+.logo {
+    background-color: #ffffffd0;
+}
+
+.logoimg {
+    margin: 10px 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 100px;
+}
+
+.dropdown-menu {
+    background-color: #e7e7e7d2;
+}
+
+/* header area end ======================== */
+
+/* roll area ============================== */
+
+.roll-area {
+    padding: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.roll {
+    width: 95%;
+}
+
+.homeimg {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.homephoto {
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* roll area end ========================= */
+
+/* EVENTS SECTION ======================== */
+
+    /*<!-- 上方搜索列 -->*/
+.category {
+    color: rgba(32, 32, 32, 0.589);
+    background-color: #ffffff93;
+    width: 20%;
+    margin: 10px 20px;
+    border-radius:5px
+}
+
+.search {
+    display: flex;
+    height: 60px;
+    padding-left: 20%;
+    margin-bottom: 3%;
+}
+
+/*<!-- 左方導覽列 -->*/
+
+.left-prod-class-area {
+    display: inline-block;
+    text-align: center;
+    border-radius: 5px;
+    min-width: 250px;
+    margin: 10px;
+    min-height: 300px;
+    background: #ffffff50;
+    position: sticky
+}
+
+.prod-class-link{
+    color: #e6e6e6af;
+    text-decoration: none;
+    line-height: 2.5;
+}
+
+.prod-class-link:hover{
+    color: #bbbbbb65;
+    color: #e4e4e465;
+    box-shadow: 1px #ffffff3b;
+}
+
+.dropdown-toggle{
+    color: #e6e6e6af;
+}
+
+.dropdown-toggle:hover{
+    color: #e4e4e465;
+    box-shadow: 1px #ffffff3b;
+}
+
+.left-prod-class-dropdown-menu{
+    width: 250px;
+}
+
+/*<!-- 右方文章內容 -->*/
+
+.notice-text-title {
+    background: #ffffff50;
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center
+}
+
+.notice-text-content {
+    background: #ffffff50;
+    color: #ffffffd3;
+    margin: 20px auto;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center
+}
+
+/* EVENTS SECTION end ==================== */
+
+/* footer area =========================== */
+
+.footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: sticky;
+    bottom: 45px;
+    background-color: rgba(255, 255, 255, 0.192);
+}
+
+.footer-banner {
+    width: 80%;
+    max-height: 70px;
+}
+
+.footer-icon-area {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.footer-icon {
+    margin: 0.5em 2em;
+    padding: 10px;
+    height: 3rem;
+}
+
+.footer-icon-block {
+    margin: 0 10px;
+}
+
+.footer-icon-block:hover {
+    background-color: rgba(241, 255, 255, 0.055);
+    border-radius: 50px;
+}
+
+/* footer area end ======================= */

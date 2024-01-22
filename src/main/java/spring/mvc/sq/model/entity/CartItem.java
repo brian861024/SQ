@@ -5,7 +5,8 @@ public class CartItem {
 	private Integer itemId; // 購物車明細 Id
 	private Integer cartId; // 購物車 Id
 	private Integer productId; // 商品 Id
-	private Integer quantity; // 數量
+	private Integer price; // 商品價格
+	private Integer qty; // 數量
 
 	private Cart cart; // 購物車物件(關聯欄位)
 	private Product product; // 商品物件(關聯欄位)
@@ -15,12 +16,12 @@ public class CartItem {
 		
 	}
 
-	public CartItem(Integer itemId, Integer cartId, Integer productId, Integer quantity, Cart cart, Product product) {
+	public CartItem(Integer itemId, Integer cartId, Integer productId, Integer qty, Cart cart, Product product) {
 		super();
 		this.itemId = itemId;
 		this.cartId = cartId;
 		this.productId = productId;
-		this.quantity = quantity;
+		this.qty = qty;
 		this.cart = cart;
 		this.product = product;
 	}
@@ -49,12 +50,12 @@ public class CartItem {
 		this.productId = productId;
 	}
 
-	public Integer getQuantity() {
-		return quantity;
+	public Integer getqty() {
+		return qty;
 	}
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
+	public void setqty(Integer qty) {
+		this.qty = qty;
 	}
 
 	public Cart getCart() {
@@ -73,10 +74,14 @@ public class CartItem {
 		this.product = product;
 	}
 
-	@Override
-	public String toString() {
-		return "CartItem [itemId=" + itemId + ", cartId=" + cartId + ", cart=" + cart + ", productId=" + productId
-				+ ", product=" + product + ", quantity=" + quantity + "]";
+	public Integer getPrice() {
+		return price;
 	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+
+	
 	
 }

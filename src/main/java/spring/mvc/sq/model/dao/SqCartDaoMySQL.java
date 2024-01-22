@@ -15,26 +15,27 @@ import spring.mvc.sq.model.entity.Cart;
 import spring.mvc.sq.model.entity.Product;
 import spring.mvc.sq.model.entity.User;
 
+@Repository
 public class SqCartDaoMySQL implements SqCartDao{
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	// 1.新增購物車
+	// 新增購物車
 	@Override
 	public void addCart(Cart cart) {
 		String sql = "insert into cart(userId, isCheckOut) values(?, ?)";
 		jdbcTemplate.update(sql, cart.getUserId(), cart.getIsCheckout());
 	}
 	
-	// 2.查找所有購物車(多筆)
+	// 查找所有購物車(多筆)
 	@Override
 	public List<Cart> findAllCart() {
 		String sql = "select cartId, userId, isCheckout, checkoutTime from cart";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Cart.class));
 	}
 
-	// 3.根據使用者ID來查找其所有購物車資料(多筆)
+	// 根據使用者ID來查找其所有購物車資料(多筆)
 	@Override
 	public List<Cart> findCartsByUserId(Integer userId) {
 		String sql = "select cartId, userId, isCheckout, checkoutTime from cart where userId = ?";
@@ -43,7 +44,7 @@ public class SqCartDaoMySQL implements SqCartDao{
 		return carts;
 	}
 
-	// 4.根據is_Checkout狀態查找所有購物車資料(多筆)
+	// 根據is_Checkout狀態查找所有購物車資料(多筆)
 	@Override
 	public List<Cart> findCartIdbyisCheckout(Boolean isCheckout) {
 		String sql = "select cartId, userId, isCheckout, checkoutTime from cart where isCheckout = ?";
@@ -52,7 +53,7 @@ public class SqCartDaoMySQL implements SqCartDao{
 		return carts;
 	}
 
-	// 5.根據is_Checkout狀態及UserId列出訂單(多筆)
+	// 根據is_Checkout狀態及UserId列出訂單(多筆)
 	@Override
 	public List<Cart> findCartIdbyisCheckoutAndUserId(Boolean isCheckout, Integer userId) {
 		String sql = "select cartId, userId, isCheckout, checkoutTime from cart where isCheckout = ? and userId = ?";
@@ -61,24 +62,24 @@ public class SqCartDaoMySQL implements SqCartDao{
 		return carts;
 	}
 	
-	// 6.刪除購物車
+	// 刪除購物車
 	@Override
 	public Boolean removeCartById(Integer cartId) {
 		String sql = "delete from cart where cartId = ?";
 		return jdbcTemplate.update(sql, cartId) == 1;
 	}
 
-	// 7.修改訂單運送地址
+	// 修改訂單運送地址
 	@Override
 	public Boolean updateDeliveryAddress(Integer cartId, String deliveryAddress) {
 		String sql = "update cart set deliveryAddress = ? where cartId = ?";
 		return jdbcTemplate.update(sql, deliveryAddress, cartId) > 0;
 	}
 
-	// 8.根據使用者ID來查找其未結帳的購物車資料(單筆)
+	// 根據使用者ID來查找其未結帳的購物車資料(單筆)
     @Override
     public Optional<Cart> findNoneCheckoutCartByUserId(Integer userId) {
-        String sql = "SELECT cartId, userId, isCheckout, checkoutTime FROM cart WHERE userId = ? AND isCheckout = false";
+        String sql = "select cartId, userId, isCheckout, checkoutTime from cart where userId = ? AND isCheckout = false";
         try {
             Cart cart = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Cart.class), userId);
             enrichCartWithDetails(cart);
@@ -88,44 +89,44 @@ public class SqCartDaoMySQL implements SqCartDao{
         }
     }
 
-    // 9.根據使用者ID及結帳狀態來查找其所有購物車資料(多筆)
+    // 根據使用者ID及結帳狀態來查找其所有購物車資料(多筆)
     @Override
     public List<Cart> findCartsbyUserIdAndCheckoutStatus(Integer userId, Boolean isCheckout) {
-        String sql = "SELECT cartId, userId, isCheckout, checkoutTime FROM cart WHERE userId = ? AND isCheckout = ?";
+        String sql = "SELECT cartId, userId, isCheckout, checkoutTime from cart where userId = ? AND isCheckout = ?";
         List<Cart> carts = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Cart.class), userId, isCheckout);
         carts.forEach(this::enrichCartWithDetails);
         return carts;
     }
 
-    // 10.計算每位使用者的總金額
+    // 計算每位使用者的總金額
     @Override
     public List<Map<String, Object>> calculateTotalAmountPerUser() {
-        String sql = "SELECT userId, SUM(totalAmount) AS totalAmount FROM cart GROUP BY userId";
+        String sql = "SELECT userId, SUM(totalAmount) AS totalAmount from cart GROUP BY userId";
         return jdbcTemplate.queryForList(sql);
     }
 
-    // 11.結帳特定使用者的購物車
+    // 結帳特定使用者的購物車
     @Override
     public Boolean checkoutCartByUserId(Integer userId) {
-        String sql = "UPDATE cart SET isCheckout = true WHERE userId = ? AND isCheckout = false";
+        String sql = "update cart SET isCheckout = true where userId = ? AND isCheckout = false";
         return jdbcTemplate.update(sql, userId) > 0;
     }
 
-    // 12.設置特定購物車為處理中
+    // 設置特定購物車為處理中
     @Override
     public Boolean setProcessingCartById(Integer cartId) {
-        String sql = "UPDATE cart SET processingStatus = 'Processing' WHERE cartId = ?";
+        String sql = "update cart SET processingStatus = '處理中' where cartId = ?";
         return jdbcTemplate.update(sql, cartId) > 0;
     }
 
-    // 13.結帳特定購物車
+    // 結帳特定購物車
     @Override
     public Boolean checkoutCartById(Integer cartId) {
-        String sql = "UPDATE cart SET isCheckout = true WHERE cartId = ?";
+        String sql = "update cart SET isCheckout = true where cartId = ?";
         return jdbcTemplate.update(sql, cartId) > 0;
     }
 
- // 為 cart 注入 cartItem
+    // 為 cart 注入 cartItem
  	// details: 使用者物件(user) 與 購物車明細(cartItems), 以及購物車明細的商品資料
  	private void enrichCartWithDetails(Cart cart) {
  	// 注入 user
@@ -150,7 +151,7 @@ public class SqCartDaoMySQL implements SqCartDao{
 	
 	@Override
 	public Optional<Product> findProductbyId(Integer productId) {
-	   String sql = "SELECT * FROM Products WHERE productId = ?";
+	   String sql = "select * from Products where productId = ?";
 	     try {
 	         // 使用 queryForObject 方法來獲取單個結果
 	         Product product = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Product.class), productId);
@@ -160,4 +161,19 @@ public class SqCartDaoMySQL implements SqCartDao{
 	         return Optional.empty();
 	     }
 	}
+	
+	// 根據使用者ID查詢last5chars
+	@Override
+	public Optional<Cart> findlast5charsByUserId(Integer userId) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+	
+	// 根據購物車ID將購物車設置為取消訂單狀態
+	@Override
+	public Boolean cancleOrderById(Integer cartId) {
+		String sql = "update cart SET processingStatus = '已取消' where cartId = ?";
+        return jdbcTemplate.update(sql, cartId) > 0;
+	}
+	
 }

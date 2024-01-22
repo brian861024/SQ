@@ -7,12 +7,12 @@ public class Cart {
 
 	private Integer cartId; // 購物車 Id
 	private Date checkoutTime; // 結帳時間
-	private Integer userId; // 使用者 Id
-	private String deliveryAddress;
-	private Date orderDate;
-	private String deliveryStatus;
-	private Integer totalAmount;
 	private Boolean isCheckout; // 是否結帳
+	private String deliveryStatus; // 運送狀態
+	private String deliveryAddress; // 運送地址
+	private Integer last5chars; // 帳號後五碼
+	private Integer userId; // 使用者 Id
+	private Integer amount; // 金額加總
 	
 	
 	private User user; // 使用者物件(關聯欄位)
@@ -37,9 +37,10 @@ public class Cart {
 		this.userId = userId;
 		this.cartItems = cartItems;
 		
+		
 		setIsCheckout(isCheckout);
 	}   // 根據userId找User物件
-	
+
 	public Integer getCartId() {
 		return cartId;
 	}
@@ -62,9 +63,30 @@ public class Cart {
 
 	public void setIsCheckout(Boolean isCheckout) {
 		this.isCheckout = isCheckout;
-		if(isCheckout != null && isCheckout) {
-			setCheckoutTime(new Date());
-		}
+	}
+
+	public String getDeliveryStatus() {
+		return deliveryStatus;
+	}
+
+	public void setDeliveryStatus(String deliveryStatus) {
+		this.deliveryStatus = deliveryStatus;
+	}
+
+	public String getDeliveryAddress() {
+		return deliveryAddress;
+	}
+
+	public void setDeliveryAddress(String deliveryAddress) {
+		this.deliveryAddress = deliveryAddress;
+	}
+
+	public Integer getLast5chars() {
+		return last5chars;
+	}
+
+	public void setLast5chars(Integer last5chars) {
+		this.last5chars = last5chars;
 	}
 
 	public Integer getUserId() {
@@ -73,6 +95,14 @@ public class Cart {
 
 	public void setUserId(Integer userId) {
 		this.userId = userId;
+	}
+
+	public Integer getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Integer amount) {
+		this.amount = amount;
 	}
 
 	public User getUser() {
@@ -90,7 +120,5 @@ public class Cart {
 	public void setCartItems(List<CartItem> cartItems) {
 		this.cartItems = cartItems;
 	}
-	
-	
-	
+
 }

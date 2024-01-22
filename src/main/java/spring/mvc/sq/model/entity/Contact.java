@@ -2,56 +2,52 @@ package spring.mvc.sq.model.entity;
 
 public class Contact {
 
-    private String name;
-    private String email;
-    private Integer title; // 修改屬性名稱為 title，並修改資料型態為 Integer
-    private String text;
+    private String customerName; // 留言板名稱
+    private String customerEmail; // 留言板信箱
+    private String contactTitle; // 留言板標題
+    private String contactContext; // 留言板內容
 
     public Contact() {
 
     }
 
-    public Contact(String name, String email, Integer title, String text) {
-        this.name = name;
-        this.email = email;
-        this.title = title;
-        this.text = text;
-    }
+	public Contact(String customerName, String customerEmail, String contactTitle, String contactContext) {
+		this.customerName = customerName;
+		this.customerEmail = customerEmail;
+		this.contactTitle = contactTitle;
+		this.contactContext = contactContext;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getCustomerName() {
+		return customerName;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getCustomerEmail() {
+		return customerEmail;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setCustomerEmail(String customerEmail) {
+		this.customerEmail = customerEmail;
+	}
 
-    public Integer getTitle() {
-        return title;
-    }
+	public String getContactTitle() {
+		return contactTitle;
+	}
 
-    public void setTitle(Integer title) {
-        this.title = title;
-    }
+	public void setContactTitle(String contactTitle) {
+		this.contactTitle = contactTitle;
+	}
 
-    public String getText() {
-        return text;
-    }
+	public String getContactContext() {
+		return contactContext;
+	}
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    @Override
-    public String toString() {
-        return "Contact [name=" + name + ", email=" + email + ", title=" + title + ", text=" + text + "]";
-    }
+	public void setContactContext(String contactContext) {
+		this.contactContext = contactContext;
+	}
+    
 }
