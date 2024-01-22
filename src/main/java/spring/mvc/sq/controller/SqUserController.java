@@ -254,17 +254,7 @@ public class SqUserController {
 	    return "sq/edit";
 	}
 	
-@GetMapping("/123")
-@ResponseBody
-public String updateUserPassword(Integer userId, String newPassword) {
-    // 請注意這裡的第二個參數應該是字符串，而不是整數
-	userId = 1;
-	newPassword = "123789";
-    sqUserDao.updateUserPassword(userId, newPassword);
-    return "success";
-}
-	
-}
+
 
 //====================== 會員管理後臺 ======================
 //======================================================
@@ -273,6 +263,20 @@ public String updateUserPassword(Integer userId, String newPassword) {
 	
 	
 //======================================================
-
 	
+	@RequestMapping("/123")
+	@ResponseBody
+	public  Optional<User> testFindUserByUsernameOrEmail() {
+        // 提供測試用的硬參數
+        String username = "testUsername";
+        String email = "testEmail";
+
+        // 呼叫 yourController 的 findUserByUsernameOrEmail 方法
+        Optional<User> result = sqUserDao.findUserByUsernameOrEmail("1","aaa@gmail.com");
+
+        return result;
+        
+	}
+	
+}	
 

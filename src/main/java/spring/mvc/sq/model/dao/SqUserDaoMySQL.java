@@ -62,7 +62,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 	@Override
 	public Boolean updateUserPassword(Integer userId, String newPassword) {
 		String sql = "update user set password = ? where userId = ?";
-		int rowcount = jdbcTemplate.update(sql, userId, newPassword);
+		int rowcount = jdbcTemplate.update(sql, newPassword, userId);
 		return rowcount > 0;
 	}
 	
@@ -150,6 +150,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 		}
 	}
 	
+//========================================================================
 	//-----根據產品ID來查找商品(單筆)-----
     @Override
     public Optional<Product> findProductbyId(Integer productId) {
@@ -173,7 +174,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 			findUserById(cart.getUserId()).ifPresent(cart::setUser);
 			
 			// 查詢 cartItems 並注入
-			String sqlItems = "select itemId, cartId, productId, quantity from cartitem where cartId = ?";
+			String sqlItems = "select itemId, cartId, productId, price, qty from cartitem where cartId = ?";
 			List<CartItem> cartItems = jdbcTemplate.query(sqlItems, new BeanPropertyRowMapper<>(CartItem.class), cart.getCartId());
 			// 根據 productId 找到 product 並注入
 			cartItems.forEach(cartItem -> {

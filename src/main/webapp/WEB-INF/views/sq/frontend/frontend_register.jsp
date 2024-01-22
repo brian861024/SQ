@@ -233,13 +233,18 @@ body {
 											
 										<hr>
 										<hr>
-										<label for="stacked-code" style="color: rgb(255, 255, 255);>驗證碼</label>
-										<input  "name="code" id="stacked-code"placeholder="請輸入下圖數字"/>
-										<img src="/SpiritQuest/mvc/user/getcode" alt="驗證碼">
 										<div>
+										<label for="stacked-code" style="color: rgb(255, 255, 255)" />驗證碼</label>
+										
+										<input
+											id="stacked-code" name="code"
+											placeholder="請輸入下圖數字" class="pure-input-3" />
+											
+										<img src="/SpiritQuest/mvc/user/getcode" alt="驗證碼" />
+										</div>
 										<button type="submit" class="pure-button" >Register</button>
 										<a href="" style="text-decoration: none;">
-										</div>
+										
 										<h5 class="forget-password-label">忘記密碼?</h5></a>
 									</fieldset>
 								</form>
