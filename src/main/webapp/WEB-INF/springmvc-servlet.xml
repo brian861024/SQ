@@ -15,9 +15,9 @@
 		http://www.springframework.org/schema/data/jpa https://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 	<mvc:annotation-driven />
-	<!-- 配置資源處理器
+	<!-- 配置資源處理器-->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
-	-->
+	
 	 
 	<context:component-scan base-package="spring.mvc" />
 	

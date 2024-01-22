@@ -21,7 +21,7 @@ public class SqCartItemDaoMySQL implements SqCartItemDao {
     @Override
     public void addCartItem(CartItem cartItem) {
         String sql = "INSERT INTO CartItem (Quantity, CartId, ProductId) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, cartItem.getqty(), cartItem.getCartId(), cartItem.getProductId());
+        jdbcTemplate.update(sql, cartItem.getQty(), cartItem.getCartId(), cartItem.getProductId());
     }
 
     // 2. 刪除購物車項目

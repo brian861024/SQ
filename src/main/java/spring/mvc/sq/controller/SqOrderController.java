@@ -50,7 +50,7 @@ public class SqOrderController {
 		cartOpt.ifPresent(cart -> {
 			// 3. 計算購物車總金額
 			int total = cart.getCartItems().stream()
-							.mapToInt(item -> item.getqty() * item.getProduct().getPrice())
+							.mapToInt(item -> item.getQty() * item.getProduct().getPrice())
 							.sum();
 			model.addAttribute("cart", cart);
 			model.addAttribute("total", total);

@@ -276,7 +276,7 @@ body {
                     <div class="card-area">
 
                         <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="/img/cocktail/negroni.webp" alt="">
+                            <img src=<c:url value="/resources/img/cocktail/negroni.webp"/> alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Negroni</h5>
                                 <p class="card-text">

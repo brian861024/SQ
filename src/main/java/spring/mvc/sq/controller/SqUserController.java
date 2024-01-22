@@ -119,20 +119,19 @@ public class SqUserController {
 	public String register(@RequestParam("username") String username,
 						   @RequestParam("userpassword") String password,
 						   @RequestParam("userpassword2") String password2,
-						   @RequestParam("userpassword") Integer levelId,
 						   @RequestParam("useremail") String email,
 						   @RequestParam("usertel") String phoneNumber,
-						   @RequestParam("code") String code,
+//						   @RequestParam("code") String code,
 						   HttpSession session, Model model) throws Exception  {
 		
 		System.out.println(username);
 		
 		
-		//比對驗證碼
-		if(!code.equals(session.getAttribute("code")+"")) {
-			session.invalidate(); // session 過期失效
-			model.addAttribute("loginMessage", "驗證碼錯誤");
-			return "group_buy/login";}
+//		//比對驗證碼
+//		if(!code.equals(session.getAttribute("code")+"")) {
+//			session.invalidate(); // session 過期失效
+//			model.addAttribute("loginMessage", "驗證碼錯誤");
+//			return "sq/login";}
 		Optional<User> userOpt = sqUserDao.findUserByUsernameOrEmail(username, email);
 		if(userOpt.isPresent()){
 			// 如果 使用該姓名或信箱的user有存在 則 執行此處
@@ -169,7 +168,7 @@ public class SqUserController {
 	@RequestMapping("/login")
 	public String login(@RequestParam("username") String username,
 	                    @RequestParam("password") String password,
-	                    @RequestParam("code") String code,
+//	                    @RequestParam("code") String code,
 	                    HttpSession session, Model model) throws Exception {
 	    // 根據 username 查找 user 物件
 	    Optional<User> userOpt = sqUserDao.findUserByUsername(username);
@@ -264,19 +263,7 @@ public class SqUserController {
 	
 //======================================================
 	
-	@RequestMapping("/123")
-	@ResponseBody
-	public  Optional<User> testFindUserByUsernameOrEmail() {
-        // 提供測試用的硬參數
-        String username = "testUsername";
-        String email = "testEmail";
 
-        // 呼叫 yourController 的 findUserByUsernameOrEmail 方法
-        Optional<User> result = sqUserDao.findUserByUsernameOrEmail("1","aaa@gmail.com");
-
-        return result;
-        
-	}
 	
 }	
 

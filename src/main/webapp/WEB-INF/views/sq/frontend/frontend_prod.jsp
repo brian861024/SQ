@@ -257,7 +257,7 @@ body {
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <h2 class="card-title">Gin Tonic</h2>
+                                    <h2 class="card-title">${ productname }</h2>
                                     <hr class="dropdown-divider">
                                     <p />
                                     <div style="margin:15px ;">

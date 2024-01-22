@@ -1,5 +1,9 @@
 package spring.mvc.sq.controller;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import spring.mvc.sq.model.dao.SqCartDao;
+import spring.mvc.sq.model.dao.SqCartItemDao;
+import spring.mvc.sq.model.dao.SqContactDao;
+import spring.mvc.sq.model.dao.SqProductDao;
+import spring.mvc.sq.model.dao.SqUserDao;
 import spring.mvc.sq.model.entity.Product;
 
 
@@ -14,11 +23,35 @@ import spring.mvc.sq.model.entity.Product;
 @RequestMapping("/sq")
 public class SqController {
 	
+	@Autowired
+	private SqUserDao sqUserDao;
+	@Autowired
+	private SqProductDao sqProductDao;
+	@Autowired
+	private SqContactDao sqContactDao;
+	@Autowired
+	private SqCartDao sqCartDao;
+	@Autowired
+	private SqCartItemDao sqCartItemDao;
+	
 //================== 進入各種前台頁面 ==================
 	
-	//進入首頁(前台商品頁面)
+	//進入首頁(前台商品列表)
 	@RequestMapping("/index")
-	public String goToIndex() {
+	public String goToIndex(Model model) {
+		// 過濾出只有上架的商品
+		List<Product> products = sqProductDao.findAllProducts(true);			
+		model.addAttribute("products", products);
+
+		return "sq/frontend/frontend_index";
+	}
+	
+	//進入商品頁面(前台商品頁面)
+	@RequestMapping("/prod")
+	public String goToprod(Model model) {
+		// 透過名字找出商品
+		Optional<Product> prodOpt = sqProductDao.findProductbyId();
+		 
 		return "sq/frontend/frontend_index";
 	}
 		
@@ -40,7 +73,7 @@ public class SqController {
 			return "sq/frontend/frontend_cart";	
 		}
 
-	//進入購物車頁面
+	//進入訂單頁面
 		@RequestMapping("/order")
 		public String goToOrder() {
 			return "sq/frontend/frontend_order";	
