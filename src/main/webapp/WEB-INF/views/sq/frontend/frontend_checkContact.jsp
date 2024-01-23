@@ -3,39 +3,30 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
-<!-- Head 區域 -->
-<meta name="viewport"
-	content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
-<meta charset="UTF-8">
-<link rel="icon" href=<c:url value="/resources/img/icon/logo.png"/>
-	type="image/x-icon" />
-<link rel="shortcut icon" href="" type="image/x-icon" />
-<title>SpiritQuest</title>
-<!-- jQuery載入 -->
-<script src="js/jquery-3.4.1.min.js"></script>
-<!-- w3.css載入 -->
-<link rel="stylesheet" href="css/w3.css">
-<!-- Bootstrap載入 -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"
-	integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
-	integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
-	crossorigin="anonymous"></script>
-<!-- 這是所有頁面需要的版型樣式, 所以在此head區載入 -->
-<link rel="stylesheet"
-	href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
-<link rel="stylesheet"
-	href=<c:url value="/resources/css/frontend_editUserInfo.css" /> />
+    <!-- Head 區域 -->
+    <meta name="viewport"
+        content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href=<c:url value="/resources/img/icon/logo.png"/> type="image/x-icon" />
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <title>SpiritQuest</title>
+    <!-- jQuery載入 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- w3.css載入 -->
+    <link rel="stylesheet" href="css/w3.css">
+    <!-- Bootstrap載入 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"
+        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+        crossorigin="anonymous"></script>
+    <!-- 這是所有頁面需要的版型樣式, 所以在此head區載入 -->
+    <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
+    <link rel="stylesheet" href=<c:url value="/resources/css/frontend_Login.css" /> />
 </head>
 
 <style>
@@ -83,7 +74,7 @@ body {
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 酒類圖書館<img src=<c:url value="/icon/list.svg"/> alt="">
                             </a>
-                           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             	
                             	<li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">總類</a></li>
                             	<hr class="dropdown-divider">
@@ -191,48 +182,31 @@ body {
                         <hr class="dropdown-divider">
                     </div>
 <!-- ==================================================================================================== --> 
-                    <!-- 右邊登入表單 -->
+
+                    <!-- 右邊訂單確認表單 -->
                     <div class="right-login-area">
                         <div class="login-area-title">
                             <div class="login-area-title-color-bar"> </div>
-                            <h2 style="margin: 0;"> 會員資料修改 </h2>
+                            <h2 style="margin: 0;"> 訂單確認 </h2>
                         </div >
                         <div class="login-register-form-area">
                             <div class="login-form-area">
-                                <form class="pure-form pure-form-stacked">
-                                    <fieldset>
-                                        <label for="stacked-email" style="color: rgb(255, 255, 255);">Email(登入帳號)</label>
-                                        <input type="email" id="stacked-email" placeholder="Email"
-                                            class="pure-input-1" />
-                                        <hr>
-                                        <hr>
-                                        <hr>
-                                        <label for="stacked-name" style="color: rgb(255, 255, 255);">舊姓名</label>
-                                        <input id="stacked-name" placeholder="Name"
-                                            class="pure-input-1" />
-                                        <label for="stacked-name" style="color: rgb(255, 255, 255);">修改後姓名</label>
-                                        <input id="stacked-name" placeholder="Name"
-                                            class="pure-input-1" />
-                                        <hr>
-                                        <label for="stacked-PhoneNuber" style="color: rgb(255, 255, 255);">舊電話號碼</label>
-                                        <input  id="stacked-PhoneNuber" placeholder="PhoneNuber"
-                                            class="pure-input-1" />
-                                            <label for="stacked-PhoneNuber" style="color: rgb(255, 255, 255);">修改後電話號碼</label>
-                                        <input  id="stacked-PhoneNuber" placeholder="PhoneNuber"
-                                            class="pure-input-1" />
-                                        <hr>
-                                        <hr>
-                                        <button type="submit" class="pure-button">提交</button>                                    
-                                        <a href="" style="text-decoration: none;"><h5 class="forget-password-label">忘記密碼?</h5></a>
+                            
+                                <form class="pure-form pure-form-stacked" >
+                                
+                                    <fieldset>  
+                                        <h1><label for="stacked-code" style="color: rgb(255, 255, 255)">${ successMessage }</label></h1>                                 
                                     </fieldset>
-                                </form>
+                                </form>    
+                                    
+                                    <button href="/SpiritQuest/mvc/sq/index" class="pure-button">點此回首頁</button>
+                                    
+                              
+                                
+                                
+                                
                             </div>
 
-                           		<div class="register-form-area">
-                                <div class="forget-password" style="color: rgba(253, 253, 253, 0.788);">
-                                    忘記密碼?<a type="submit" class="pure-button" style="margin: 20px;">點此</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -243,7 +217,7 @@ body {
     <!--======================================
           Footer
     ==========================================-->
-    <div class="footer">
+     <div class="footer">
         <a href="https://reurl.cc/Ny4OOn" target="_blank" class="footer"><img src=<c:url value="/resources/img/icon/warning.png"/> alt=""
                 class="footer-banner"></a>
     </div>
@@ -270,7 +244,7 @@ body {
         <div class="footer-text" style="text-align: end;">
             <h3 style="margin: 0 4rem;color: #a0a0a09d;">@ 2023 </h3>
         </div>
-        
+
     </footer>
 
 

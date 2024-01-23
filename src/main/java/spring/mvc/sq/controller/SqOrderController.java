@@ -7,10 +7,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 import spring.mvc.sq.model.entity.*;
+
 import spring.mvc.sq.model.dao.SqCartDao;
 import spring.mvc.sq.model.dao.SqCartItemDao;
 import spring.mvc.sq.model.dao.SqContactDao;
@@ -38,37 +40,29 @@ public class SqOrderController {
 	
 //======================= 購物車前台 =======================
 //=======================================================	
-	//-----購物車頁面-----
-	//邏輯：
-	//。透過 userId 查找 cart 物件
-	@RequestMapping("/cart")
-	public String cartPage(HttpSession session, Model model) {
-		// 1. 先找到 user 登入者
+	//-----增加購物車商品-----
+	//。CartItem 注入 Cart
+	// 修改購物車商品項目數量
+	@GetMapping("/cart/update")
+	public String updateCartItem(@RequestParam("itemId") Integer itemId,
+								 @RequestParam("qty") Integer qty,
+								 HttpSession session) {
 		User user = (User)session.getAttribute("user");
-		// 2. 找到 user 的尚未結帳的購物車
-		Optional<Cart> cartOpt = sqUserDao.findNoneCheckoutCartByUserId(user.getUserId());
-		cartOpt.ifPresent(cart -> {
-			// 3. 計算購物車總金額
-			int total = cart.getCartItems().stream()
-							.mapToInt(item -> item.getQty() * item.getProduct().getPrice())
-							.sum();
-			model.addAttribute("cart", cart);
-			model.addAttribute("total", total);
+		// 如何得知 itemId 是屬於該使用者的 ?
+		sqCartItemDao.findCartItemById(itemId).ifPresent(cartItem -> {
+			if(cartItem.getCart().getUserId().equals(user.getUserId())) {
+				if(qty > 0) {
+					sqCartItemDao.updateCartItemQuantity(itemId, qty);
+				} else {
+					sqCartItemDao.removeCartItemById(itemId);
+				}
+			}
 		});
 		return "sq/frontend/frontend_cart";
 	}
-	
 //======================================================
 //======================================================	
-	//-----增加購物車商品-----
-	
-//======================================================
-//======================================================	
-	//-----購物車結帳-----
-	
-//======================================================
-//======================================================	
-	//-----訂單確認+完成帳-----
+	//-----訂單確認+完成-----
 	
 //======================================================
 //======================================================

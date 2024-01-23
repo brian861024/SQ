@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.mvc.sq.model.entity.CartItem;
+import spring.mvc.sq.model.entity.Contact;
 import spring.mvc.sq.model.dao.SqCartDao;
 import spring.mvc.sq.model.dao.SqCartItemDao;
 import spring.mvc.sq.model.dao.SqContactDao;
@@ -115,28 +116,27 @@ public class SqUserController {
 	//。用戶名或信箱不可重複
 	//。兩次的註冊密碼要相同
 	@RequestMapping("/register")
-	//@ResponseBody
 	public String register(@RequestParam("username") String username,
 						   @RequestParam("userpassword") String password,
 						   @RequestParam("userpassword2") String password2,
 						   @RequestParam("useremail") String email,
 						   @RequestParam("usertel") String phoneNumber,
-//						   @RequestParam("code") String code,
+						   @RequestParam("code") String code,
 						   HttpSession session, Model model) throws Exception  {
 		
 		System.out.println(username);
 		
-		
-//		//比對驗證碼
-//		if(!code.equals(session.getAttribute("code")+"")) {
-//			session.invalidate(); // session 過期失效
-//			model.addAttribute("loginMessage", "驗證碼錯誤");
-//			return "sq/login";}
-		Optional<User> userOpt = sqUserDao.findUserByUsernameOrEmail(username, email);
+		{
+		//比對驗證碼
+		if(!code.equals(session.getAttribute("code")+"")) {
+			session.invalidate(); // session 過期失效
+			model.addAttribute("loginMessage", "驗證碼錯誤");
+			return "sq/frontend/frontend_register";}
+		Optional<User> userOpt = sqUserDao.findUserByUsername(username);
 		if(userOpt.isPresent()){
 			// 如果 使用該姓名或信箱的user有存在 則 執行此處
 			session.invalidate(); // session 過期失效
-			model.addAttribute("loginMessage", "使用者名稱或信箱重複");
+			model.addAttribute("loginMessage", "使用者名稱重複");
 			return "sq/frontend/frontend_register";
 		}
 		// 如果 用戶名和信箱均不重複 則 檢查兩次密碼是否相同
@@ -158,7 +158,8 @@ public class SqUserController {
 				user.setEmail(email);
 				user.setPhoneNumber(phoneNumber);
 				sqUserDao.addUser(user);
-				return "redirect:/mvc/sq/frontend/frontend_login";
+			 }
+			return "sq/frontend/frontend_login";
 			}
 		}
 //======================================================	
@@ -168,8 +169,13 @@ public class SqUserController {
 	@RequestMapping("/login")
 	public String login(@RequestParam("username") String username,
 	                    @RequestParam("password") String password,
-//	                    @RequestParam("code") String code,
+	                    @RequestParam("code") String code,
 	                    HttpSession session, Model model) throws Exception {
+		//比對驗證碼
+		if(!code.equals(session.getAttribute("code")+"")) {
+			session.invalidate(); // session 過期失效
+			model.addAttribute("loginMessage", "驗證碼錯誤");
+			return "sq/frontend/frontend_register";}
 	    // 根據 username 查找 user 物件
 	    Optional<User> userOpt = sqUserDao.findUserByUsername(username);
 
@@ -208,14 +214,12 @@ public class SqUserController {
 	}
 //======================================================
 //======================================================
-	//-----會員資料修改-----
+	//-----會員姓名修改-----
 	//邏輯：
-	@PostMapping("/edit")
-	public String editUserInfo(@RequestParam("Oldusername") String oldusername,
+	@PostMapping("/editUserName")
+	public String editUserName(@RequestParam("Oldusername") String oldusername,
 	                           @RequestParam("Newusername") String newusername,
 	                           @RequestParam("useremail") String email,
-	                           @RequestParam("Oldusertel") String oldphoneNumber,
-	                           @RequestParam("Newusertel") String newphoneNumber,
 	                           @ModelAttribute User user,
 	                           HttpSession session, Model model) throws Exception {
 	    // 根據 useremail 查找 user 物件
@@ -224,7 +228,7 @@ public class SqUserController {
 	    // 如果 確認有該使用者 則 比對姓名 否則 回傳"查無此信箱"
 	    if (userOpt.isPresent()) {
 	        User existingUser = userOpt.get();
-
+	        
 	        // 如果 確認有該使用者 則 比對姓名
 	        if (existingUser.getUsername().equals(oldusername)) {
 	            existingUser.setUsername(newusername);
@@ -232,36 +236,80 @@ public class SqUserController {
 	        } else {
 	            session.invalidate(); // session 過期失效
 	            model.addAttribute("loginMessage", "查無此使用者名稱");
-	            return "sq/edit";
+	            return "sq/frontend/frontend_editUserInfo";
 	        }
 
-	        // 如果 確認有該使用者 則 比對號碼
-	        if (existingUser.getPhoneNumber().equals(oldphoneNumber)) {
-	            existingUser.setPhoneNumber(newphoneNumber);
-	            sqUserDao.updateUserNumber(existingUser.getUserId(), newphoneNumber);
-	        } else {
-	            session.invalidate(); // session 過期失效
-	            model.addAttribute("loginMessage", "查無此使用者電話號碼");
-	            return "sq/edit";
-	        }
-
-	        return "redirect:/mvc/sq/frontend/frontend_index";
+	        return "sq/frontend/frontend_index";
 	    }
 
 	    session.invalidate(); // session 過期失效
 	    model.addAttribute("loginMessage", "查無此信箱");
-	    return "sq/edit";
+	    return "sq/frontend/frontend_editUserInfo";
 	}
-	
-
-
-//====================== 會員管理後臺 ======================
 //======================================================
-	
-	
-	
-	
 //======================================================
+	//-----會員電話修改-----
+	//邏輯：
+	@PostMapping("/editUserTel")
+	public String editUserTel(@RequestParam("useremail") String email,
+		                      @RequestParam("Oldusertel") String oldphoneNumber,
+		                      @RequestParam("Newusertel") String newphoneNumber,
+		                      @ModelAttribute User user,
+	                          HttpSession session, Model model) throws Exception {
+	     	//根據 useremail 查找 user 物件		   
+			Optional<User> userOpt = sqUserDao.findUserByEmail(email);
+			//如果 確認有該使用者 則 比對姓名 否則 回傳"查無此信箱"
+		    if (userOpt.isPresent()) {
+		        User existingUser = userOpt.get();
+
+		        // 如果 確認有該使用者 則 比對號碼
+		        if (existingUser.getPhoneNumber().equals(oldphoneNumber)) {
+		            existingUser.setPhoneNumber(newphoneNumber);
+		            sqUserDao.updateUserNumber(existingUser.getUserId(), newphoneNumber);
+		        } else {
+		            session.invalidate(); // session 過期失效
+		            model.addAttribute("loginMessage", "查無使用者電話號碼");
+		            return "sq/frontend/frontend_editUserInfo";
+		        }
+
+		        return "sq/frontend/frontend_index";
+		    }
+
+		    session.invalidate(); // session 過期失效
+		    model.addAttribute("loginMessage", "查無此信箱");
+		    return "sq/frontend/frontend_editUserInfo";
+		}	
+
+//=====================================================
+//=====================================================
+	//-----聯絡我們-----
+	//邏輯：
+	//。新增 contact 物件
+	//。注入資料至 contact 物件 並 回傳至資料庫
+	//。return 至 確認送出表單的jsp
+	@PostMapping("/contact")
+	public String contact(@RequestParam("name") String name,
+						  @RequestParam("emailOrTel") String emailOrTel,
+	                      @RequestParam("title") String title,
+	                      @RequestParam("text") String text,
+	                      HttpSession session, Model model) throws Exception {
+		Contact contact = new Contact();
+		
+		contact.setCustomerName(name);
+		contact.setCustomerEmail(emailOrTel);
+		contact.setContactTitle(title);
+		contact.setContactContext(text);
+		
+		sqContactDao.addContact(contact);
+		
+		model.addAttribute("successMessage", "感謝您的聯絡<hr>我們會盡快與您聯繫");
+		
+		return "sq/frontend/frontend_checkContact";
+		
+		}
+	
+	
+//=====================================================
 	
 
 	

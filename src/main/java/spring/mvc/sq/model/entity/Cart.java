@@ -19,6 +19,7 @@ public class Cart {
 	private Integer last5chars; // 帳號後五碼
 	private Integer userId; // 使用者 Id
 	private Integer amount; // 金額加總
+	
 	private User user;
 	private List<CartItem> cartItems;
 }

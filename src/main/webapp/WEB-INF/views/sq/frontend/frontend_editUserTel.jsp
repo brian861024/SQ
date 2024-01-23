@@ -3,30 +3,39 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
-    <!-- Head 區域 -->
-    <meta name="viewport"
-        content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
-    <meta charset="UTF-8">
-    <link rel="icon" href=<c:url value="/resources/img/icon/logo.png"/> type="image/x-icon" />
-    <link rel="shortcut icon" href="" type="image/x-icon" />
-    <title>SpiritQuest</title>
-    <!-- jQuery載入 -->
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <!-- w3.css載入 -->
-    <link rel="stylesheet" href="css/w3.css">
-    <!-- Bootstrap載入 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"
-        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
-        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
-        crossorigin="anonymous"></script>
-    <!-- 這是所有頁面需要的版型樣式, 所以在此head區載入 -->
-    <link rel="stylesheet" href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
-    <link rel="stylesheet" href=<c:url value="/resources/css/frontend_Cart.css" /> />
+<!-- Head 區域 -->
+<meta name="viewport"
+	content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+<meta charset="UTF-8">
+<link rel="icon" href=<c:url value="/resources/img/icon/logo.png"/>
+	type="image/x-icon" />
+<link rel="shortcut icon" href="" type="image/x-icon" />
+<title>SpiritQuest</title>
+<!-- jQuery載入 -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<!-- w3.css載入 -->
+<link rel="stylesheet" href="css/w3.css">
+<!-- Bootstrap載入 -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"
+	integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+	integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+	crossorigin="anonymous"></script>
+<!-- 這是所有頁面需要的版型樣式, 所以在此head區載入 -->
+<link rel="stylesheet"
+	href=https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css>
+<link rel="stylesheet"
+	href=<c:url value="/resources/css/frontend_editUserInfo.css" /> />
 </head>
 
 <style>
@@ -41,7 +50,7 @@ body {
 
 <body>
 
-    <!--======================================
+   <!--======================================
           Header
     ==========================================-->
     <header>
@@ -74,7 +83,7 @@ body {
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 酒類圖書館<img src=<c:url value="/icon/list.svg"/> alt="">
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             	
                             	<li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">總類</a></li>
                             	<hr class="dropdown-divider">
@@ -98,7 +107,7 @@ body {
     </header>
 
     <!--======================================
-          Cart
+          login
     ==========================================-->
 
     <div class="Event_Section">
@@ -182,43 +191,55 @@ body {
                         <hr class="dropdown-divider">
                     </div>
 <!-- ==================================================================================================== --> 
-                    <!-- 右邊購物車區域 -->
-                    <div class="right-cart-area">
-                        <div class="cart-area-title">
-                            <div class="cart-area-title-color-bar"> </div>
-                            <h2 style="margin: 0;"> 購物車 </h2>
-                        </div>
+                    <!-- 右邊會員資料修改表單 -->
+                    <div class="right-login-area">
+                        <div class="login-area-title">
+                            <div class="login-area-title-color-bar"> </div>
+                            <h2 style="margin: 0;"> 會員資料修改 </h2>
+                        </div >
+                        <div class="login-register-form-area">
+                            <div class="login-form-area">
+ <!-- ==================================================================================================== -->                            
+ <!-- ==================================================================================================== --> 
+ 
+                            	<!-- 資料提交表單 -->
+                                <form class="pure-form pure-form-stacked" method="POST" action="/SpiritQuest/mvc/user/editUserTel">
+                                    <fieldset>
+                                        <label for="stacked-email" style="color: rgb(255, 255, 255);">Email(登入帳號)</label>
+                                        
+                                        <input type="email" id="stacked-email" placeholder="Email"
+                                            class="pure-input-1" name="useremail" />
+                                            
+                                        <hr style="border: none;height: 20px;background-color: rgba(255, 255, 255, 0);">
+                                        
+                                        <label for="stacked-PhoneNuber" style="color: rgb(255, 255, 255);">舊電話號碼</label>
+                                        
+                                        <input  id="stacked-PhoneNuber" placeholder="PhoneNuber"
+                                            class="pure-input-1" name="Oldusertel"/>
+                                            
+                                            <label for="stacked-PhoneNuber" style="color: rgb(255, 255, 255);">修改後電話號碼</label>
+                                            
+                                        <input  id="stacked-PhoneNuber" placeholder="PhoneNuber"
+                                            class="pure-input-1" name="Newusertel" />
+                                            
+                                        <hr style="border: none;height: 50px;background-color: rgba(255, 255, 255, 0);">
+                                        
+                                        <label for="stacked-name" style="color: red;">${ loginMessage }</label>
+                                        
+                                        <button type="submit" class="pure-button" >提交</button>                                    
+                                        <a href="" style="text-decoration: none;"><h5 class="forget-password-label">忘記密碼?</h5></a>
+                                    </fieldset>
+                                </form>
+                                
+<!-- ==================================================================================================== --> 
+<!-- ==================================================================================================== --> 
 
-                        <div class="cart-item-area">
-                            <!-- 購物車物件 -->
-                            <div class="card prod-card">
-                                <div class="prod-card-img-area">
-                                    <img class="prod-card-img" src="../img/cocktail/gintonic.webp" alt="">
-                                </div>
-                                <div class="card-body">
-                                    <h2 class="card-title">Gin Tonic</h2>
-                                    <hr class="dropdown-divider">
-                                    <p />
-                                    <p class="card-text">琴通寧是很受歡迎的調酒，做法也相當簡單，將琴酒混合通寧水（氣泡水）再加入檸檬片就完成。喝起來像是檸檬汽水，帶有些微苦味。
-                                    </p>
-                                    
-                                    <form method="post" action="">
-                                    <!-- 讓修改按鈕對齊 -->
-                                    <div style="display: flex;justify-content: end;align-items: center;">
-                                        <p style="margin: 5px 10px;">數量：<input type="number"
-                                                style="width: 50px;margin:0 10px;" id="quantity" name="quantity"
-                                                value="1"></p>
-                                        <button type="submit" class="pure-button">修改數量</button>
-                                        <button type="submit" class="pure-button">刪除</button>
-                                    </div>
-                                    </form>
-                                    
-                                </div>
                             </div>
 
-                            <div style="display: flex;justify-content: flex-end;">
-                                <button type="submit" class="pure-button">結帳</button>
-                                <button type="submit" class="pure-button" style="margin-right: 100px;">刪除購物車</button>
+                           		<div class="register-form-area">
+                                <div class="forget-password" style="color: rgba(253, 253, 253, 0.788);">
+                                    忘記密碼?<a type="submit" class="pure-button" style="margin: 20px;">點此</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -230,7 +251,7 @@ body {
     <!--======================================
           Footer
     ==========================================-->
-     <div class="footer">
+    <div class="footer">
         <a href="https://reurl.cc/Ny4OOn" target="_blank" class="footer"><img src=<c:url value="/resources/img/icon/warning.png"/> alt=""
                 class="footer-banner"></a>
     </div>

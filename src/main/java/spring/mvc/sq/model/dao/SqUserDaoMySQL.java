@@ -47,14 +47,14 @@ public class SqUserDaoMySQL implements SqUserDao {
 	//-----新增使用者-----
 	@Override
 	public void addUser(User user) {
-		String sql = "insert into user(username, password, levelId, email, phoneNumber) values(?, ?, 1, ?, ?)";
+		String sql = "insert into user(username, password, levelId, email, phoneNumber) values(?, ?, ?, ?, ?)";
 		jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), 1, user.getEmail(), user.getPhoneNumber());
 	}
 	
 	//-----新增員工-----
 	@Override
 	public void addEmp(User user) {
-		String sql = "insert into user(username, password, levelId, email, phoneNumber) values(?, ?, 2, ?, ?)";
+		String sql = "insert into user(username, password, levelId, email, phoneNumber) values(?, ?, ?, ?, ?)";
 		jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), 2, user.getEmail(), user.getPhoneNumber());
 	}
 	
@@ -69,7 +69,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 	//-----更改使用者名稱-----
 	@Override
 	public Boolean updateUserName(Integer userId, String newName) {
-		String sql = "update user set Name = ? where userId = ?";
+		String sql = "update user set username = ? where userId = ?";
 		int rowcount = jdbcTemplate.update(sql, newName, userId);
 		return rowcount > 0;
 	}
@@ -77,7 +77,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 	//-----更改使用者信箱-----
 	@Override
 	public Boolean updateUserEmail(Integer userId, String newEmail) {
-		String sql = "update user set Email = ? where userId = ?";
+		String sql = "update user set email = ? where userId = ?";
 		int rowcount = jdbcTemplate.update(sql, newEmail, userId);
 		return rowcount > 0;
 	}
@@ -85,7 +85,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 	//-----更改使用者Tel-----
 	@Override
 	public Boolean updateUserNumber(Integer userId, String newNumber) {
-		String sql = "update user set Number = ? where userId = ?";
+		String sql = "update user set phoneNumber = ? where userId = ?";
 		int rowcount = jdbcTemplate.update(sql, newNumber, userId);
 		return rowcount > 0;
 	}
@@ -93,7 +93,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 	//-----根據使用者名稱查找使用者(登入用-單筆)-----
 	@Override
 	public Optional<User> findUserByUsernameOrEmail(String username, String email) {
-		String sql = "select userId, username, password, levelId, email, phoneNumder from user where username = ? or email = ?";
+		String sql = "select userId, username, password, levelId, email, phoneNumber from user where username = ? or email = ?";
 	    try {
 	        User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), username, email);
 	        return Optional.ofNullable(user);
@@ -105,7 +105,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 
 	//-----根據使用者名稱查找使用者(註冊檢查及登入用-單筆)-----
 	public Optional<User> findUserByUsername(String username){
-		String sql = "select userId, username, password, levelId, email, phoneNumder from user where username = ?";
+		String sql = "select userId, username, password, levelId, email, phoneNumber from user where username = ?";
 		try {
             User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), username);
             return Optional.ofNullable(user);
@@ -117,7 +117,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 		
 	//-----根據使用者信箱查找使用者(註冊檢查及登入用-單筆)-----
 	public Optional<User> findUserByEmail(String email){
-		String sql = "select userId, username, password, levelId, email, phoneNumder from user where email = ?";
+		String sql = "select userId, username, password, levelId, email, phoneNumber from user where email = ?";
 		try {
             User user = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), email);
             return Optional.ofNullable(user);

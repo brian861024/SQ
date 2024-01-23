@@ -3,6 +3,8 @@ package spring.mvc.sq.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,9 @@ import spring.mvc.sq.model.dao.SqCartItemDao;
 import spring.mvc.sq.model.dao.SqContactDao;
 import spring.mvc.sq.model.dao.SqProductDao;
 import spring.mvc.sq.model.dao.SqUserDao;
+import spring.mvc.sq.model.entity.Cart;
 import spring.mvc.sq.model.entity.Product;
+import spring.mvc.sq.model.entity.User;
 
 
 @Controller
@@ -50,7 +54,7 @@ public class SqController {
 	@RequestMapping("/prod")
 	public String goToprod(Model model) {
 		// 透過名字找出商品
-		Optional<Product> prodOpt = sqProductDao.findProductbyId();
+		Optional<Product> prodOpt = sqProductDao.findProductbyId(1);
 		 
 		return "sq/frontend/frontend_index";
 	}
@@ -69,8 +73,34 @@ public class SqController {
 	
 	//進入購物車頁面
 		@RequestMapping("/cart")
-		public String goToCart() {
-			return "sq/frontend/frontend_cart";	
+		public String cartPage(HttpSession session, Model model) {
+		    // 安全性檢查
+		    User user = (User) session.getAttribute("user");
+		    if (user == null) {
+		        // 重新導向到登入頁面或其他處理方式
+		    	model.addAttribute("loginMessage", "欲使用購物車請先登入");
+		        return "sq/frontend/frontend_login";
+		    }
+		    // 找到 user 的尚未結帳的購物車
+		    Cart cart = sqUserDao.findNoneCheckoutCartByUserId(user.getUserId())
+		            .orElseGet(() -> {
+		                // 如果沒有購物車，新增一個
+		                Cart newCart = new Cart();
+		                newCart.setUserId(user.getUserId());
+		                newCart.setIsCheckout(false);
+		                sqCartDao.addCart(newCart);
+		                return newCart;
+		            });
+
+		    // 計算購物車總金額
+		    int total = cart.getCartItems().stream()
+		            .mapToInt(item -> item.getQty() * item.getProduct().getPrice())
+		            .sum();
+
+		    model.addAttribute("cart", cart);
+		    model.addAttribute("total", total);
+
+		    return "sq/frontend/frontend_cart";
 		}
 
 	//進入訂單頁面
@@ -85,13 +115,13 @@ public class SqController {
 			return "sq/frontend/frontend_favoriteProd";	
 		}
 
-	//進入修改會員資料頁面
-		@RequestMapping("/editUserInfo")
+	//進入修改會員姓名頁面
+		@RequestMapping("/editUserName")
 		public String goToEditUserInfo() {
-			return "sq/frontend/frontend_editUserInfo";	
+			return "sq/frontend/frontend_editUserName";	
 		}
 		
-	//進入修改會員資料頁面
+	//進入查找密碼頁面
 		@RequestMapping("/findpassword")
 		public String goToFindpassword() {
 			return "sq/frontend/frontend_findpassword";	

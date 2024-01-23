@@ -189,16 +189,21 @@ body {
                             <h2 style="margin: 0;"> 聯絡我們 </h2>
                         </div >
                         <div class="contect-form-area">
-                            <form class="pure-form">
+                        
+ <!-- ==================================================================================================== -->                        
+ <!-- ==================================================================================================== -->                       
+                            <form class="pure-form" method="post" action="/SpiritQuest/mvc/user/contact">
                                 <fieldset>
-                                    <input type="text" class="pure-input-1-2" style="margin-top: 10px;height: 50px;" placeholder="稱呼" />
-                                    <input type="text" class="pure-input-1-2" style="margin-top: 10px;height: 50px;" placeholder="聯絡電話/信箱" />
-                                    <input type="text" class="pure-input-1-2" style="margin:10px 0;height: 50px;" placeholder="主旨" />
-                                    <textarea class="pure-input-1-2" style="height: 400px;" placeholder="文字輸入區"></textarea>
+                                    <input name="name" type="text" class="pure-input-1-2" style="margin-top: 10px;height: 50px;" placeholder="稱呼" />
+                                    <input name="emailOrTel" class="pure-input-1-2" style="margin-top: 10px;height: 50px;" placeholder="聯絡電話/信箱" />
+                                    <input name="title" type="text" class="pure-input-1-2" style="margin:10px 0;height: 50px;" placeholder="主旨" />
+                                    <textarea name="text" class="pure-input-1-2" style="height: 400px;" placeholder="文字輸入區"></textarea>
                                 </fieldset>
                                 <hr class="dropdown-divider">
                                 <button type="submit" class="pure-button">送出</button>
                             </form>
+<!-- ==================================================================================================== -->                             
+<!-- ==================================================================================================== -->                             
                         </div>
                     </div>
                 </div>

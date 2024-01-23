@@ -18,7 +18,7 @@ public class SqContactDaoMySQL implements SqContactDao {
     // 創造聯絡單
     @Override
     public void addContact(Contact contact) {
-        String sql = "INSERT INTO contact(name, email, title, text) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO contact(customerName, customerEmail, contactTitle, contactContext) VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(sql, contact.getCustomerName(), contact.getCustomerEmail(), contact.getContactTitle(), contact.getContactContext());
     }
 
@@ -37,7 +37,7 @@ public class SqContactDaoMySQL implements SqContactDao {
     // 根據主旨找出聯絡單
     @Override
     public Optional<Contact> findContactByTitle(String title) {
-        String sql = "SELECT * FROM contact WHERE title = ?";
+        String sql = "SELECT * FROM contact WHERE contactTitle = ?";
         try {
             Contact contact = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Contact.class), title);
             return Optional.ofNullable(contact);

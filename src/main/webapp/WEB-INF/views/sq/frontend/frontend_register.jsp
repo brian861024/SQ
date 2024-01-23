@@ -169,7 +169,8 @@ body {
                             修改會員資料<img src=<c:url value="/resources/img/icon/list.svg"/> alt="">
                         </a>
                         <ul class="dropdown-menu left-prod-class-dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserInfo">修改基本資料</a></li>
+                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserInfo">修改會員姓名</a></li>
+                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserInfo">修改會員電話</a></li>
                             <hr class="dropdown-divider">
                             <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/findpassword">查詢密碼</a></li>
 
