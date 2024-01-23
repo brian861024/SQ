@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +8,7 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
     <meta charset="UTF-8">
-    <link rel="icon" href="/img/icon/logo.png" type="image/x-icon" />
+    <link rel="icon" href=<c:url value="/resources/img/icon/logo.png"/> type="image/x-icon" />
     <link rel="shortcut icon" href="" type="image/x-icon" />
     <title>SpiritQuest</title>
     <!-- 幾乎大多數頁面需要jQuery, 所以在此head區載入 -->
@@ -24,18 +26,37 @@
         crossorigin="anonymous"></script>
     <!-- 這是所有頁面需要的版型樣式, 所以在此head區載入 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
-    <link rel="stylesheet" href="../include/css/backend_PlusProd.css">
+    <link rel="stylesheet" href=<c:url value="/resources/css/backend_PlusProd.css" /> />
+    
+    <script>
+    function submitForms() {
+        document.getElementById('Form').submit();
+        document.getElementById('Form2').submit();
+        document.getElementById('Form3').submit();
+    }
+	</script>
+    
 </head>
+
+<style>
+body {
+    background-image: url(<c:url value="/resources/img/bg/bg.jpg"/>);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-size: cover;
+}
+</style>
 
 <body>
 
-    <!--======================================
+     <!--======================================
           Header
     ==========================================-->
     <header>
         <!-- Header左側logo圖片 -->
         <div class="logo">
-            <a href="/frontend_header.html"><img src="/img/icon/logo.png" alt="" class="logoimg"></a>
+            <a href="/SpiritQuest/mvc/sq/index"><img src=<c:url value="/resources/img/icon/logo.png"/> alt="" class="logoimg"></a>
         </div>
         <!-- Header右側按鍵 -->
         <nav class="navbar navbar-expand-lg navbar-light bg-opacity fs-5">
@@ -49,42 +70,42 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item" style="margin-right: 10px;">
                             <a class="nav-link active" aria-current="page"
-                                href="/frontend/frontend_index.html">SpiritQuest</a>
+                                href="/SpiritQuest/mvc/sq/index">SpiritQuest</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/frontend/frontend_Cart.html">Cart</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/cart">購物車</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/frontend/frontend_Order.html">Order</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./booze.html">Booze</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/order">訂單查詢</a>
                         </li>
                         <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="/SpiritQuest/mvc/sq/liquor" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Spirit<img src="./icon/list.svg" alt="">
+                                酒類圖書館<img src=<c:url value="/icon/list.svg"/> alt="">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="./Liquor-whisky.html">Whiskey</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-rum.html">Rum</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-gin.html">Gin</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-tequila.html">Tequila</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-vadka.html">Vodka</a></li>
-                                <li><a class="dropdown-item" href="./Liquor-liqueur.html">Liqueur</a></li>
-                                <hr class="dropdown-divider">
-                                <li><a class="dropdown-item" href="#">Cocktail</a></li>
-                                <li><a class="dropdown-item" href="#">Plum Wine</a></li>
+                            	
+                            	<li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">總類</a></li>
+                            	<hr class="dropdown-divider">
+                            	
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/whiskey">Whiskey</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/rum">Rum</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/gin">Gin</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/tequila">Tequila</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/vodka">Vodka</a></li>
+                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liqueur">Liqueur</a></li>
+
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/frontend/frontend_login.html">login</a>
+                            <a class="nav-link" href="/SpiritQuest/mvc/sq/login">login</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
 
     <!--======================================
           Cart
@@ -113,10 +134,12 @@
                         <option>4000 ~ 5000</option>
                         <option>5000 以上</option>
                     </select>
+                    
                     <form class="d-flex" style="width: 50%;margin: 10px">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-light" type="submit">Search</button>
                     </form>
+                    
                 </div>
 
                 <div class="main-area" style="display: flex;">
@@ -204,57 +227,71 @@
                     </div>
 
                     <!-- 右邊商品名稱區域 -->
-                    <div class="right-prod-area">
-                        <div class="prod-area-title">
+                   		<div class="right-prod-area">
+                       		<div class="prod-area-title">
                             <div class="prod-area-title-color-bar"> </div>
                             <h2 style="margin: 0;"> 商品名稱 </h2>
                         </div>
                         <!-- 商品 -->
+                        
                         <div class="prod-item-area">
                             <div class="card prod-card">
                                 <!-- 商品名稱區域的商品圖片部分 -->
                                 <div>
                                     <div class="prod-card-img-area"><img class="prod-card-img"
-                                            src="../img/cocktail/gintonic.webp" alt=""></div>
+                                            src=<c:url value="/resources/img/cocktail/gintonic.webp"/> alt=""></div>
                                     <div class="prod-card-little-img-area">
                                         <div class="prod-card-little-img-item"><img class="prod-card-little-img"
-                                                src="../img/cocktail/gintonic.webp" alt=""></div>
+                                                src=<c:url value="/resources/img/cocktail/gintonic.webp"/> alt=""></div>
                                     </div>
                                 </div>
-                                <div class="card-body pure-form">
-                                    <h5 class="card-title"><input type="text" id="Prod-name" placeholder="商品名稱"
-                                            class="pure-input-1" /></h5>
+                                
+                            <div class="card-body pure-form">
+                                <form class="card-body pure-form" id="plusProdForm" method="post" action="/123" id="Form1">
+                                    <h5 class="card-title">
+                                    <input type="text" id="Prod-name" placeholder="商品名稱"
+                                            class="pure-input-1" name=""/></h5>
                                     <hr class="dropdown-divider">
                                     <p />
                                     <p class="card-text"><input type="text" id="Prod-price" placeholder="商品價格"
-                                            class="pure-input-1-3" />
+                                            class="pure-input-1-3" name=""/>
                                     </p>
                                     <p class="card-text">酒精濃度(%)：<input type="text" id="Prod-ABV" placeholder="度數"
-                                            class="pure-input-1-4" />
+                                            class="pure-input-1-4" name=""/>
                                     </p>
                                     <p class="card-text">容量： <input type="text" id="Prod-ml" placeholder="容量"
-                                            class="pure-input-1-4" />
+                                            class="pure-input-1-4" name=""/>
                                     </p>
                                     <p class="card-text"><textarea type="text" id="Prod-text" placeholder="產品描述"
-                                            style="height: 250px;" class="pure-input-1"></textarea>
+                                            style="height: 250px;" class="pure-input-1" name=""></textarea>
                                     </p>
                                     <p />
                                     <hr class="dropdown-divider">
                                     <p />
-                                    <div>
-                                        <p style="margin: 5px 10px;">庫存：<input type="number"
+                                 </form>	
+                             <div>
+                                  
+                                   		<form method="post" action="" id="Form2">
+                                        	<p style="margin: 5px 10px;">庫存：<input type="number"
                                                 style="width: 70px;margin:0 10px;" id="quantity" name="quantity"
                                                 value="1"></p>
-                                        <button type="submit" class="pure-button">更改庫存數量</button>
+                                        	<button type="submit" class="pure-button">更改庫存數量</button>
+                                        </form>
+
+                                        <form method="post" action="" id="Form3">
                                         <input type="checkbox" id="On-the-shelves" style="margin-left:20px;" /> 於網頁上架
-                                    </div>
-                                </div>
+                                        </form>
+                                          
+                                 </div>           
+                               </div>
                             </div>
 
                             <div style="display: flex;justify-content: flex-end;">
-                                <button type="submit" class="pure-button">確認</button>
+                                <button type="submit" class="pure-button" onclick="submitForms()" >確認</button>
                                 <button type="submit" class="pure-button" style="margin-right: 100px;">回商品列表</button>
                             </div>
+                            
+                            
                         </div>
                     </div>
 

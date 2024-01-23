@@ -44,8 +44,8 @@ public class SqController {
 	@RequestMapping("/index")
 	public String goToIndex(Model model) {
 		// 過濾出只有上架的商品
-		List<Product> products = sqProductDao.findAllProducts(true);			
-		model.addAttribute("products", products);
+//		List<Product> products = sqProductDao.findAllProducts(true);			
+//		model.addAttribute("products", products);
 
 		return "sq/frontend/frontend_index";
 	}
@@ -63,13 +63,13 @@ public class SqController {
 		@RequestMapping("/login")
 		public String goToLogin() {
 			return "sq/frontend/frontend_login";	
-		}
+	}
 		
 	//進入註冊頁面
 		@RequestMapping("/register")
 		public String goToRegister() {
 			return "sq/frontend/frontend_register";	
-		}
+	}
 	
 	//進入購物車頁面
 		@RequestMapping("/cart")
@@ -175,11 +175,19 @@ public class SqController {
 			return "sq/frontend/LiquorLibrary/liquor";	
 		}
 
-//================== 進入各種頁面 ==================
+//================== 進入後台各種頁面 ==================
 		
 	//進入後台首頁
 		@GetMapping("/backend/main")
 		public String backendMain(@ModelAttribute Product product, Model model) {
 			return "/sq/backend/backend_index";
 		}
+		
+	//進入後台新增商品頁面
+		@GetMapping("/backend/plusProd")
+		public String plusProd() {
+			return "/sq/backend/backend_plusProd";
+		}
+		
+		
 }
