@@ -163,7 +163,8 @@ body {
                             修改會員資料<img src=<c:url value="/resources/img/icon/list.svg"/> alt="">
                         </a>
                         <ul class="dropdown-menu left-prod-class-dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserInfo">修改基本資料</a></li>
+                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserName">修改會員姓名</a></li>
+                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserTel">修改會員電話</a></li>
                             <hr class="dropdown-divider">
                             <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/findpassword">查詢密碼</a></li>
 
@@ -194,22 +195,30 @@ body {
                             <div class="login-form-area">
 <!-- ==================================================================================================== -->                               
                          
-                                <form class="pure-form pure-form-stacked" id="loginForm" method="post" action="/SpiritQuest/mvc/sq/login" >
+                                <form class="pure-form pure-form-stacked" id="loginForm" method="post" action="/SpiritQuest/mvc/user/login" >
                                     <fieldset>
                                         <label for="stacked-email" style="color: rgb(255, 255, 255);">Email</label>
                                         <input type="email" id="stacked-email" placeholder="Email"
-                                            class="pure-input-1" />
+                                            class="pure-input-1" name="useremail" />
                                         <span class="pure-form-message">This is a required field.</span>
                                         <label for="stacked-password" style="color: rgb(255, 255, 255);">密碼</label>
                                         <input type="password" id="stacked-password" placeholder="Password"
-                                            class="pure-input-1" />
+                                            class="pure-input-1" name="password" />
                                         <hr>
                                         <hr>
-                                        <label for="stacked-password" style="color: rgb(255, 255, 255);">驗證碼</label>
-                                        <input id="stacked-password" placeholder="請輸入右圖數字" />
-                                        
-                                        <a type="submit" class="pure-button" href="/SpiritQuest/mvc//user/login">Login</a>                                    
-                                        <a href="" style="text-decoration: none;"><h5 class="forget-password-label">忘記密碼?</h5></a>
+                                        <label for="stacked-name" style="color: red;">${ loginMessage }</label>
+										<hr>
+										<div>
+										<label for="stacked-code" style="color: rgb(255, 255, 255)" name="code"/>驗證碼</label>
+										<input
+											id="stacked-code" name="code"
+											placeholder="請輸入下圖英文字" class="pure-input-3" />	
+										<img src="/SpiritQuest/mvc/user/getcode" alt="驗證碼" />
+										</div>
+										<div>
+                                        <button type="submit" class="pure-button">Login</button>                                    
+                                        <a href="/SpiritQuest/mvc/sq/findpassword" style="text-decoration: none;"><h5 class="forget-password-label">忘記密碼?</h5></a>
+                                  		</div>
                                     </fieldset>
                                 </form>
                                 

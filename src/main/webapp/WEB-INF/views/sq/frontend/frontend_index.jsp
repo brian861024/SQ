@@ -275,105 +275,18 @@ body {
                     <!-- 商品卡片 -->
                     <div class="card-area">
 
+					<c:forEach items="${ products }" var="product" >
                         <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src=<c:url value="/resources/img/cocktail/negroni.webp"/> alt="">
+                       <!-- <img src=<c:url value="/resources/img/cocktail/negroni.webp"/> alt=""> --> 
                             <div class="card-body">
-                                <h5 class="card-title">Negroni</h5>
+                                <h5 class="card-title">${ product.productName }</h5>
                                 <p class="card-text">
-                                    來自義大利的Negroni，將琴酒、甜苦艾酒、金巴利酒以1：1：1的比例調製，提取各自的甜味、苦味、酒味，喝起來別有特殊的重風味以及橙皮香，是品酒人眼中的瓊漿玉露。
+                                   ${ product.description }
                                 </p>
-                                <button type="submit" class="pure-button">加入購物車</button>
                             </div>
                         </div>
-
-                        <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="/img/cocktail/mojido.webp" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Mojido</h5>
-                                <p class="card-text">
-                                    就像歌詞唱的那樣，用「海風、老爺車、棕櫚樹」來形容Mojito帶些有點復古的南國氣氛，可說再適合不過了。以蘭姆酒搭配檸檬汁、蘇打水、薄荷葉，是最適合夏天的清爽調酒。
-                                </p>
-                                <div class="heart-area">酒精濃度：<img src="./icon/heart.svg" alt="" class="heart"></div>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="/img/cocktail/gintonic.webp" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Gin Tonic</h5>
-                                <p class="card-text">琴通寧是很受歡迎的調酒，做法也相當簡單，將琴酒混合通寧水（氣泡水）再加入檸檬片就完成。喝起來像是檸檬汽水，帶有些微苦味。
-                                </p>
-                                <div class="heart-area">酒精濃度：<img src="./icon/heart.svg" alt="" class="heart"></div>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="/img/cocktail/pink-lady.webp" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Pink Lady</h5>
-                                <p class="card-text">由調酒師獻給心儀的歌劇女主角，充滿浪漫氣息的一款調酒。基酒使用琴酒並加上紅石榴糖漿，最後加上蛋白或鮮奶油，打造出綿密的泡沫來升級口感。
-                                </p>
-                                <div class="heart-area">酒精濃度：<img src="./icon/heart.svg" alt="" class="heart"> </div>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="/img/cocktail/stdog.webp" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Salty Dog</h5>
-                                <p class="card-text">
-                                    伏特加搭配葡萄柚與鹽巴，一款夏日風情的調酒，最特別的地方，在於鹽巴不是直接加進去，而是沾在杯緣，要先舔一口才喝下去。之所以叫「鹹狗」是來自老水手（俚語Sea
-                                    dog）身上的汗水日曬蒸發，所殘留的鹽巴結晶。</p>
-                                <div class="heart-area">酒精濃度：<img src="./icon/heart.svg" alt="" class="heart"><img
-                                        src="./icon/heart.svg" alt="" class="heart"></div>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="/img/cocktail/Old-Fashioned-.webp" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Old-Fashioned</h5>
-                                <p class="card-text">
-                                    酒如其名，是一款永遠的老派與經典調酒。以威士忌搭配蘇打水、糖、苦精，搭配橙片、櫻桃還有檸檬皮，口感強烈嗆辣又帶點甘甜，將威士忌的美味昇華到更高境界。
-                                </p>
-                                <div class="heart-area">酒精濃度：<img src="./icon/heart-pulse.svg" alt="" class="heart"><img
-                                        src="./icon/heart-pulse.svg" alt="" class="heart"></div>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="/img/cocktail/LongIslandIcedTea.webp" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Long-Island<br> Iced Tea</h5>
-                                <p class="card-text">
-                                    又有「失身酒」之稱的長島冰茶，光是基酒就用上琴酒、伏特加、龍舌蘭酒、蘭姆酒，再加些果汁糖漿稀釋一下而已。外觀看似檸檬紅茶，但它可不是好惹的，如果在酒吧有男生點長島冰茶給陌生女性，肯定會引人側目。
-                                </p>
-                                <div class="heart-area">酒精濃度：<img src="./icon/heart-pulse.svg" alt="" class="heart"><img
-                                        src="./icon/heart-pulse.svg" alt="" class="heart"><img
-                                        src="./icon/heart-pulse.svg" alt="" class="heart"></div>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="/img/cocktail/Screwdriver.webp" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Screwdriver</h5>
-                                <p class="card-text">以伏特加作為基底，加入柳橙汁的簡單調酒，同樣適合普羅大眾。名稱來自從前一位美國工程師，把伏特加倒進柳橙汁裡，並隨手拿螺絲起子攪拌而成。
-                                </p>
-                                <div class="heart-area">酒精濃度：<img src="./icon/heart.svg" alt="" class="heart"></div>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <img src="/img/cocktail/Screwdriver.webp" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Screwdriver</h5>
-                                <p class="card-text">以伏特加作為基底，加入柳橙汁的簡單調酒，同樣適合普羅大眾。名稱來自從前一位美國工程師，把伏特加倒進柳橙汁裡，並隨手拿螺絲起子攪拌而成。
-                                </p>
-                                <div class="heart-area">酒精濃度：<img src="./icon/heart.svg" alt="" class="heart"></div>
-                            </div>
-                        </div>
-
+                   </c:forEach>
+                   
                         <!-- 最下方換頁按鈕 -->
                         <div>
                             <nav aria-label="Page navigation example">

@@ -1,5 +1,7 @@
 package spring.mvc.sq.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -8,8 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.mysql.cj.Session;
 
 import spring.mvc.sq.model.entity.*;
 
@@ -42,17 +48,28 @@ public class SqOrderController {
 //=======================================================	
 	//-----增加購物車商品-----
 	//。CartItem 注入 Cart
-	// 修改購物車商品項目數量
-	@GetMapping("/cart/update")
+	//。比對注入 CartItem qty 比 Product qty 數量少
+	@RequestMapping("/cart/update")
 	public String updateCartItem(@RequestParam("itemId") Integer itemId,
 								 @RequestParam("qty") Integer qty,
-								 HttpSession session) {
+								 @ModelAttribute Product product,
+								 HttpSession session, Model model) {
+		
 		User user = (User)session.getAttribute("user");
+		Optional<CartItem> cartItemOpt = sqCartItemDao.findCartItemById(itemId);
+		CartItem cartItem1 = cartItemOpt.get();
+		Optional<Product> productOpt = sqProductDao.findProductbyId(cartItem1.getProductId());
+		Product product1 = productOpt.get(); 
+		
 		// 如何得知 itemId 是屬於該使用者的 ?
 		sqCartItemDao.findCartItemById(itemId).ifPresent(cartItem -> {
 			if(cartItem.getCart().getUserId().equals(user.getUserId())) {
 				if(qty > 0) {
-					sqCartItemDao.updateCartItemQuantity(itemId, qty);
+					if(qty>product1.getStockQty()) {
+						model.addAttribute("StockMessage", "庫存不足");
+					} else {
+						sqCartItemDao.updateCartItemQuantity(itemId, qty);
+					}
 				} else {
 					sqCartItemDao.removeCartItemById(itemId);
 				}
@@ -63,14 +80,28 @@ public class SqOrderController {
 //======================================================
 //======================================================	
 	//-----訂單確認+完成-----
+	//。
+//	@RequestMapping("/check")
+//	public String checkOrder() {
+//		
+//	}
 	
 //======================================================
 //======================================================
 	//-----查詢訂單-----
+	//。先找到 session 裡的 user 如果沒有 則 回傳 "請先登入"
+	//。有 user 則透過 userid 去找到 屬於他的購物車並傳至 jsp
+	@RequestMapping("/cart/query")
+	public void queryOrder(@ModelAttribute Cart cart,
+						   HttpSession session, Model model) {
+		
+		
+	}
 	
 //======================= 購物車後台 =======================
 //=======================================================	
 	//-----增加商品-----
+	//。
 	
 //======================================================	
 }

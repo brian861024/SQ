@@ -76,15 +76,6 @@ header {
     margin-bottom: 100px;
 }
 
-    /*<!-- 上方搜索列 -->*/
-.category {
-    color: rgba(32, 32, 32, 0.589);
-    background-color: #ffffff93;
-    width: 20%;
-    margin: 10px 20px;
-    border-radius:5px
-}
-
 .search {
     display: flex;
     height: 60px;
@@ -130,7 +121,15 @@ header {
     box-shadow: 1px #ffffff3b;
 }
 
-/*<!-- 右方登入表單 -->*/
+/*<!-- 右方增加商品表單 -->*/
+
+.category {
+    color: rgba(32, 32, 32, 0.589);
+    background-color: #ffffff93;
+    width: 20%;
+    margin: 10px 20px;
+    border-radius:5px
+}
 
 .right-prod-area{
     margin-left: 50px;

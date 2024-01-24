@@ -164,7 +164,8 @@ body {
                             修改會員資料<img src=<c:url value="/resources/img/icon/list.svg"/> alt="">
                         </a>
                         <ul class="dropdown-menu left-prod-class-dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserInfo">修改基本資料</a></li>
+                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserName">修改會員姓名</a></li>
+                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserTel">修改會員電話</a></li>
                             <hr class="dropdown-divider">
                             <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/findpassword">查詢密碼</a></li>
 
@@ -195,7 +196,7 @@ body {
                             <div class="card order-card">
                                 <div class="card-body">
                                     <div class="order-card-left-area">
-                                        <h5 class="card-title">訂單一</h5>
+                                        <h5 class="card-title"></h5>
                                         <table class="pure-table pure-table-horizontal">
                                             <tbody>
                                                 <thead>
@@ -205,25 +206,25 @@ body {
                                                     <td>價格</td>
                                                 </thead>
                                                 <tr>
-                                                    <td>1</td>
+                                                    <td></td>
                                                     <td class="order-card-form-prod-name">雷伯五號 威士忌</td>
                                                     <td>2</td>
                                                     <td>700 /元</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>2</td>
+                                                    <td></td>
                                                     <td class="order-card-form-prod-name">帝王8年 龍舌蘭風味桶 750ml</td>
                                                     <td>1</td>
                                                     <td>680 /元</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>3</td>
+                                                    <td></td>
                                                     <td class="order-card-form-prod-name">CHOYA 梅子風味氣泡酒 750ml</td>
                                                     <td>1</td>
                                                     <td>480 /元</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>3</td>
+                                                    <td></td>
                                                     <td class="order-card-form-prod-name">CHOYA 梅子風味氣泡酒 750ml</td>
                                                     <td>1</td>
                                                     <td>480 /元</td>
@@ -254,29 +255,28 @@ body {
                             <div class="card order-card">
                                 <div class="card-body">
                                     <div class="order-card-left-area">
-                                        <h5 class="card-title">訂單二</h5>
                                         <table class="pure-table pure-table-horizontal">
                                             <tbody>
                                                 <thead>
-                                                    <td></td>
+                                                	<td></td>
                                                     <td class="order-card-form-prod-name">品名</td>
                                                     <td>數量</td>
                                                     <td>價格</td>
                                                 </thead>
                                                 <tr>
-                                                    <td>1</td>
+													<td></td>
                                                     <td class="order-card-form-prod-name">雷伯五號 威士忌</td>
                                                     <td>2</td>
                                                     <td>700 /元</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>2</td>
+													<td></td>
                                                     <td class="order-card-form-prod-name">帝王8年 龍舌蘭風味桶 750ml</td>
                                                     <td>1</td>
                                                     <td>680 /元</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>3</td>
+                                                    <td></td>
                                                     <td class="order-card-form-prod-name">(限量)金門高粱 白金龍61週年 大師百選版 (泰坦灰源酒) 600ml</td>
                                                     <td>1</td>
                                                     <td>480 /元</td>
@@ -306,7 +306,6 @@ body {
                             <div class="card order-card">
                                 <div class="card-body">
                                     <div class="order-card-left-area">
-                                        <h5 class="card-title">訂單三</h5>
                                         <table class="pure-table pure-table-horizontal">
                                             <tbody>
                                                 <thead>
@@ -316,19 +315,19 @@ body {
                                                     <td>價格</td>
                                                 </thead>
                                                 <tr>
-                                                    <td>1</td>
+                                                    <td></td>
                                                     <td>雷伯五號 威士忌</td>
                                                     <td>2</td>
                                                     <td>700 /元</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>2</td>
+                                                    <td></td>
                                                     <td>帝王8年 龍舌蘭風味桶 750ml</td>
                                                     <td>1</td>
                                                     <td>680 /元</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>3</td>
+                                                    <td></td>
                                                     <td>CHOYA 梅子風味氣泡酒 750ml</td>
                                                     <td>1</td>
                                                     <td>480 /元</td>
@@ -357,7 +356,6 @@ body {
                             <div class="card order-card">
                                 <div class="card-body">
                                     <div class="order-card-left-area">
-                                        <h5 class="card-title">訂單四</h5>
                                         <table class="pure-table pure-table-horizontal">
                                             <tbody>
                                                 <thead>
@@ -367,7 +365,7 @@ body {
                                                     <td>價格</td>
                                                 </thead>
                                                 <tr>
-                                                    <td>1</td>
+                                                    <td></td>
                                                     <td class="order-card-form-prod-name">雷伯五號 威士忌</td>
                                                     <td>2</td>
                                                     <td>700 /元</td>

@@ -70,35 +70,22 @@ body {
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item" style="margin-right: 10px;">
                             <a class="nav-link active" aria-current="page"
-                                href="/SpiritQuest/mvc/sq/index">SpiritQuest</a>
+                                href="/SpiritQuest/mvc/sq/index">SpiritQuest 後台管理</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/cart">購物車</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/cart">商品管理</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/order">訂單查詢</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/order">客戶訂單管理</a>
                         </li>
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle" href="/SpiritQuest/mvc/sq/liquor" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                酒類圖書館<img src=<c:url value="/icon/list.svg"/> alt="">
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            	
-                            	<li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liquor">總類</a></li>
-                            	<hr class="dropdown-divider">
-                            	
-                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/whiskey">Whiskey</a></li>
-                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/rum">Rum</a></li>
-                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/gin">Gin</a></li>
-                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/tequila">Tequila</a></li>
-                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/vodka">Vodka</a></li>
-                                <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/liqueur">Liqueur</a></li>
-
-                            </ul>
+                         <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/order">客戶管理</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/SpiritQuest/mvc/sq/login">login</a>
+                            <a class="nav-link" aria-current="page" href="/SpiritQuest/mvc/sq/order">客戶聯絡單</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/SpiritQuest/mvc/sq/login">增加管理員</a>
                         </li>
                     </ul>
                 </div>
@@ -114,33 +101,6 @@ body {
     <div class="Event_Section">
         <section>
             <div class="container">
-                <!-- 上方搜索列 -->
-                <div class="search">
-                    <select class="category">
-                        <option value="0" class="select1">請選擇分類</option>
-                        <option>威士忌</option>
-                        <option>清酒</option>
-                        <option>果實酒</option>
-                        <option>葡萄酒</option>
-                        <option>調酒</option>
-                        <option>酒器</option>
-                    </select>
-                    <select class="category">
-                        <option value="0" class="select1">請選擇價格</option>
-                        <option>&nbsp&nbsp&nbsp0&nbsp&nbsp&nbsp ~ 1000</option>
-                        <option>1000 ~ 2000</option>
-                        <option>2000 ~ 3000</option>
-                        <option>3000 ~ 4000</option>
-                        <option>4000 ~ 5000</option>
-                        <option>5000 以上</option>
-                    </select>
-                    
-                    <form class="d-flex" style="width: 50%;margin: 10px">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-light" type="submit">Search</button>
-                    </form>
-                    
-                </div>
 
                 <div class="main-area" style="display: flex;">
                     <!-- 左方導覽列 -->
@@ -230,7 +190,7 @@ body {
                    		<div class="right-prod-area">
                        		<div class="prod-area-title">
                             <div class="prod-area-title-color-bar"> </div>
-                            <h2 style="margin: 0;"> 商品名稱 </h2>
+                            <h2 style="margin: 0;"> 商品新增 </h2>
                         </div>
                         <!-- 商品 -->
                         
@@ -256,11 +216,6 @@ body {
                                     <p class="card-text"><input type="text" id="Prod-price" placeholder="商品價格"
                                             class="pure-input-1-3" name=""/>
                                     </p>
-                                    <p class="card-text">酒精濃度(%)：<input type="text" id="Prod-ABV" placeholder="度數"
-                                            class="pure-input-1-4" name=""/>
-                                    </p>
-                                    <p class="card-text">容量： <input type="text" id="Prod-ml" placeholder="容量"
-                                            class="pure-input-1-4" name=""/>
                                     </p>
                                     <p class="card-text"><textarea type="text" id="Prod-text" placeholder="產品描述"
                                             style="height: 250px;" class="pure-input-1" name=""></textarea>
@@ -268,21 +223,28 @@ body {
                                     <p />
                                     <hr class="dropdown-divider">
                                     <p />
-                                 </form>	
-                             <div>
-                                  
-                                   		<form method="post" action="" id="Form2">
-                                        	<p style="margin: 5px 10px;">庫存：<input type="number"
+                                 	
+                            
+                               	   <div style="display: flex;flex-direction: row;">
+                               	   		<div>
+                                       	<p style="margin: 5px 10px;">庫存：<input type="number"
                                                 style="width: 70px;margin:0 10px;" id="quantity" name="quantity"
                                                 value="1"></p>
-                                        	<button type="submit" class="pure-button">更改庫存數量</button>
-                                        </form>
-
-                                        <form method="post" action="" id="Form3">
-                                        <input type="checkbox" id="On-the-shelves" style="margin-left:20px;" /> 於網頁上架
-                                        </form>
-                                          
-                                 </div>           
+                                        </div>
+                                        <div>
+                                        <select style="width: 200px;margin-top: 5px">
+                    					<option value="0" class="select1">請選擇分類</option>
+                    					<option>威士忌</option>
+                    					<option>清酒</option>
+                   						<option>果實酒</option>
+                    					<option>葡萄酒</option>
+                   						<option>調酒</option>
+                 					    <option>酒器</option>
+              							</select>
+                                        </div>
+									</div>	    
+                                   <hr> 
+                                   <input type="checkbox" id="On-the-shelves" style="margin-left:20px;" /> 於網頁上架            
                                </div>
                             </div>
 
@@ -290,7 +252,7 @@ body {
                                 <button type="submit" class="pure-button" onclick="submitForms()" >確認</button>
                                 <button type="submit" class="pure-button" style="margin-right: 100px;">回商品列表</button>
                             </div>
-                            
+                            </form>
                             
                         </div>
                     </div>

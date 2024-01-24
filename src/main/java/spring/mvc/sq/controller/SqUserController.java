@@ -69,41 +69,49 @@ public class SqUserController {
 	@GetMapping("/getcode")
 	private void getCodeImage(HttpSession session, HttpServletResponse response) throws IOException {
 		// 產生一個驗證碼 code
-		Random random = new Random();
-		String code1 = String.format("%c", (char)(random.nextInt(122-65+1) + 65));
-		String code2 = String.format("%c", (char)(random.nextInt(122-65+1) + 65));
-		String code3 = String.format("%c", (char)(random.nextInt(122-65+1) + 65));
-		String code4 = String.format("%c", (char)(random.nextInt(122-65+1) + 65));
-		
-		String code  = code1+code2+code3+code4;
-		session.setAttribute("code", code);
+		 Random random = new Random();
+		    String code1 = String.format("%c", (char) (random.nextInt(26) + 'A')); // 大寫英文字母
+		    String code2 = String.format("%c", (char) (random.nextInt(26) + 'A'));
+		    String code3 = String.format("%c", (char) (random.nextInt(26) + 'A'));
+		    String code4 = String.format("%c", (char) (random.nextInt(26) + 'A'));
+
+		    String code = code1 + code2 + code3 + code4;
+		    session.setAttribute("code", code);
 		
 		// Java 2D 產生圖檔
 		// 1. 建立圖像暫存區
-		BufferedImage img = new BufferedImage(80, 30, BufferedImage.TYPE_INT_BGR);
+		BufferedImage img = new BufferedImage(110, 40, BufferedImage.TYPE_INT_BGR);
 		// 2. 建立畫布
 		Graphics g = img.getGraphics();
 		// 3. 設定顏色
-		g.setColor(Color.YELLOW);
+		g.setColor(Color.gray);
 		// 4. 塗滿背景
-		g.fillRect(0, 0, 80, 30);
+		g.fillRect(0, 0, 120, 40);
 		// 5. 設定顏色
-		g.setColor(Color.BLACK);
-		// 6. 設定自型
-		g.setFont(new Font("新細明體", Font.PLAIN, 30));
+		g.setColor(Color.white);
+		// 6. 設定字型
+		g.setFont(new Font("新細明體", Font.BOLD, 30));
 		// 7. 繪字串
-		g.drawString(code, 10, 23); // code, x, y
+		g.drawString(code, 10, 28); // code, x, y
 		// 8. 干擾線
 		g.setColor(Color.RED);
-		for(int i=0;i<10;i++) {
-			int x1 = random.nextInt(80);
-			int y1 = random.nextInt(30);
-			int x2 = random.nextInt(80);
-			int y2 = random.nextInt(30);
+		for(int i=0;i<4;i++) {
+			int x1 = random.nextInt(110);
+			int y1 = random.nextInt(40);
+			int x2 = random.nextInt(110);
+			int y2 = random.nextInt(40);
+			g.drawLine(x1, y1, x2, y2);
+		}
+		g.setColor(Color.black);
+		for(int i=0;i<4;i++) {
+			int x1 = random.nextInt(110);
+			int y1 = random.nextInt(40);
+			int x2 = random.nextInt(110);
+			int y2 = random.nextInt(40);
 			g.drawLine(x1, y1, x2, y2);
 		}
 		
-			// 設定回應類型
+		// 設定回應類型
 		response.setContentType("image/png");
 		
 		// 將影像串流回寫給 client
@@ -112,7 +120,6 @@ public class SqUserController {
 //======================================================
 //======================================================	
 	//-----會員註冊功能-----
-	//邏輯：
 	//。用戶名或信箱不可重複
 	//。兩次的註冊密碼要相同
 	@RequestMapping("/register")
@@ -123,10 +130,6 @@ public class SqUserController {
 						   @RequestParam("usertel") String phoneNumber,
 						   @RequestParam("code") String code,
 						   HttpSession session, Model model) throws Exception  {
-		
-		System.out.println(username);
-		
-		{
 		//比對驗證碼
 		if(!code.equals(session.getAttribute("code")+"")) {
 			session.invalidate(); // session 過期失效
@@ -161,13 +164,13 @@ public class SqUserController {
 			 }
 			return "sq/frontend/frontend_login";
 			}
-		}
+		
 //======================================================	
 //======================================================
 	//-----會員登入-----
 	// 邏輯：
 	@RequestMapping("/login")
-	public String login(@RequestParam("username") String username,
+	public String login(@RequestParam("useremail") String useremail,
 	                    @RequestParam("password") String password,
 	                    @RequestParam("code") String code,
 	                    HttpSession session, Model model) throws Exception {
@@ -175,9 +178,9 @@ public class SqUserController {
 		if(!code.equals(session.getAttribute("code")+"")) {
 			session.invalidate(); // session 過期失效
 			model.addAttribute("loginMessage", "驗證碼錯誤");
-			return "sq/frontend/frontend_register";}
-	    // 根據 username 查找 user 物件
-	    Optional<User> userOpt = sqUserDao.findUserByUsername(username);
+			return "sq/frontend/frontend_login";}
+	    // 根據 useremail 查找 user 物件
+	    Optional<User> userOpt = sqUserDao.findUserByEmail(useremail);
 
 	    if (userOpt.isPresent()) {
 	        User user = userOpt.get();
@@ -186,7 +189,7 @@ public class SqUserController {
 	            // 將 user 物件放入到 session 變數中
 	            session.setAttribute("user", user);
 	            // OK, 導向前台首頁
-	            return "redirect:/mvc/sq/frontend/main";
+	            return "redirect:/mvc/sq/index";
 	        } else {
 	            // session 過期失效
 	            session.invalidate();
@@ -222,68 +225,88 @@ public class SqUserController {
 	                           @RequestParam("useremail") String email,
 	                           @ModelAttribute User user,
 	                           HttpSession session, Model model) throws Exception {
+		// 檢查有無登入
+	    User user1 = (User) session.getAttribute("user");
+	    if (user1 == null) {
+	        // 重新導向到登入頁面或其他處理方式
+	    	model.addAttribute("loginMessage", "欲修改姓名請先登入");
+	        return "sq/frontend/frontend_login";
+	    }
 	    // 根據 useremail 查找 user 物件
 	    Optional<User> userOpt = sqUserDao.findUserByEmail(email);
 
 	    // 如果 確認有該使用者 則 比對姓名 否則 回傳"查無此信箱"
 	    if (userOpt.isPresent()) {
 	        User existingUser = userOpt.get();
-	        
+	        // 如果 使用者名稱重複 則 重導
+	        if(existingUser.getUsername().equals(newusername)) {
+	            model.addAttribute("loginMessage", "使用者名稱重複");
+	            return "sq/frontend/frontend_editUserName";
+	        }
 	        // 如果 確認有該使用者 則 比對姓名
 	        if (existingUser.getUsername().equals(oldusername)) {
 	            existingUser.setUsername(newusername);
 	            sqUserDao.updateUserName(existingUser.getUserId(), newusername);
-	        } else {
-	            session.invalidate(); // session 過期失效
+	        }
+	        else {
 	            model.addAttribute("loginMessage", "查無此使用者名稱");
-	            return "sq/frontend/frontend_editUserInfo";
+	            return "sq/frontend/frontend_editUserName";
 	        }
 
 	        return "sq/frontend/frontend_index";
-	    }
-
-	    session.invalidate(); // session 過期失效
+	        } 
 	    model.addAttribute("loginMessage", "查無此信箱");
-	    return "sq/frontend/frontend_editUserInfo";
+	    return "sq/frontend/frontend_editUserName";
 	}
+
 //======================================================
 //======================================================
 	//-----會員電話修改-----
-	//邏輯：
 	@PostMapping("/editUserTel")
 	public String editUserTel(@RequestParam("useremail") String email,
 		                      @RequestParam("Oldusertel") String oldphoneNumber,
 		                      @RequestParam("Newusertel") String newphoneNumber,
 		                      @ModelAttribute User user,
 	                          HttpSession session, Model model) throws Exception {
+			
+			// 檢查有無登入
+			User user1 = (User) session.getAttribute("user");
+			if (user1 == null) {
+			// 重新導向到登入頁面或其他處理方式
+			model.addAttribute("loginMessage", "欲修改姓名請先登入");
+			return "sq/frontend/frontend_login";
+			}
+			
 	     	//根據 useremail 查找 user 物件		   
 			Optional<User> userOpt = sqUserDao.findUserByEmail(email);
 			//如果 確認有該使用者 則 比對姓名 否則 回傳"查無此信箱"
 		    if (userOpt.isPresent()) {
 		        User existingUser = userOpt.get();
-
+		        // 如果 使用者電話重複 則 重導
+		        if(existingUser.getPhoneNumber().equals(newphoneNumber)) {
+		            model.addAttribute("loginMessage", "使用者電話重複");
+		            return "sq/frontend/frontend_editUserTel";
+		        }
 		        // 如果 確認有該使用者 則 比對號碼
 		        if (existingUser.getPhoneNumber().equals(oldphoneNumber)) {
 		            existingUser.setPhoneNumber(newphoneNumber);
 		            sqUserDao.updateUserNumber(existingUser.getUserId(), newphoneNumber);
 		        } else {
-		            session.invalidate(); // session 過期失效
+
 		            model.addAttribute("loginMessage", "查無使用者電話號碼");
-		            return "sq/frontend/frontend_editUserInfo";
+		            return "sq/frontend/frontend_editUserTel";
 		        }
-
 		        return "sq/frontend/frontend_index";
-		    }
-
-		    session.invalidate(); // session 過期失效
+		    }	
+		    
 		    model.addAttribute("loginMessage", "查無此信箱");
-		    return "sq/frontend/frontend_editUserInfo";
-		}	
+		    return "sq/frontend/frontend_editUserTel";
+	}	
 
+	
 //=====================================================
 //=====================================================
 	//-----聯絡我們-----
-	//邏輯：
 	//。新增 contact 物件
 	//。注入資料至 contact 物件 並 回傳至資料庫
 	//。return 至 確認送出表單的jsp
@@ -304,7 +327,7 @@ public class SqUserController {
 		
 		model.addAttribute("successMessage", "感謝您的聯絡<hr>我們會盡快與您聯繫");
 		
-		return "sq/frontend/frontend_checkContact";
+		return "sq/frontend/frontend_checkPage";
 		
 		}
 	

@@ -169,8 +169,8 @@ body {
                             修改會員資料<img src=<c:url value="/resources/img/icon/list.svg"/> alt="">
                         </a>
                         <ul class="dropdown-menu left-prod-class-dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserInfo">修改會員姓名</a></li>
-                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserInfo">修改會員電話</a></li>
+                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserName">修改會員姓名</a></li>
+                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserTel">修改會員電話</a></li>
                             <hr class="dropdown-divider">
                             <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/findpassword">查詢密碼</a></li>
 
@@ -239,7 +239,7 @@ body {
 										
 										<input
 											id="stacked-code" name="code"
-											placeholder="請輸入下圖數字" class="pure-input-3" />
+											placeholder="請輸入下圖英文字" class="pure-input-3" />
 											
 										<img src="/SpiritQuest/mvc/user/getcode" alt="驗證碼" />
 										</div>

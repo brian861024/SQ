@@ -47,6 +47,9 @@ insert into product (productName, price, stockQty, description, isLaunch, catego
 insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('Vodka', 200 , 12 , '無色無味的烈酒，適合製作各種雞尾酒。' , 1 , 5);
 insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('Liqueur', 200 , 0 , '甜美且風味豐富的複合型烈酒。' , 0 , 5);
 insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('Plum', 200 , 8 , '以梅子為基礎的酒品，風味獨特。' , 1 , 3);
+insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('雷伯五號 威士忌', 700 , 8 , '由穀物糖漿蒸餾，如波本、蘇格蘭、裡爾等，風味獨特。' , 1 , 3);
+insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('帝王8年 龍舌蘭風味桶 750ml', 680 , 8 , '由穀物糖漿蒸餾，如波本、蘇格蘭、裡爾等，風味獨特。' , 1 , 3);
+insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('CHOYA 梅子風味氣泡酒 750ml', 480 , 8 , '以梅子為基礎的酒品，風味獨特。' , 1 , 3);
 
 
 -- cart

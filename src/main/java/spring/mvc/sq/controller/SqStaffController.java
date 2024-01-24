@@ -50,9 +50,27 @@ public class SqStaffController {
 //======================= 商品列表後台 =======================
 //========================================================
 	//-----新增上架商品-----
-		
+	@RequestMapping("/backend/addProd")
+	public String addProd(@RequestParam("productName") String productName,
+			  			  @RequestParam("price") String price,
+			  			  @RequestParam("stockQty") String stockQty,
+			  			  @RequestParam("description") String description,
+			  			  @RequestParam("isLaunch") String isLaunch,
+			  			  @RequestParam("categoryId") String categoryId,
+			  			  HttpSession session, Model model) {
+		return "";
+	}
+	
 	//-----刪除上架商品-----
-			
+	
+	//-----更改商品庫存數量-----
+	@RequestMapping("/backend/changeProdQty")
+	public String changeProdQty(@RequestParam("productId") String productId,
+								@RequestParam("productQty") String productQty,
+								HttpSession session, Model model) {
+		return "";
+	}
+		
 //======================= 會員管理後台 =======================
 //========================================================
 			

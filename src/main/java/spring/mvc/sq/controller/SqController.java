@@ -42,17 +42,21 @@ public class SqController {
 	
 	//進入首頁(前台商品列表)
 	@RequestMapping("/index")
-	public String goToIndex(Model model) {
+	public String goToIndex(HttpSession session,Model model) {
+		User user1 = (User) session.getAttribute("user");
+		
 		// 過濾出只有上架的商品
-//		List<Product> products = sqProductDao.findAllProducts(true);			
-//		model.addAttribute("products", products);
-
+		List<Product> products = sqProductDao.findAllProducts(true);			
+		model.addAttribute("products", products);
+		
 		return "sq/frontend/frontend_index";
 	}
 	
 	//進入商品頁面(前台商品頁面)
 	@RequestMapping("/prod")
-	public String goToprod(Model model) {
+	public String goToprod(HttpSession session,Model model) {
+		User user1 = (User) session.getAttribute("user");
+
 		// 透過名字找出商品
 		Optional<Product> prodOpt = sqProductDao.findProductbyId(1);
 		 
@@ -61,20 +65,26 @@ public class SqController {
 		
 	//進入登入頁面
 		@RequestMapping("/login")
-		public String goToLogin() {
+		public String goToLogin(HttpSession session) {
+			User user1 = (User) session.getAttribute("user");
+			
 			return "sq/frontend/frontend_login";	
 	}
 		
 	//進入註冊頁面
 		@RequestMapping("/register")
-		public String goToRegister() {
+		public String goToRegister(HttpSession session) {
+			User user1 = (User) session.getAttribute("user");
+			
 			return "sq/frontend/frontend_register";	
 	}
 	
 	//進入購物車頁面
 		@RequestMapping("/cart")
 		public String cartPage(HttpSession session, Model model) {
-		    // 安全性檢查
+			User user1 = (User) session.getAttribute("user");
+			
+		    // 檢查有無登入
 		    User user = (User) session.getAttribute("user");
 		    if (user == null) {
 		        // 重新導向到登入頁面或其他處理方式
@@ -105,73 +115,136 @@ public class SqController {
 
 	//進入訂單頁面
 		@RequestMapping("/order")
-		public String goToOrder() {
+		public String goToOrder(HttpSession session, Model model) {
+			User user1 = (User) session.getAttribute("user");
+			
+		    // 檢查有無登入
+		    User user = (User) session.getAttribute("user");
+		    if (user == null) {
+		        // 重新導向到登入頁面或其他處理方式
+		    	model.addAttribute("loginMessage", "欲查看訂單請先登入");
+		        return "sq/frontend/frontend_login";
+		    }
 			return "sq/frontend/frontend_order";	
 		}
 		
 	//進入最愛商品頁面
 		@RequestMapping("/favoriteProd")
-		public String goToFavoriteProd() {
+		public String goToFavoriteProd(HttpSession session, Model model) {
+			User user1 = (User) session.getAttribute("user");
+			
+		    // 檢查有無登入
+		    User user = (User) session.getAttribute("user");
+		    if (user == null) {
+		        // 重新導向到登入頁面或其他處理方式
+		    	model.addAttribute("loginMessage", "欲查看最愛商品請先登入");
+		        return "sq/frontend/frontend_login";
+		    }
+			
 			return "sq/frontend/frontend_favoriteProd";	
 		}
 
 	//進入修改會員姓名頁面
 		@RequestMapping("/editUserName")
-		public String goToEditUserInfo() {
+		public String goToEditUserName(HttpSession session, Model model) {
+			User user1 = (User) session.getAttribute("user");
+			
+		    // 檢查有無登入
+		    User user = (User) session.getAttribute("user");
+		    if (user == null) {
+		        // 重新導向到登入頁面或其他處理方式
+		    	model.addAttribute("loginMessage", "欲修改姓名請先登入");
+		        return "sq/frontend/frontend_login";
+		    }
+			
 			return "sq/frontend/frontend_editUserName";	
+		}
+		
+	//進入修改會員電話頁面
+		@RequestMapping("/editUserTel")
+		public String goToEditUserTel(HttpSession session, Model model) {
+			User user1 = (User) session.getAttribute("user");
+			
+		    // 檢查有無登入
+		    User user = (User) session.getAttribute("user");
+		    if (user == null) {
+		        // 重新導向到登入頁面或其他處理方式
+		    	model.addAttribute("loginMessage", "欲修改電話請先登入");
+		        return "sq/frontend/frontend_login";
+		    }
+			
+			return "sq/frontend/frontend_editUserTel";	
 		}
 		
 	//進入查找密碼頁面
 		@RequestMapping("/findpassword")
-		public String goToFindpassword() {
+		public String goToFindpassword(HttpSession session) {
+			User user1 = (User) session.getAttribute("user");
+			
 			return "sq/frontend/frontend_findpassword";	
 		}
 
 	//進入聯絡我們頁面
 		@RequestMapping("/contact")
-		public String goToContact() {
+		public String goToContact(HttpSession session) {
+			User user1 = (User) session.getAttribute("user");
+			
 			return "sq/frontend/frontend_contact";	
 		}
 		
 	//進入威士忌介紹頁面
 		@RequestMapping("/whiskey")
-		public String goToWhiskey() {
+		public String goToWhiskey(HttpSession session) {
+			User user1 = (User) session.getAttribute("user");
+			
 			return "sq/frontend/LiquorLibrary/whiskey";	
 		}
 		
 	//進入琴酒介紹頁面
 		@RequestMapping("/gin")
-		public String goToGin() {
+		public String goToGin(HttpSession session) {
+			User user1 = (User) session.getAttribute("user");
+			
 			return "sq/frontend/LiquorLibrary/gin";	
 		}
 
 	//進入朗姆酒介紹頁面
 		@RequestMapping("/rum")
-		public String goToRum() {
+		public String goToRum(HttpSession session) {
+			User user1 = (User) session.getAttribute("user");
+			
 			return "sq/frontend/LiquorLibrary/rum";	
 		}
 		
 	//進入龍舌蘭酒頁面
 		@RequestMapping("/tequila")
-		public String goToTequila() {
+		public String goToTequila(HttpSession session) {
+			User user1 = (User) session.getAttribute("user");
+			
 			return "sq/frontend/LiquorLibrary/tequila";	
 		}
 		
 	//進入伏特加介紹頁面
 		@RequestMapping("/vodka")
-		public String goToVodka() {
+		public String goToVodka(HttpSession session) {
+			User user1 = (User) session.getAttribute("user");
+			
 			return "sq/frontend/LiquorLibrary/vodka";	
 		}
 
 	//進入利口酒介紹頁面
 		@RequestMapping("/liqueur")
-		public String goToLiqueur() {
+		public String goToLiqueur(HttpSession session) {
+			User user1 = (User) session.getAttribute("user");
+			
 			return "sq/frontend/LiquorLibrary/liqueur";	
 		}
 		
 	//進入基酒介紹頁面
 		@RequestMapping("/liquor")
-		public String goToLiquor() {
+		public String goToLiquor(HttpSession session) {
+			User user1 = (User) session.getAttribute("user");
+			
 			return "sq/frontend/LiquorLibrary/liquor";	
 		}
 
@@ -179,13 +252,17 @@ public class SqController {
 		
 	//進入後台首頁
 		@GetMapping("/backend/main")
-		public String backendMain(@ModelAttribute Product product, Model model) {
+		public String backendMain(HttpSession session,@ModelAttribute Product product, Model model) {
+			User user1 = (User) session.getAttribute("user");
+			
 			return "/sq/backend/backend_index";
 		}
 		
 	//進入後台新增商品頁面
 		@GetMapping("/backend/plusProd")
-		public String plusProd() {
+		public String plusProd(HttpSession session) {
+			User user1 = (User) session.getAttribute("user");
+			
 			return "/sq/backend/backend_plusProd";
 		}
 		
