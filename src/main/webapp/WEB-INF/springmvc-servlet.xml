@@ -65,22 +65,28 @@
     <!-- 開啟註解驅動，對事務相關的註解進行掃描與解析 -->
     <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
     
-    	<!-- 定義攔截器 Bean
-    <bean id="loginInterceptor" class="spring_mvc.employee_management.interceptor.LoginInterceptor"/> -->
+    <!-- 定義攔截器 Bean -->
+    <bean class="spring.mvc.sq.interceptor.LoginInterceptor"/>
 
-    <!-- 配置攔截器
+    <!-- 配置攔截器 -->
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <mvc:exclude-mapping path="/login"/>
-             <mvc:exclude-mapping path="/employee_management/login_backend"/>
-            <mvc:exclude-mapping path="/login/*"/>
-            <bean class="spring_mvc.employee_management.interceptor.LoginInterceptor"/>
+            <mvc:exclude-mapping path="/sq/login"/>
+            <mvc:exclude-mapping path="/sq//index"/>
+            <mvc:exclude-mapping path="/user/login"/>
+            <mvc:exclude-mapping path="/user/getcode"/>
+            <mvc:exclude-mapping path="/user/register"/>
+            <bean class="spring.mvc.sq.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
-    </mvc:interceptors> -->
+    </mvc:interceptors>
 	
 	<!-- 配置上傳檔案解析器 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="#{1024 * 1024 * 50}"></property>
     </bean>
+    
+    <!-- http://localhost:8080/SpiritQuest/mvc/product/image/sashimi.jpg  -->
+    <mvc:resources mapping="/product/image/**" location="file:C:/uploads/"/>
+    
 </beans>		

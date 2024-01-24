@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.data.domain.Pageable;
+
 import spring.mvc.sq.model.entity.*;
 
 public interface SqProductDao {
@@ -38,4 +40,7 @@ public interface SqProductDao {
 //  14.刪除商品
 	Boolean removeProductById(Integer productId);
 	
+	public List<Product> findProductsByPage(Boolean isLaunch,Pageable page);
+	
+	public int totalPage(Boolean isLaunch,int pageSize);
 }

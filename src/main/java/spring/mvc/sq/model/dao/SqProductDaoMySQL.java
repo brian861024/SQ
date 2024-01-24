@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -19,21 +20,21 @@ public class SqProductDaoMySQL implements SqProductDao {
     // 1. 查找所有產品
     @Override
     public List<Product> findAllProducts() {
-        String sql = "SELECT * FROM Product";
+        String sql = "SELECT productId, productName, price, stockQty, description, isLaunch, categoryId FROM Product";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class));
     }
 
     // 2. 根據上架狀態查找產品
     @Override
     public List<Product> findAllProducts(Boolean isLaunch) {
-        String sql = "SELECT * FROM Product WHERE isLaunch = ?";
+        String sql = "SELECT productId, productName, price, stockQty, description, isLaunch, categoryId FROM Product WHERE isLaunch = ?";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class), isLaunch);
     }
 
     // 3. 根據產品ID查找單個產品
     @Override
     public Optional<Product> findProductbyId(Integer productId) {
-        String sql = "SELECT * FROM Product WHERE productId = ?";
+        String sql = "SELECT productId, productName, price, stockQty, description, isLaunch, categoryId FROM Product WHERE productId = ?";
         try {
             // 使用 queryForObject 方法來獲取單個結果
             Product product = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Product.class), productId);
@@ -70,7 +71,7 @@ public class SqProductDaoMySQL implements SqProductDao {
     public void addProduct(Product product) {
         String sql = "INSERT INTO Product (ProductName, Price, StockQuantity, Description, isLaunch, CategoryId) VALUES (?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql, product.getProductName(), product.getPrice(), product.getStockQty(),
-                product.getDescribe(), product.getIsLaunch(), product.getCategoryId());
+                product.getDescription(), product.getIsLaunch(), product.getCategoryId());
     }
 
     // 8. 更新產品上架狀態
@@ -122,5 +123,21 @@ public class SqProductDaoMySQL implements SqProductDao {
         String sql = "DELETE FROM Product WHERE productId = ?";
         return jdbcTemplate.update(sql, productId) > 0;
     }
+    
+    
+	/**
+	 * Pageable: getPageSize 每頁顯示幾筆？ getOffset 移動到第幾筆開始計算
+	 */
+	@Override
+	public List<Product> findProductsByPage(Boolean isLaunch,Pageable page) {
+		String sql = "SELECT productId, productName, price, stockQty, description, isLaunch, categoryId FROM Product WHERE isLaunch = ? order by productId Limit ? Offset ? ";
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class),isLaunch, page.getPageSize(),page.getOffset());
+	}
+
+	@Override
+	public int totalPage(Boolean isLaunch,int pageSize) {
+		String sql = "SELECT CEIL(COUNT(1) / ?) AS total FROM Product WHERE isLaunch = ?";
+		return jdbcTemplate.queryForObject(sql, Integer.class,pageSize,isLaunch);
+	}
 
 }

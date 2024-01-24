@@ -13,7 +13,7 @@ public class Product {
 	private String productName; // 商品名稱
 	private Integer price; // 商品價格
 	private Integer stockQty; //商品庫存
-	private String describe; //商品描述
+	private String description; //商品描述
 	private Boolean isLaunch; // 是否上架
 	private Integer categoryId; //商品分類
 	
