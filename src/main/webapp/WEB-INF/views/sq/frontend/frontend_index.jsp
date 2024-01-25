@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+	
 <%@ include file="/WEB-INF/views/sq/fragements/header.jspf" %>
 
+<link rel="stylesheet" href=<c:url value="/resources/css/frontend_index.css" /> />
 <!--======================================
        Roll Area
  ==========================================-->
@@ -54,6 +54,7 @@
 	<div class="container">
 		<!-- 上方搜索列 -->
 		<div class="search">
+			<form class="d-flex justify-content-end align-items-end" style="width: 100%;">
 			<select class="category">
 				<option value="0" class="select1">請選擇分類</option>
 				<option>威士忌</option>
@@ -62,7 +63,8 @@
 				<option>葡萄酒</option>
 				<option>調酒</option>
 				<option>酒器</option>
-			</select> <select class="category">
+			</select>
+			<select class="category">
 				<option value="0" class="select1">請選擇價格</option>
 				<option>&nbsp&nbsp&nbsp0&nbsp&nbsp&nbsp ~ 1000</option>
 				<option>1000 ~ 2000</option>
@@ -71,9 +73,7 @@
 				<option>4000 ~ 5000</option>
 				<option>5000 以上</option>
 			</select>
-			<form class="d-flex" style="width: 50%; margin: 10px">
-				<input class="form-control me-2" type="search" placeholder="Search"
-					aria-label="Search">
+	
 				<button class="btn btn-outline-light" type="submit">Search</button>
 			</form>
 		</div>
@@ -189,32 +189,37 @@
 				<!-- 商品搜索 -->
 				<!-- 商品卡片 -->
 				<div class="card-area">
-
-					<c:forEach items="${ products }" var="product">
-						<div class="card"
-							style="width: auto; max-width: 18rem; background: #ffffffb7;">
-							<!-- <img src=<c:url value="/resources/img/cocktail/negroni.webp"/> alt=""> -->
-							<img src="/SpiritQuest/mvc/product/image/sashimi.jpg" alt="" />
-							<div class="card-body">
-								<h5 class="card-title">${ product.productName }</h5>
-								<p class="card-text">${ product.description }</p>
-							</div>
-						</div>
-					</c:forEach>
+				    <c:forEach items="${products}" var="product">
+				        <div class="card" style="width: auto; max-width: 18rem; background: #ffffffb7;">
+				            <img src="/SpiritQuest/mvc/product/image/${product.image}" alt="" />
+				            <div class="card-body">
+				                <h5 class="card-title">${product.productName}</h5>
+				                <p class="card-text">${product.description}</p>
+				                <!-- 添加點擊事件，呼叫 JavaScript 函數 -->
+				                <button onclick="redirectToProdPage(${product.productId})" class="pure-button">更多商品資料</button>
+				            </div>
+				        </div>
+				    </c:forEach>
+				</div>
+				
+				<!-- 隱藏的表單 -->
+				<form id="redirectToProdForm" method="post" action="/frontend_prod">
+				    <input type="hidden" name="productId" id="productIdInput" value="" />
+				</form>
 
 					<!-- 最下方換頁按鈕 -->
 					<div>
-						<nav class="d-flex justify-content-end me-2">
+						<nav class="d-flex justify-content-center me-7 m-5">
 							<ul class="pagination">
-								<li class="page-item"><a class="page-link"
-									href="/SpiritQuest/mvc/sq/index?currentPage=${ (currentPage - 1) <= 0 ? 1: currentPage - 1}">Previous</a></li>
+								<li class="page-item"><a class="page-link" style="color: black;"
+									href="/SpiritQuest/mvc/sq/index?currentPage=${ (currentPage - 1) <= 0 ? 1: currentPage - 1}">上一頁</a></li>
 								<c:forEach begin="1" end="${ totalPage }" varStatus="loop">
-									<li class="page-item"><a class="page-link"
+									<li class="page-item"><a class="page-link" style="color: black;"
 										href="/SpiritQuest/mvc/sq/index?currentPage=${loop.index}">${loop.index}</a>
 									</li>
 								</c:forEach>
-								<li class="page-item"><a class="page-link"
-									href="/SpiritQuest/mvc/sq/index?currentPage=${ (currentPage + 1) >= totalPage ? totalPage: currentPage + 1  }">Next</a></li>
+								<li class="page-item"><a class="page-link" style="color: black;"
+									href="/SpiritQuest/mvc/sq/index?currentPage=${ (currentPage + 1) >= totalPage ? totalPage: currentPage + 1  }">下一頁</a></li>
 							</ul>
 						</nav>
 						<!--
@@ -235,7 +240,7 @@
                                  </li>
                              </ul>
                          </nav> 
-                          -->
+                         -->
 					</div>
 				</div>
 			</div>
@@ -245,5 +250,14 @@
 	</div>
 	</div>
 </section>
+
+<script>
+function redirectToProdPage(productId) {
+    // 將 productId 填充到隱藏的 input 中
+    document.getElementById("productIdInput").value = productId;
+    // 提交表單
+    document.getElementById("redirectToProdForm").submit();
+}
+</script>
 
 <%@ include file="/WEB-INF/views/sq/fragements/footer.jspf" %>

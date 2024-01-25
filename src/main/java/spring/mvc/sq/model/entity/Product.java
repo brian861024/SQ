@@ -16,5 +16,6 @@ public class Product {
 	private String description; //商品描述
 	private Boolean isLaunch; // 是否上架
 	private Integer categoryId; //商品分類
+	private String image; //圖片檔案名稱描述
 	
 }

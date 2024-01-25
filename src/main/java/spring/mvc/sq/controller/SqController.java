@@ -63,7 +63,7 @@ public class SqController {
 
 		// List<Product> products = sqProductDao.findAllProducts(true);
 
-		int pageSize = 2;
+		int pageSize = 9;
 		int totalPage = sqProductDao.totalPage(true, pageSize); // 算出總頁數
 		Pageable page = new PageRequest((currentPage - 1), pageSize); // 0:第一頁(1-1=0) 10:每頁幾筆
 		
@@ -78,14 +78,17 @@ public class SqController {
 	}
 
 	// 進入商品頁面(前台商品頁面)
-	@RequestMapping("/prod")
-	public String goToprod(HttpSession session, Model model) {
+	@RequestMapping("/frontend_prod")
+	public String goToprod(HttpSession session, Model model,
+					@RequestParam("productId") Integer productId
+							) {
 		User user1 = (User) session.getAttribute("user");
 
 		// 透過名字找出商品
-		Optional<Product> prodOpt = sqProductDao.findProductbyId(1);
+		Optional<Product> prodOpt = sqProductDao.findProductbyId(productId);
+		model.addAttribute("products", prodOpt);
 
-		return "sq/frontend/frontend_index";
+		return "sq/frontend/frontend_prod";
 	}
 
 	// 進入登入頁面
@@ -100,8 +103,7 @@ public class SqController {
 	// 進入註冊頁面
 	@RequestMapping("/register")
 	public String goToRegister(HttpSession session) {
-		User user1 = (User) session.getAttribute("user");
-
+		
 		return "sq/frontend/frontend_register";
 	}
 
@@ -133,13 +135,6 @@ public class SqController {
 	// 進入訂單頁面
 	@RequestMapping("/order")
 	public String goToOrder(HttpSession session, Model model) {
-		// 檢查有無登入
-		User user = (User) session.getAttribute("user");
-		if (user == null) {
-			// 重新導向到登入頁面或其他處理方式
-			model.addAttribute("loginMessage", "欲查看訂單請先登入");
-			return "sq/frontend/frontend_login";
-		}
 		return "sq/frontend/frontend_order";
 	}
 

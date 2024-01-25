@@ -73,10 +73,22 @@
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <mvc:exclude-mapping path="/sq/login"/>
-            <mvc:exclude-mapping path="/sq//index"/>
+            <mvc:exclude-mapping path="/sq/index"/>
             <mvc:exclude-mapping path="/user/login"/>
             <mvc:exclude-mapping path="/user/getcode"/>
             <mvc:exclude-mapping path="/user/register"/>
+            <mvc:exclude-mapping path="/sq/contact"/>
+            <mvc:exclude-mapping path="/user/register"/>
+            <mvc:exclude-mapping path="/sq/whiskey"/>
+            <mvc:exclude-mapping path="/sq/gin"/>
+            <mvc:exclude-mapping path="/sq/rum"/>
+            <mvc:exclude-mapping path="/sq/tequila"/>
+            <mvc:exclude-mapping path="/sq/vodka"/>
+            <mvc:exclude-mapping path="/sq/liqueur"/>
+            <mvc:exclude-mapping path="/sq/liquor"/>
+            <mvc:exclude-mapping path="/sq/register"/>
+            <mvc:exclude-mapping path="/user/contact"/>
+            <mvc:exclude-mapping path="/sq/findpassword"/>
             <bean class="spring.mvc.sq.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

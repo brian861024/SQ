@@ -39,19 +39,35 @@ insert into category (categoryId, categoryName) values ( 23, 'Taiwanese_Whisky')
 
 select * from product;
 
-insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('Whiskey', 200 , 20 , '由穀物糖漿蒸餾，如波本、蘇格蘭、裡爾等，風味獨特。' , 0 , 2);
-insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('Taiwanese_Whisky', 200 , 20 , '由穀物糖漿蒸餾，如波本、蘇格蘭、裡爾等，風味獨特。' , 0 , 23);
-insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('Rum', 150 , 10 , '由甘蔗副產品製成，淺色、深色、香料風味多樣。' , 1 , 5);
-insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('Gin', 100 , 30 , '以杜松子為主，加入香草和柑橘皮，風味清新。' , 1 , 5);
-insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('Tequila', 200 , 4 , '由藍龍舌蘭植物發酵，風味獨特，包括白龍舌蘭和陳年款。' , 1 , 5);
-insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('Vodka', 200 , 12 , '無色無味的烈酒，適合製作各種雞尾酒。' , 1 , 5);
-insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('Liqueur', 200 , 0 , '甜美且風味豐富的複合型烈酒。' , 0 , 5);
-insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('Plum', 200 , 8 , '以梅子為基礎的酒品，風味獨特。' , 1 , 3);
-insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('雷伯五號 威士忌', 700 , 8 , '由穀物糖漿蒸餾，如波本、蘇格蘭、裡爾等，風味獨特。' , 1 , 3);
-insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('帝王8年 龍舌蘭風味桶 750ml', 680 , 8 , '由穀物糖漿蒸餾，如波本、蘇格蘭、裡爾等，風味獨特。' , 1 , 3);
-insert into product (productName, price, stockQty, description, isLaunch, categoryId) values ('CHOYA 梅子風味氣泡酒 750ml', 480 , 8 , '以梅子為基礎的酒品，風味獨特。' , 1 , 3);
-
-
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Mojito', 200 , 20 , '由穀物糖漿蒸餾，如波本、蘇格蘭、裡爾等，風味獨特。' , 1 , 2, 'LongIslandIcedTea.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Taiwanese_Whisky', 200 , 20 , '由穀物糖漿蒸餾，如波本、蘇格蘭、裡爾等，風味獨特。' , 0 , 23, 'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Gintonic', 200 , 20 , '由穀物糖漿蒸餾，如波本、蘇格蘭、裡爾等，風味獨特。' , 1 , 22, 'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Rum', 150 , 18 , '由甘蔗副產品製成，淺色、深色、香料風味多樣。' , 1 , 5, 'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Rum', 350 , 10 , '由甘蔗副產品製成，淺色、深色、香料風味多樣。' , 1 , 5, 'LongIslandIcedTea.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('長島冰茶', 450 , 13 , '由甘蔗副產品製成，淺色、深色、香料風味多樣。' , 1 , 5, 'LongIslandIcedTea.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Gintonic', 100 , 30 , '以杜松子為主，加入香草和柑橘皮，風味清新。' , 1 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Gin', 200 , 27 , '以杜松子為主，加入香草和柑橘皮，風味清新。' , 1 , 5,'LongIslandIcedTea.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Gin', 300 , 21 , '以杜松子為主，加入香草和柑橘皮，風味清新。' , 1 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Tequila', 200 , 4 , '由藍龍舌蘭植物發酵，風味獨特，包括白龍舌蘭和陳年款。' , 1 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Vodka', 200 , 12 , '無色無味的烈酒，適合製作各種雞尾酒。' , 1 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Vodka', 200 , 12 , '無色無味的烈酒，適合製作各種雞尾酒。' , 1 , 5,'LongIslandIcedTea.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Mojito', 200 , 0 , '甜美且風味豐富的複合型烈酒。' , 0 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Pinklady', 250 , 12 , '甜美且風味豐富的複合型烈酒。' , 1 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Pinklady', 220 , 3 , '甜美且風味豐富的複合型烈酒。' , 1 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Gin', 300 , 21 , '以杜松子為主，加入香草和柑橘皮，風味清新。' , 1 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Tequila', 200 , 4 , '由藍龍舌蘭植物發酵，風味獨特，包括白龍舌蘭和陳年款。' , 1 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Vodka', 200 , 12 , '無色無味的烈酒，適合製作各種雞尾酒。' , 1 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Vodka', 200 , 12 , '無色無味的烈酒，適合製作各種雞尾酒。' , 1 , 5,'LongIslandIcedTea.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Mojito', 200 , 0 , '甜美且風味豐富的複合型烈酒。' , 0 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Pinklady', 250 , 12 , '甜美且風味豐富的複合型烈酒。' , 1 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Pinklady', 220 , 3 , '甜美且風味豐富的複合型烈酒。' , 1 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Gin', 300 , 21 , '以杜松子為主，加入香草和柑橘皮，風味清新。' , 1 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Tequila', 200 , 4 , '由藍龍舌蘭植物發酵，風味獨特，包括白龍舌蘭和陳年款。' , 1 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Vodka', 200 , 12 , '無色無味的烈酒，適合製作各種雞尾酒。' , 1 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Vodka', 200 , 12 , '無色無味的烈酒，適合製作各種雞尾酒。' , 1 , 5,'LongIslandIcedTea.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Mojito', 200 , 0 , '甜美且風味豐富的複合型烈酒。' , 0 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Pinklady', 250 , 12 , '甜美且風味豐富的複合型烈酒。' , 1 , 5,'gintonic.webp');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Pinklady', 220 , 3 , '甜美且風味豐富的複合型烈酒。' , 1 , 5,'gintonic.webp');
 -- cart
 
 select * from cart;

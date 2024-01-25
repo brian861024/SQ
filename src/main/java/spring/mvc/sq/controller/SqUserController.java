@@ -120,7 +120,7 @@ public class SqUserController {
 //======================================================
 //======================================================	
 	//-----會員註冊功能-----
-	//。用戶名或信箱不可重複
+	//。信箱不可重複
 	//。兩次的註冊密碼要相同
 	@RequestMapping("/register")
 	public String register(@RequestParam("username") String username,
@@ -135,15 +135,18 @@ public class SqUserController {
 			session.invalidate(); // session 過期失效
 			model.addAttribute("loginMessage", "驗證碼錯誤");
 			return "sq/frontend/frontend_register";}
-		Optional<User> userOpt = sqUserDao.findUserByUsername(username);
-		if(userOpt.isPresent()){
+		
+		Optional<User> userOpt = sqUserDao.findUserByEmail(email);
+		
+				if(userOpt.isPresent()){
 			// 如果 使用該姓名或信箱的user有存在 則 執行此處
 			session.invalidate(); // session 過期失效
-			model.addAttribute("loginMessage", "使用者名稱重複");
+			model.addAttribute("loginMessage", "使用者信箱重複");
 			return "sq/frontend/frontend_register";
 		}
 		// 如果 用戶名和信箱均不重複 則 檢查兩次密碼是否相同
 		else if (!password.equals(password2)){
+			 session.invalidate(); // session 過期失效
 	         model.addAttribute("loginMessage", "兩次輸入的密碼不相同");
 	         return "sq/frontend/frontend_register";
 	      }
@@ -215,6 +218,7 @@ public class SqUserController {
 		session.invalidate(); // session 過期失效
 		return "redirect:/mvc/sq/frontend/frontend_login";
 	}
+	
 //======================================================
 //======================================================
 	//-----會員姓名修改-----

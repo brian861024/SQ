@@ -20,21 +20,21 @@ public class SqProductDaoMySQL implements SqProductDao {
     // 1. 查找所有產品
     @Override
     public List<Product> findAllProducts() {
-        String sql = "SELECT productId, productName, price, stockQty, description, isLaunch, categoryId FROM Product";
+        String sql = "SELECT productId, productName, price, stockQty, description, isLaunch, categoryId, image FROM Product";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class));
     }
 
     // 2. 根據上架狀態查找產品
     @Override
     public List<Product> findAllProducts(Boolean isLaunch) {
-        String sql = "SELECT productId, productName, price, stockQty, description, isLaunch, categoryId FROM Product WHERE isLaunch = ?";
+        String sql = "SELECT productId, productName, price, stockQty, description, isLaunch, categoryId, image FROM Product WHERE isLaunch = ?";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class), isLaunch);
     }
 
     // 3. 根據產品ID查找單個產品
     @Override
     public Optional<Product> findProductbyId(Integer productId) {
-        String sql = "SELECT productId, productName, price, stockQty, description, isLaunch, categoryId FROM Product WHERE productId = ?";
+        String sql = "SELECT productId, productName, price, stockQty, description, isLaunch, categoryId, image FROM Product WHERE productId = ?";
         try {
             // 使用 queryForObject 方法來獲取單個結果
             Product product = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Product.class), productId);
@@ -130,7 +130,7 @@ public class SqProductDaoMySQL implements SqProductDao {
 	 */
 	@Override
 	public List<Product> findProductsByPage(Boolean isLaunch,Pageable page) {
-		String sql = "SELECT productId, productName, price, stockQty, description, isLaunch, categoryId FROM Product WHERE isLaunch = ? order by productId Limit ? Offset ? ";
+		String sql = "SELECT productId, productName, price, stockQty, description, isLaunch, categoryId, image FROM Product WHERE isLaunch = ? order by productId Limit ? Offset ? ";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class),isLaunch, page.getPageSize(),page.getOffset());
 	}
 

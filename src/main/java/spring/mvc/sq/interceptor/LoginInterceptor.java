@@ -25,7 +25,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 			return true;
 		}
 		// 未登入, 導入到登入頁面
-		response.sendRedirect(request.getServletContext().getContextPath() + "/mvc/sq/login?loginMessage=" + URLEncoder.encode("請先登入!!"));
+		response.sendRedirect(request.getServletContext().getContextPath() + "/mvc/sq/login?loginMessage=" + URLEncoder.encode("請先登入"));
 		return false;
 	}
 

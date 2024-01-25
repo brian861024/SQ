@@ -130,29 +130,9 @@ body {
 										</thead>
 										<tr>
 											<td></td>
-											<td class="order-card-form-prod-name">雷伯五號 威士忌</td>
-											<td>2</td>
-											<td>700 /元</td>
-										</tr>
-										<tr>
-											<td></td>
-											<td class="order-card-form-prod-name">帝王8年 龍舌蘭風味桶 750ml</td>
-											<td>1</td>
-											<td>680 /元</td>
-										</tr>
-										<tr>
-											<td></td>
-											<td class="order-card-form-prod-name">CHOYA 梅子風味氣泡酒
-												750ml</td>
-											<td>1</td>
-											<td>480 /元</td>
-										</tr>
-										<tr>
-											<td></td>
-											<td class="order-card-form-prod-name">CHOYA 梅子風味氣泡酒
-												750ml</td>
-											<td>1</td>
-											<td>480 /元</td>
+											<td class="order-card-form-prod-name">${ product.productName }</td>
+											<td>${ cartItem.qty }</td>
+											<td>${ cartItem.price } /元</td>
 										</tr>
 										</tbody>
 									</table>

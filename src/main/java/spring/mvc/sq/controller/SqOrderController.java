@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.mysql.cj.Session;
 
 import spring.mvc.sq.model.entity.*;
-
+import spring.mvc.sq.model.entity.Cart;
+import spring.mvc.sq.model.entity.User;
 import spring.mvc.sq.model.dao.SqCartDao;
 import spring.mvc.sq.model.dao.SqCartItemDao;
 import spring.mvc.sq.model.dao.SqContactDao;
@@ -79,12 +80,34 @@ public class SqOrderController {
 	 }
 //======================================================
 //======================================================	
-	//-----訂單確認+完成-----
-	//。
-//	@RequestMapping("/check")
-//	public String checkOrder() {
-//		
-//	}
+	//-----訂單確認以及填寫資訊-----
+	
+//======================================================
+//======================================================	
+	//-----訂單完成-----
+	//。先找到 user 登入者
+	//。找到 user 的尚未結帳的購物車
+	//。計算購物車總金額
+	@RequestMapping("/check")
+	public String checkOrder(HttpSession session, Model model) {
+			
+			// 先找到 user 登入者
+			User user = (User)session.getAttribute("user");
+			// 找到 user 的尚未結帳的購物車
+			Optional<Cart> cartOpt = sqCartDao.findNoneCheckoutCartByUserId(user.getUserId());
+			cartOpt.ifPresent(cart -> {
+				// 計算購物車總金額
+				int total = cart.getCartItems().stream()
+								.mapToInt(item -> item.getQty() * item.getProduct().getPrice())
+								.sum();
+				sqCartDao.checkoutCartByUserId(cart.getUserId()); // 結帳
+				model.addAttribute("cart", cart);
+				model.addAttribute("total", total);
+			});
+			
+			model.addAttribute("successMessage", "訂單成功送出");
+			return "";
+	}
 	
 //======================================================
 //======================================================

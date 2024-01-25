@@ -114,6 +114,7 @@ CREATE TABLE IF NOT EXISTS `mytopicsdb`.`product` (
   `description` VARCHAR(200) NULL DEFAULT NULL,
   `isLaunch` TINYINT NOT NULL DEFAULT 0 COMMENT '0:未上架,1:上架',
   `categoryId` INT NOT NULL DEFAULT 1,
+  `image` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`productId`),
   INDEX `product_categoryId_idx` (`categoryId` ASC) VISIBLE,
   CONSTRAINT `product_categoryId`
