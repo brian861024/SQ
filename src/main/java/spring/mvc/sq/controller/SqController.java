@@ -122,7 +122,7 @@ public class SqController {
 			sqCartDao.addCart(newCart);
 			return newCart;
 		});
-
+		
 		// 計算購物車總金額
 		int total = cart.getCartItems().stream().mapToInt(item -> item.getQty() * item.getProduct().getPrice()).sum();
 

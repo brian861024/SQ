@@ -134,20 +134,22 @@ public class SqUserDaoMySQL implements SqUserDao {
 		return jdbcTemplate.update(sql, userId) == 1;
 	}
 	
-	//-----根據使用者ID來查找其未結帳的購物車資料(單筆)-----
 	public Optional<Cart> findNoneCheckoutCartByUserId(Integer userId) {
-		try {
-			String sql = "select cartId, userId, isCheckout, checkoutTime from cart "
-					+ "where userId = ? and (isCheckout = false or isCheckout is null)";
-			Cart cart = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Cart.class), userId);
-			if(cart != null) {
-				enrichCartWithDetails(cart);
-			}
-			return Optional.ofNullable(cart);
-		
-		} catch (EmptyResultDataAccessException e) {
-			return Optional.empty();
-		}
+	    try {
+	        String sql = "select cartId, checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount from cart "
+	                + "where userId = ? and (isCheckout = false or isCheckout is null)";
+	        List<Cart> carts = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Cart.class), userId);
+
+	        if (!carts.isEmpty()) {
+	            Cart cart = carts.get(0);
+	            enrichCartWithDetails(cart);
+	            return Optional.of(cart);
+	        } else {
+	            return Optional.empty();
+	        }
+	    } catch (EmptyResultDataAccessException e) {
+	        return Optional.empty();
+	    }
 	}
 	
 //========================================================================
