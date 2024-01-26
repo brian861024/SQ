@@ -74,7 +74,7 @@
 				<option>5000 以上</option>
 			</select>
 	
-				<button class="btn btn-outline-light" type="submit">Search</button>
+				<button class="btn btn-outline-light" type="submit" style="margin-bottom：8px">Search</button>
 			</form>
 		</div>
 

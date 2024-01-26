@@ -176,7 +176,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 			findUserById(cart.getUserId()).ifPresent(cart::setUser);
 			
 			// 查詢 cartItems 並注入
-			String sqlItems = "select itemId, cartId, productId, price, qty from cartitem where cartId = ?";
+			String sqlItems = "select * from cartitem where cartId = ?";
 			List<CartItem> cartItems = jdbcTemplate.query(sqlItems, new BeanPropertyRowMapper<>(CartItem.class), cart.getCartId());
 			// 根據 productId 找到 product 並注入
 			cartItems.forEach(cartItem -> {

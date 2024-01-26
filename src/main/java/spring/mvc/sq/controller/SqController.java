@@ -1,7 +1,9 @@
 package spring.mvc.sq.controller;
 
+import java.text.Collator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +23,7 @@ import spring.mvc.sq.model.dao.SqContactDao;
 import spring.mvc.sq.model.dao.SqProductDao;
 import spring.mvc.sq.model.dao.SqUserDao;
 import spring.mvc.sq.model.entity.Cart;
+import spring.mvc.sq.model.entity.CartItem;
 import spring.mvc.sq.model.entity.Product;
 import spring.mvc.sq.model.entity.User;
 
@@ -43,7 +46,7 @@ public class SqController {
 	@Autowired
 	private SqCartItemDao sqCartItemDao;
 
-	// ================== 進入各種前台頁面 ==================
+// ================== 進入各種前台頁面 ==================
 
 	/**
 	 * http://localhost:8080/SpiritQuest/mvc/sq/index
@@ -54,7 +57,7 @@ public class SqController {
 	 * @param currentPage
 	 * @return
 	 */
-	// 進入首頁(前台商品列表)
+	//-----進入首頁(前台商品列表)-----
 	@RequestMapping("/index")
 	public String goToIndex(HttpSession session, Model model,
 			@RequestParam(value = "currentPage", required = false, defaultValue = "1") Integer currentPage) {
@@ -77,6 +80,7 @@ public class SqController {
 		return "sq/frontend/frontend_index";
 	}
 
+//======================================================	
 	// 進入商品頁面(前台商品頁面)
 	@RequestMapping("/frontend_prod")
 	public String goToprod(HttpSession session, Model model,
@@ -91,6 +95,7 @@ public class SqController {
 		return "sq/frontend/frontend_prod";
 	}
 
+//======================================================
 	// 進入登入頁面
 	@RequestMapping("/login")
 	public String goToLogin(
@@ -100,6 +105,7 @@ public class SqController {
 		return "sq/frontend/frontend_login";
 	}
 
+//======================================================
 	// 進入註冊頁面
 	@RequestMapping("/register")
 	public String goToRegister(HttpSession session) {
@@ -107,7 +113,9 @@ public class SqController {
 		return "sq/frontend/frontend_register";
 	}
 
+//======================================================
 	// 進入購物車頁面
+	//
 	@RequestMapping("/cart")
 	public String cartPage(HttpSession session, Model model) {
 
@@ -123,13 +131,37 @@ public class SqController {
 			return newCart;
 		});
 		
+		List<Cart> carts = sqCartDao.findCartsByUserId(user.getUserId());
+		List<Integer> cartIds = carts.stream().map(cart2->cart.getCartId()).collect(Collectors.toList());
+		List<List<CartItem>> cartItems = cartIds.stream().map(cartId->sqCartItemDao.findCartItemsById(cartId)).collect(Collectors.toList());
+		List<CartItem> CartItemflattenedList =  cartItems.stream()
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+		
+		List<Integer> productIds = CartItemflattenedList.stream().map(cartItem->cartItem.getProductId()).collect(Collectors.toList());
+		List<Product> products = productIds.stream().map(productId->sqProductDao.findProductbyId(productId).get()).collect(Collectors.toList());
+		
+		model.addAttribute("products", products);
+		model.addAttribute("cartItems", cartItems);
+		
+//		for (Cart cart2 : carts) {
+//			cartIds.add(cart2.getCartId());
+//			
+//		}
+		//List<CartItem> cartItems= carts.stream().collect(cart -> cart.getCartId());
+		
 		// 計算購物車總金額
-		int total = cart.getCartItems().stream().mapToInt(item -> item.getQty() * item.getProduct().getPrice()).sum();
+		int total = cart.getCartItems().stream().mapToInt(item -> item.getQty()*item.getPrice()).sum();
 
 		model.addAttribute("cart", cart);
 		model.addAttribute("total", total);
 
 		return "sq/frontend/frontend_cart";
+	}
+
+	private Cart getCartId() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	// 進入訂單頁面

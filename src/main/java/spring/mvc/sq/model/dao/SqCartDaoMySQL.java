@@ -31,14 +31,14 @@ public class SqCartDaoMySQL implements SqCartDao{
 	// 查找所有購物車(多筆)
 	@Override
 	public List<Cart> findAllCart() {
-		String sql = "select cartId, userId, isCheckout, checkoutTime from cart";
+		String sql = "select cartId, checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount from cart";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Cart.class));
 	}
 
 	// 根據使用者ID來查找其所有購物車資料(多筆)
 	@Override
 	public List<Cart> findCartsByUserId(Integer userId) {
-		String sql = "select cartId, userId, isCheckout, checkoutTime from cart where userId = ?";
+		String sql = "select * from cart where userId = ?";
 		List<Cart> carts = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Cart.class), userId);
 		carts.forEach(this::enrichCartWithDetails);
 		return carts;
@@ -47,7 +47,7 @@ public class SqCartDaoMySQL implements SqCartDao{
 	// 根據is_Checkout狀態查找所有購物車資料(多筆)
 	@Override
 	public List<Cart> findCartIdbyisCheckout(Boolean isCheckout) {
-		String sql = "select cartId, userId, isCheckout, checkoutTime from cart where isCheckout = ?";
+		String sql = "select cartId, checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount from cart where isCheckout = ?";
 		List<Cart> carts = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Cart.class), isCheckout);
 		carts.forEach(this::enrichCartWithDetails);
 		return carts;
@@ -56,7 +56,7 @@ public class SqCartDaoMySQL implements SqCartDao{
 	// 根據is_Checkout狀態及UserId列出訂單(多筆)
 	@Override
 	public List<Cart> findCartIdbyisCheckoutAndUserId(Boolean isCheckout, Integer userId) {
-		String sql = "select cartId, userId, isCheckout, checkoutTime from cart where isCheckout = ? and userId = ?";
+		String sql = "select cartId, checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount from cart where isCheckout = ? and userId = ?";
 		List<Cart> carts = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Cart.class), isCheckout);
 		carts.forEach(this::enrichCartWithDetails);
 		return carts;
@@ -79,7 +79,7 @@ public class SqCartDaoMySQL implements SqCartDao{
 	// 根據使用者ID來查找其未結帳的購物車資料(單筆)
     @Override
     public Optional<Cart> findNoneCheckoutCartByUserId(Integer userId) {
-        String sql = "select cartId, userId, isCheckout, checkoutTime from cart where userId = ? AND isCheckout = false";
+        String sql = "select cartId, checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount from cart where userId = ? AND isCheckout = false";
         try {
             Cart cart = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Cart.class), userId);
             enrichCartWithDetails(cart);
@@ -92,7 +92,7 @@ public class SqCartDaoMySQL implements SqCartDao{
     // 根據使用者ID及結帳狀態來查找其所有購物車資料(多筆)
     @Override
     public List<Cart> findCartsbyUserIdAndCheckoutStatus(Integer userId, Boolean isCheckout) {
-        String sql = "SELECT cartId, userId, isCheckout, checkoutTime from cart where userId = ? AND isCheckout = ?";
+        String sql = "SELECT cartId, checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount from cart where userId = ? AND isCheckout = ?";
         List<Cart> carts = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Cart.class), userId, isCheckout);
         carts.forEach(this::enrichCartWithDetails);
         return carts;
@@ -134,7 +134,7 @@ public class SqCartDaoMySQL implements SqCartDao{
  	findUserById(cart.getUserId()).ifPresent(cart::setUser);
  	
  	// 查詢 cartItems 並注入
- 	String sqlItems = "select itemId, cartId, productId, quantity from cartitem where cartId = ?";
+ 	String sqlItems = "select * from cartitem where cartId = ?";
  	List<CartItem> cartItems = jdbcTemplate.query(sqlItems, new BeanPropertyRowMapper<>(CartItem.class), cart.getCartId());
  	// 根據 productId 找到 product 並注入
  	cartItems.forEach(cartItem -> {
@@ -151,7 +151,7 @@ public class SqCartDaoMySQL implements SqCartDao{
 	
 	@Override
 	public Optional<Product> findProductbyId(Integer productId) {
-	   String sql = "select * from Products where productId = ?";
+	   String sql = "select  cartId, checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId from Products where productId = ?";
 	     try {
 	         // 使用 queryForObject 方法來獲取單個結果
 	         Product product = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Product.class), productId);

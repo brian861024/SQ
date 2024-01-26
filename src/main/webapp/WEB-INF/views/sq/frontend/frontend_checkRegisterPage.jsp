@@ -2,7 +2,7 @@
 
 <%@ include file="/WEB-INF/views/sq/fragements/header.jspf" %>
 
-<link rel="stylesheet" href="../include/css/frontend_Login.css">
+<link rel="stylesheet" href=<c:url value="/resources/css/frontend_Login.css" /> />
 <style>
 body {
     background-image: url(<c:url value="/resources/img/bg/bg.jpg"/>);
@@ -11,12 +11,17 @@ body {
     background-position: top;
     background-size: cover;
 }
+
+a.pure-button:hover {
+    color: black;
+}
 </style>
 
 <body>
 
+
     <!--======================================
-          checkregisterpage
+          checkPage
     ==========================================-->
 
     <div class="Event_Section">
@@ -102,29 +107,23 @@ body {
                     </div>
 <!-- ==================================================================================================== --> 
 
-                    <!-- 右邊登入表單 -->
+                    <!-- 右邊訂單確認表單 -->
                     <div class="right-login-area">
                         <div class="login-area-title">
                             <div class="login-area-title-color-bar"> </div>
-                            <h2 style="margin: 0;"> 會員資料確認 </h2>
+                            <h2 style="margin: 0;"> 訂單確認 </h2>
                         </div >
                         <div class="login-register-form-area">
                             <div class="login-form-area">
-                                <form class="pure-form pure-form-stacked">
+                            
+                                <form class="pure-form pure-form-stacked" >
+                                
                                     <fieldset>  
-                                        <label for="stacked-email" style="color: rgb(255, 255, 255);">Email：aaa@gmail.com</label>
-
-                                        <label for="stacked-password" style="color: rgb(255, 255, 255);">密碼：</label>
-
-                                        <label for="stacked-password" style="color: rgb(255, 255, 255);">地址：台北市信義區忠孝東路3段111號2樓</label>
-
-                                        <label for="stacked-password" style="color: rgb(255, 255, 255);">生日：1997/1/1</label>
-                                        <hr>
-                                        <hr>
-                                        <button type="submit" class="pure-button">確認</button>   
-                                        <button type="submit" class="pure-button">返回修改</button>                                  
+                                        <h1><label for="stacked-code" style="color: rgb(255, 255, 255)">${ successMessage }</label></h1>                                 
                                     </fieldset>
-                                </form>
+                                </form>    
+                                    
+                                    <a href="/SpiritQuest/mvc/sq/login" class="pure-button" style="color:black;">點此前往登錄頁</a>          
                             </div>
 
                         </div>

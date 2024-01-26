@@ -20,7 +20,7 @@ public class SqCartItemDaoMySQL implements SqCartItemDao {
     // 新增購物車項目
     @Override
     public void addCartItem(CartItem cartItem) {
-        String sql = "INSERT INTO CartItem (Quantity, CartId, ProductId) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO CartItem (Qty, CartId, ProductId) VALUES (?, ?, ?)";
         jdbcTemplate.update(sql, cartItem.getQty(), cartItem.getCartId(), cartItem.getProductId());
     }
     
@@ -34,7 +34,7 @@ public class SqCartItemDaoMySQL implements SqCartItemDao {
     // 根據項目ID查找購物車項目
     @Override
     public Optional<CartItem> findCartItemById(Integer itemId) {
-        String sql = "SELECT * FROM CartItem WHERE ItemId = ?";
+        String sql = "SELECT itemId, cartId, productId, price, qty FROM CartItem WHERE ItemId = ?";
         try {
             CartItem cartItem = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(CartItem.class), itemId);
             return Optional.ofNullable(cartItem);
@@ -46,21 +46,21 @@ public class SqCartItemDaoMySQL implements SqCartItemDao {
     // 根據購物車ID查找所有項目
     @Override
     public List<CartItem> findCartItemsById(Integer cartId) {
-        String sql = "SELECT * FROM CartItem WHERE CartId = ?";
+        String sql = "SELECT itemId, cartId, productId, price, qty FROM CartItem WHERE CartId = ?";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(CartItem.class), cartId);
     }
 
     // 更新購物車項目數量（根據項目ID）
     @Override
     public Boolean updateCartItemQuantityById(Integer itemId, Integer quantity) {
-        String sql = "UPDATE CartItem SET Quantity = ? WHERE ItemId = ?";
+        String sql = "UPDATE CartItem SET Qty = ? WHERE ItemId = ?";
         return jdbcTemplate.update(sql, quantity, itemId) > 0;
     }
 
     // 更新購物車項目數量（根據購物車ID）
     @Override
     public Boolean updateCartItemQuantity(Integer cartId, Integer quantity) {
-        String sql = "UPDATE CartItem SET Quantity = ? WHERE CartId = ?";
+        String sql = "UPDATE CartItem SET Qty = ? WHERE CartId = ?";
         return jdbcTemplate.update(sql, quantity, cartId) > 0;
     }
 
@@ -70,4 +70,8 @@ public class SqCartItemDaoMySQL implements SqCartItemDao {
         // TODO: 實現計算總金額的 SQL 查詢
         return null;
     }
+    
+    // 透過CartItemId來找ProductId
+    
+    
 }

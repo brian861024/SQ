@@ -22,4 +22,6 @@ public interface SqCartItemDao {
 	Boolean updateCartItemQuantity(Integer ItemId, Integer quantity);
 //-----計算每個使用者所購買的總金額-----
 	List<Map<String, Object>> calculateTotalAmountPerUser();
+//-----透過CartItemId來找ProductId-----
+
 }

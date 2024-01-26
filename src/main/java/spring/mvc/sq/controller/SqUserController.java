@@ -164,8 +164,9 @@ public class SqUserController {
 				user.setEmail(email);
 				user.setPhoneNumber(phoneNumber);
 				sqUserDao.addUser(user);
+				model.addAttribute("successMessage", "註冊成功");
+				return "sq/frontend/frontend_checkRegisterPage";
 			 }
-			return "sq/frontend/frontend_login";
 			}
 		
 //======================================================	

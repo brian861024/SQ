@@ -113,31 +113,34 @@ body {
 
                         <div class="cart-item-area">
                             <!-- 購物車物件 -->
-                            <div class="card prod-card">
+                          <c:forEach items="${ products }" var="product">
+                           	 <div class="card prod-card">
                                 <div class="prod-card-img-area">
                                     <img class="prod-card-img" src="../img/cocktail/gintonic.webp" alt="">
                                 </div>
+
                                 <div class="card-body">
-                                    <h2 class="card-title">Gin Tonic</h2>
+                                    <h2 class="card-title">${ product.productName }</h2>
                                     <hr class="dropdown-divider">
                                     <p />
-                                    <p class="card-text">琴通寧是很受歡迎的調酒，做法也相當簡單，將琴酒混合通寧水（氣泡水）再加入檸檬片就完成。喝起來像是檸檬汽水，帶有些微苦味。
+                                    <p class="card-text">${ product.description }
                                     </p>
-                                    
                                     <form method="post" action="">
                                     <!-- 讓修改按鈕對齊 -->
                                     <div style="display: flex;justify-content: end;align-items: center;">
+                                       <c:forEach items="${ cartitems }" var="cartitem">
                                         <p style="margin: 5px 10px;">數量：<input type="number"
                                                 style="width: 50px;margin:0 10px;" id="quantity" name="quantity"
-                                                value="1"></p>
+                                                value="${cartitem.qty}"></p>
+                                        </c:forEach>
                                         <button type="submit" class="pure-button">修改數量</button>
                                         <button type="submit" class="pure-button">刪除</button>
                                     </div>
-                                    </form>
                                     
+                                    </form>
                                 </div>
                             </div>
-
+						</c:forEach>
                             <div style="display: flex;justify-content: flex-end;">
                                 <button type="submit" class="pure-button">結帳</button>
                                 <button type="submit" class="pure-button" style="margin-right: 100px;">刪除購物車</button>
