@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -26,6 +27,7 @@ import spring.mvc.sq.model.entity.Cart;
 import spring.mvc.sq.model.entity.CartItem;
 import spring.mvc.sq.model.entity.Product;
 import spring.mvc.sq.model.entity.User;
+import spring.mvc.sq.model.entity.Contact;
 
 @Controller
 @RequestMapping("/sq")
@@ -114,6 +116,19 @@ public class SqController {
 	}
 
 //======================================================
+	// 進入商品頁面
+	@RequestMapping("/prodInfo/{productId}")
+	public String goToProdInfo(@PathVariable("productId") Integer productId,
+			HttpSession session,Model model) {
+	
+		Optional<Product> product = sqProductDao.findProductbyId(productId);
+		
+		model.addAttribute(product);
+			
+		return "sq/frontend/frontend_prod";
+		}
+	
+//======================================================
 	// 進入購物車頁面
 	//
 	@RequestMapping("/cart")
@@ -164,42 +179,50 @@ public class SqController {
 		return null;
 	}
 
+//======================================================
 	// 進入訂單頁面
 	@RequestMapping("/order")
 	public String goToOrder(HttpSession session, Model model) {
 		return "sq/frontend/frontend_order";
 	}
 
+//======================================================
 	// 進入最愛商品頁面
 	@RequestMapping("/favoriteProd")
 	public String goToFavoriteProd(HttpSession session, Model model) {
 		return "sq/frontend/frontend_favoriteProd";
 	}
 
+//======================================================
 	// 進入修改會員姓名頁面
 	@RequestMapping("/editUserName")
 	public String goToEditUserName(HttpSession session, Model model) {
 		return "sq/frontend/frontend_editUserName";
 	}
 
+//======================================================
 	// 進入修改會員電話頁面
 	@RequestMapping("/editUserTel")
 	public String goToEditUserTel(HttpSession session, Model model) {
 		return "sq/frontend/frontend_editUserTel";
 	}
 
+//======================================================
 	// 進入查找密碼頁面
 	@RequestMapping("/findpassword")
 	public String goToFindpassword(HttpSession session) {
 		return "sq/frontend/frontend_findpassword";
 	}
 
+//======================================================
 	// 進入聯絡我們頁面
 	@RequestMapping("/contact")
 	public String goToContact(HttpSession session) {
 		return "sq/frontend/frontend_contact";
 	}
 
+//======================================================
+//======================================================
 	// 進入威士忌介紹頁面
 	@RequestMapping("/whiskey")
 	public String goToWhiskey(HttpSession session) {
@@ -245,15 +268,62 @@ public class SqController {
 	// ================== 進入後台各種頁面 ==================
 
 	// 進入後台首頁
-	@GetMapping("/backend/main")
+	@GetMapping("/backend/index")
 	public String backendMain(HttpSession session, @ModelAttribute Product product, Model model) {
 		return "/sq/backend/backend_index";
 	}
 
+//======================================================
 	// 進入後台新增商品頁面
 	@GetMapping("/backend/plusProd")
-	public String plusProd(HttpSession session) {
+	public String plusProd() {
 		return "/sq/backend/backend_plusProd";
 	}
+	
+	// 進入後台新增管理員頁面
+	@GetMapping("/backend/addEmp")
+	public String plusaddEmp() {
+		return "/sq/backend/backend_addEmp";
+	}
+	
+	// 進入後台登入頁面
+	@GetMapping("/backend/login")
+	public String login(HttpSession session) {
+		return "/sq/backend/backend_login";
+	}
+	
+	// 進入後台管理訂單頁面
+	@GetMapping("/backend/order")
+	public String plusorder(HttpSession session) {
+		return "/sq/backend/backend_order";
+	}
+	
+	// 進入後台查看報表頁面
+//	@GetMapping("/backend/plusProd")
+//	public String plusProd(HttpSession session) {
+//		return "/sq/backend/backend_plusProd";
+//	}
+	
+	// 進入後台公告欄頁面
+	@GetMapping("/backend/notice")
+	public String plusNotice(HttpSession session) {
+		return "/sq/backend/backend_notice";
+	}
+	
+	// 進入後台查看留言板頁面
+	@GetMapping("/backend/contact")
+	public String contact(Model model) {
+	    List<Contact> contacts = sqContactDao.findAllContact();
+	    model.addAttribute("contacts", contacts);
+	    return "/sq/backend/backend_contact";
+	}
+	
+	// 進入後台商品列表頁面
+	@GetMapping("/backend/prodList")
+	public String showProdList(Model model) {
+		List<Product> products = sqProductDao.findAllProducts();
+		model.addAttribute("products",products);
+		return "/sq/backend/backend_prodList";
+	}	
 
 }

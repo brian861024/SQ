@@ -141,15 +141,21 @@ a.pure-button:hover {
                                         <button type="submit" class="pure-button">Login</button>                                    
                                         <a href="/SpiritQuest/mvc/sq/findpassword" style="text-decoration: none;"><h5 class="forget-password-label">忘記密碼?</h5></a>
                                   		</div>
+                                  		
                                     </fieldset>
                                 </form>
-                                
+                                <div class="forget-password"
+										style="color: rgba(253, 253, 253, 0.788);">
+										<a type="submit" class="pure-button"
+										href="/SpiritQuest/mvc/sq/backend/login">後臺登入點此</a>
+										</div>
  <!-- ==================================================================================================== -->                                  
                             </div>
                             <div class="register-form-area">
                                 <div class="forget-password" style="color: rgba(253, 253, 253, 0.788);">
                                     尚未註冊?<a type="submit" class="pure-button" style="margin: 20px;"  href="/SpiritQuest/mvc/sq/register" >Register</a>
                                 </div>
+                               
                             </div>
                         </div>
                     </div>

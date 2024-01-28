@@ -89,6 +89,8 @@
             <mvc:exclude-mapping path="/sq/register"/>
             <mvc:exclude-mapping path="/user/contact"/>
             <mvc:exclude-mapping path="/sq/findpassword"/>
+			<mvc:exclude-mapping path="/sq/backend/login"/>
+			<mvc:exclude-mapping path="/sq/backend/changeProdQty"/>
             <bean class="spring.mvc.sq.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

@@ -116,7 +116,7 @@ body {
                           <c:forEach items="${ products }" var="product">
                            	 <div class="card prod-card">
                                 <div class="prod-card-img-area">
-                                    <img class="prod-card-img" src="../img/cocktail/gintonic.webp" alt="">
+                                    <img class="prod-card-img" src="/SpiritQuest/mvc/product/image/${product.image}" alt="">
                                 </div>
 
                                 <div class="card-body">
@@ -125,6 +125,8 @@ body {
                                     <p />
                                     <p class="card-text">${ product.description }
                                     </p>
+                                    
+                                    <!-- 修改數量的form -->
                                     <form method="post" action="">
                                     <!-- 讓修改按鈕對齊 -->
                                     <div style="display: flex;justify-content: end;align-items: center;">

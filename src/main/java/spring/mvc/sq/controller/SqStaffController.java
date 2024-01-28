@@ -1,6 +1,8 @@
 package spring.mvc.sq.controller;
 
 import java.util.Enumeration;
+import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import spring.mvc.sq.model.dao.SqCartDao;
 import spring.mvc.sq.model.dao.SqCartItemDao;
@@ -21,9 +24,10 @@ import spring.mvc.sq.model.dao.SqProductDao;
 import spring.mvc.sq.model.dao.SqUserDao;
 import spring.mvc.sq.model.entity.Contact;
 import spring.mvc.sq.model.entity.Product;
+import spring.mvc.sq.model.entity.User;
 
-//@Controller
-//@RequestMapping("/sq/staff")
+@Controller
+@RequestMapping("/sq/staff")
 public class SqStaffController {
 	
 	@Autowired
@@ -58,7 +62,7 @@ public class SqStaffController {
 			  			  @RequestParam("description") String description,
 			  			  @RequestParam("isLaunch") Boolean isLaunch,
 			  			  @RequestParam("categoryId") Integer categoryId,
-			  			  @RequestParam("image") String image,
+			  			  @RequestParam("file") MultipartFile file,
 			  			  HttpSession session, Model model) {
 	Product product = new Product();
 	
@@ -68,7 +72,7 @@ public class SqStaffController {
 	product.setDescription(description);
 	product.setIsLaunch(isLaunch);
 	product.setCategoryId(categoryId);
-	product.setImage(image);
+	product.setImage(file.getOriginalFilename());
 	
 	sqProductDao.addProduct(product);
 		
@@ -77,26 +81,113 @@ public class SqStaffController {
 		return "sq/frontend/backend_checkPage";
 	}
 	
-	
 	//-----刪除上架商品-----
 	
 	
 	
 	//-----更改商品庫存數量-----
-	@RequestMapping("/backend/changeProdQty")
-	public String changeProdQty(@RequestParam("productId") String productId,
-								@RequestParam("productQty") String productQty,
-								HttpSession session, Model model) {
-		
-		
-		return "";
+	@PostMapping("/backend/changeProdQty")
+	public String changeProdQty(@RequestParam("productId") Integer productId,
+								@RequestParam("productQty") Integer productQty,
+								@RequestParam("newStockQty") Integer newStockQty,
+								HttpSession session, Model model) {	
+
+		int updatedStockQty = productQty + newStockQty;
+	    sqProductDao.updateProductQty(productId, updatedStockQty);
+	    
+		return "/sq/backend/backend_prodList";
 	}
-		
+	
+	
+	
+	//-----顯示商品列表-----
+	@RequestMapping("/backend/showProdList")
+	public String showProdList(Model model) {
+		List<Product> products = sqProductDao.findAllProducts();
+		model.addAttribute("products",products);
+		return "/sq/backend/backend_prodList";
+	}	
+	
 //======================= 會員管理後台 =======================
-//========================================================
+//========================================================	
+		//-----管理員員註冊功能-----
+		//。信箱不可重複
+		//。兩次的註冊密碼要相同
+		@RequestMapping("/register")
+		public String register(@RequestParam("username") String username,
+							   @RequestParam("userpassword") String password,
+							   @RequestParam("userpassword2") String password2,
+							   @RequestParam("useremail") String email,
+							   @RequestParam("usertel") String phoneNumber,
+							   HttpSession session, Model model) throws Exception  {
 			
-	
-	
+			Optional<User> userOpt = sqUserDao.findUserByEmail(email);
+			
+					if(userOpt.isPresent()){
+				// 如果 使用該姓名或信箱的user有存在 則 執行此處
+				session.invalidate(); // session 過期失效
+				model.addAttribute("loginMessage", "使用者信箱重複");
+				return "sq/frontend/backend_addEmp";
+			}
+			// 如果 用戶名和信箱均不重複 則 檢查兩次密碼是否相同
+			else if (!password.equals(password2)){
+				 session.invalidate(); // session 過期失效
+		         model.addAttribute("loginMessage", "兩次輸入的密碼不相同");
+		         return "sq/frontend/backend_addEmp";
+		      }
+				 // 如果 兩次密碼輸入相同 則 進行註冊
+				 else {
+					User user = new User();
+					user.setUsername(username);
+//					// 將 password 進行 AES 加密 -------------------------------------------------------------------
+//					final String KEY = KeyUtil.getSecretKey();
+//					SecretKeySpec aesKeySpec = new SecretKeySpec(KEY.getBytes(), "AES");
+//					byte[] encryptedPasswordECB = KeyUtil.encryptWithAESKey(aesKeySpec, password);
+//					String encryptedPasswordECBBase64 = Base64.getEncoder().encodeToString(encryptedPasswordECB);
+//					//-------------------------------------------------------------------------------------------
+					user.setPassword(password);
+					user.setEmail(email);
+					user.setPhoneNumber(phoneNumber);
+					sqUserDao.addEmp(user);
+					model.addAttribute("successMessage", "註冊成功");
+					return "sq/frontend/backend_addEmp";
+				 }
+				}
+		
+//========================================================	
+		//-----管理員登入-----
+		// 邏輯：
+		@RequestMapping("/login")
+		public String login(@RequestParam("useremail") String useremail,
+		                    @RequestParam("password") String password,      
+		                    HttpSession session, Model model) throws Exception {
+			
+		    // 根據 useremail 查找 user 物件
+		    Optional<User> userOpt = sqUserDao.findUserByEmail(useremail);
+
+		    if (userOpt.isPresent()) {
+		        User user = userOpt.get();
+		        // 比對的 password 是否相同
+		        if (user.getPassword().equals(password)) {
+		            // 將 user 物件放入到 session 變數中
+		            session.setAttribute("user", user);
+		            // OK, 導向前台首頁
+		            return "redirect:/mvc/sq/backend/index";
+		        } else {
+		            // session 過期失效
+		            session.invalidate();
+		            // 密碼錯誤
+		            model.addAttribute("loginMessage", "密碼錯誤");
+		            return "sq/backend/backend_login";
+		        }
+		    } else {
+		        // session 過期失效
+		        session.invalidate();
+		        // 無此使用者
+		        model.addAttribute("loginMessage", "無此使用者");
+		        return "sq/backend/backend_login";
+		    }
+		}
 	
 	
 }

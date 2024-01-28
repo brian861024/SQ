@@ -2,7 +2,9 @@ package spring.mvc.sq.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,8 +20,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.mysql.cj.Session;
 
 import spring.mvc.sq.model.entity.*;
-import spring.mvc.sq.model.entity.Cart;
-import spring.mvc.sq.model.entity.User;
 import spring.mvc.sq.model.dao.SqCartDao;
 import spring.mvc.sq.model.dao.SqCartItemDao;
 import spring.mvc.sq.model.dao.SqContactDao;
@@ -106,25 +106,43 @@ public class SqOrderController {
 			});
 			
 			model.addAttribute("successMessage", "訂單成功送出");
-			return "";
+			return "sq/frontend/frontend_checkPage";
 	}
 	
 //======================================================
 //======================================================
 	//-----查詢訂單-----
-	//。先找到 session 裡的 user 如果沒有 則 回傳 "請先登入"
 	//。有 user 則透過 userid 去找到 屬於他的購物車並傳至 jsp
 	@RequestMapping("/cart/query")
-	public void queryOrder(@ModelAttribute Cart cart,
-						   HttpSession session, Model model) {
+	public String queryOrder(HttpSession session, Model model) {
+		User user = (User) session.getAttribute("user");
+
+		// 找到 user 的結帳的購物車
+		List<Cart> carts = sqCartDao.findCartbyisCheckoutAndUserId(user.getUserId());
 		
+		List<Integer> cartIds = carts.stream()
+                .map(Cart::getCartId)
+                .collect(Collectors.toList());
+		List<List<CartItem>> cartItems = cartIds.stream().map(cartId->sqCartItemDao.findCartItemsById(cartId)).collect(Collectors.toList());
+		List<CartItem> CartItemflattenedList =  cartItems.stream()
+	               .flatMap(List::stream)
+	               .collect(Collectors.toList());
+			
+		List<Integer> productIds = CartItemflattenedList.stream().map(cartItem->cartItem.getProductId()).collect(Collectors.toList());
+		List<Product> products = productIds.stream().map(productId->sqProductDao.findProductbyId(productId).get()).collect(Collectors.toList());
+		
+		
+		model.addAttribute("products", products);
+		model.addAttribute("cartItems", cartItems);
+		model.addAttribute("carts", carts);	
+		
+//			for (Cart cart2 : carts) {
+//				cartIds.add(cart2.getCartId());
+//				
+//			}
+			//List<CartItem> cartItems= carts.stream().collect(cart -> cart.getCartId());
+
+		return "sq/frontend/frontend_order";
+		}	
 		
 	}
-	
-//======================= 購物車後台 =======================
-//=======================================================	
-	//-----增加商品-----
-	//。
-	
-//======================================================	
-}

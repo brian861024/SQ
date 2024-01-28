@@ -1,5 +1,6 @@
 package spring.mvc.sq.model.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +8,19 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import spring.mvc.sq.model.entity.Cart;
 import spring.mvc.sq.model.entity.Contact;
 
 @Repository
 public class SqContactDaoMySQL implements SqContactDao {
 
-    @Autowired
+    @Override
+	public List<Contact> findAllContact() {
+    	String sql = "select contactId, customerName, customerEmail, contactTitle, contactContext from contact";
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Contact.class));
+	}
+
+	@Autowired
     private JdbcTemplate jdbcTemplate;
 
     // 創造聯絡單

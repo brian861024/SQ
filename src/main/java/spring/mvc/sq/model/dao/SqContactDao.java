@@ -8,10 +8,12 @@ import spring.mvc.sq.model.entity.*;
 
 public interface SqContactDao {
 //	聯絡-Contact
-//	1. 創造聯絡單
+//	創造聯絡單
 	void addContact(Contact contact);
-//	2. 根據聯絡單ID找出聯絡單(單筆)
+//	根據聯絡單ID找出聯絡單(單筆)
 	Optional<Contact> findContactByContactId(Integer contactId);
-//	3. 根據主旨找出聯絡單
+//	根據主旨找出聯絡單
 	Optional<Contact> findContactByTitle(String title);
+//	找出所有聯絡單
+	List<Contact> findAllContact();
 }

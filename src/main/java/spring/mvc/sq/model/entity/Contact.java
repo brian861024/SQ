@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Contact {
 
+	private String contactId; // 留言板id
     private String customerName; // 留言板名稱
     private String customerEmail; // 留言板信箱
     private String contactTitle; // 留言板標題

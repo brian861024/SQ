@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<div class="left-prod-class-area">
+
+						<p class="w3-padding-large"
+							style="margin: 10px; margin-top: 20px;">
+						<h5>後臺管理列表</h5>
+						</p>
+
+						<hr class="dropdown-divider">
+						<!-- 導覽列按鈕 商品管理 -->
+
+						<a class="prod-class-link" href="/SpiritQuest/mvc/sq/backend/plusProd" >商品新增</a>
+
+						<hr class="dropdown-divider">
+						<!-- 導覽列按鈕 客戶訂單管理 -->
+
+						<a class="prod-class-link" href="/SpiritQuest/mvc/sq/backend/prodList">商品列表</a>
+						
+						<hr class="dropdown-divider">
+						<!-- 導覽列按鈕 客戶訂單管理 -->
+
+						<a class="prod-class-link" href="/SpiritQuest/mvc/sq/backend/order">客戶訂單管理</a>
+
+						<hr class="dropdown-divider">
+						<!-- 導覽列按鈕 客戶聯絡單 -->
+
+						<a class="prod-class-link" href="/SpiritQuest/mvc/sq/backend/contact">客戶聯絡單</a>
+
+						<hr class="dropdown-divider">
+						<!-- 導覽列按鈕 葡萄酒 -->
+						
+						<a class="prod-class-link" href="/SpiritQuest/mvc/sq/backend/addEmp">新增管理員</a>
+
+						<hr class="dropdown-divider">
+
+					</div>

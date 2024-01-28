@@ -158,8 +158,7 @@ body {
 										<img src="/SpiritQuest/mvc/user/getcode" alt="驗證碼" />
 										</div>
 										<button type="submit" class="pure-button" >Register</button>
-										<a href="" style="text-decoration: none;">
-										
+										<a href="/SpiritQuest/mvc/sq/findpassword" style="text-decoration: none;">
 										<h5 class="forget-password-label">忘記密碼?</h5></a>
 									</fieldset>
 								</form>
@@ -169,7 +168,7 @@ body {
 							<div class="register-form-area">
 								<div class="forget-password"
 									style="color: rgba(253, 253, 253, 0.788);">
-									已有帳號?<a type="submit" class="pure-button" style="margin: 20px;"
+									已有帳號?<a type="submit" class="pure-button" style="margin: 20px;color: rgba(253, 253, 253, 0.788);"
 										href="/SpiritQuest/mvc/sq/login">Login</a>
 								</div>
 							</div>

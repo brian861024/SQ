@@ -130,9 +130,9 @@ body {
 										</thead>
 										<tr>
 											<td></td>
-											<td class="order-card-form-prod-name">${ product.productName }</td>
-											<td>${ cartItem.qty }</td>
-											<td>${ cartItem.price } /元</td>
+											<td class="order-card-form-prod-name">${ products.productName }</td>
+											<td>${ cartItems.qty }</td>
+											<td>${ cartItems.price } /元</td>
 										</tr>
 										</tbody>
 									</table>
@@ -140,163 +140,21 @@ body {
 								<div class="order-card-right-area">
 									<div class="order-card-right-item">
 										<div style="min-width: 80px;">總價：</div>
-										<div>1,860元</div>
+										<div>${ carts.amount }元</div>
 									</div>
 									<div class="order-card-right-item">
 										<div style="min-width: 80px;">寄送地址：</div>
-										<div>桃園市桃園區忠孝西路二段185弄320號6樓-8</div>
+										<div>${ carts.deliveryAddress }</div>
 									</div>
 									<div class="order-card-right-item">
 										<div style="min-width: 80px;">訂單時間：</div>
-										<div>2023-10-22 22:10:35</div>
+										<div>${ carts.checkoutTime }</div>
 									</div>
-									<button type="submit" class="pure-button">處理中</button>
-									<button type="submit" class="pure-button">查詢運送資訊</button>
-									<button type="submit" class="pure-button">取消訂單</button>
+									<button type="submit" class="pure-button">${ carts.deliveryStatus }</button>
+									<button type="submit" class="pure-button">欲取消訂單請來電</button>
 								</div>
 							</div>
 						</div>
-
-						<div class="card order-card">
-							<div class="card-body">
-								<div class="order-card-left-area">
-									<table class="pure-table pure-table-horizontal">
-										<tbody>
-										<thead>
-											<td></td>
-											<td class="order-card-form-prod-name">品名</td>
-											<td>數量</td>
-											<td>價格</td>
-										</thead>
-										<tr>
-											<td></td>
-											<td class="order-card-form-prod-name">雷伯五號 威士忌</td>
-											<td>2</td>
-											<td>700 /元</td>
-										</tr>
-										<tr>
-											<td></td>
-											<td class="order-card-form-prod-name">帝王8年 龍舌蘭風味桶 750ml</td>
-											<td>1</td>
-											<td>680 /元</td>
-										</tr>
-										<tr>
-											<td></td>
-											<td class="order-card-form-prod-name">(限量)金門高粱 白金龍61週年
-												大師百選版 (泰坦灰源酒) 600ml</td>
-											<td>1</td>
-											<td>480 /元</td>
-										</tr>
-										</tbody>
-									</table>
-								</div>
-								<div class="order-card-right-area">
-									<div class="order-card-right-item">
-										<div style="width: 80px;">總價：</div>
-										<div>1,860元</div>
-									</div>
-									<div class="order-card-right-item">
-										<div style="min-width: 80px;">寄送地址：</div>
-										<div>桃園市桃園區忠孝西路320號6樓</div>
-									</div>
-									<div class="order-card-right-item">
-										<div style="width: 80px;">訂單時間：</div>
-										<div>2023-10-22 22:10:35</div>
-									</div>
-									<button type="submit" class="pure-button">運送中</button>
-									<button type="submit" class="pure-button">查詢運送資訊</button>
-								</div>
-							</div>
-						</div>
-
-						<div class="card order-card">
-							<div class="card-body">
-								<div class="order-card-left-area">
-									<table class="pure-table pure-table-horizontal">
-										<tbody>
-										<thead>
-											<td></td>
-											<td>品名</td>
-											<td>數量</td>
-											<td>價格</td>
-										</thead>
-										<tr>
-											<td></td>
-											<td>雷伯五號 威士忌</td>
-											<td>2</td>
-											<td>700 /元</td>
-										</tr>
-										<tr>
-											<td></td>
-											<td>帝王8年 龍舌蘭風味桶 750ml</td>
-											<td>1</td>
-											<td>680 /元</td>
-										</tr>
-										<tr>
-											<td></td>
-											<td>CHOYA 梅子風味氣泡酒 750ml</td>
-											<td>1</td>
-											<td>480 /元</td>
-										</tr>
-										</tbody>
-									</table>
-								</div>
-								<div class="order-card-right-area">
-									<div class="order-card-right-item">
-										<div style="width: 80px;">總價：</div>
-										<div>1,860元</div>
-									</div>
-									<div class="order-card-right-item">
-										<div style="min-width: 80px;">寄送地址：</div>
-										<div>桃園市桃園區忠孝西路320號6樓</div>
-									</div>
-									<div class="order-card-right-item">
-										<div style="width: 80px;">訂單時間：</div>
-										<div>2023-10-22 22:10:35</div>
-									</div>
-									<button type="submit" class="pure-button">已完成</button>
-								</div>
-							</div>
-						</div>
-
-						<div class="card order-card">
-							<div class="card-body">
-								<div class="order-card-left-area">
-									<table class="pure-table pure-table-horizontal">
-										<tbody>
-										<thead>
-											<td></td>
-											<td class="order-card-form-prod-name">品名</td>
-											<td>數量</td>
-											<td>價格</td>
-										</thead>
-										<tr>
-											<td></td>
-											<td class="order-card-form-prod-name">雷伯五號 威士忌</td>
-											<td>2</td>
-											<td>700 /元</td>
-										</tr>
-										</tbody>
-									</table>
-								</div>
-								<div class="order-card-right-area">
-									<div class="order-card-right-item">
-										<div style="width: 80px;">總價：</div>
-										<div>1,860元</div>
-									</div>
-									<div class="order-card-right-item">
-										<div style="min-width: 80px;">寄送地址：</div>
-										<div>桃園市桃園區忠孝西路320號6樓</div>
-									</div>
-									<div class="order-card-right-item">
-										<div style="width: 80px;">訂單時間：</div>
-										<div>2023-10-22 22:10:35</div>
-									</div>
-									<button type="submit" class="pure-button">已取消</button>
-								</div>
-							</div>
-						</div>
-
 
 					</div>
 				</div>

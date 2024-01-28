@@ -175,7 +175,7 @@ body {
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                <form method="post" action="">
+                                
                                     <h2 class="card-title">${ product.productName }</h2>
                                     <hr class="dropdown-divider">
                                     <p />
@@ -188,17 +188,21 @@ body {
                                     <p />
                                     <hr class="dropdown-divider">
                                     <p />
+                                    
+                                    
+                              <form method="post" action="">
                                     <div>
                                         <p style="margin: 5px 10px;">數量：
                                         
                                         <input type="number"
                                                 style="width: 50px;margin:0 10px;" id="quantity" name="quantity"
-                                                value="1">
-                                                
+                                                value="1">  
                                         </p>
                                         <button type="submit" class="pure-button">加入購物車</button>
                                     </div>
                                </form>
+                               
+                               
                                </div>
                             </div>
 

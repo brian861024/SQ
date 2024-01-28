@@ -23,6 +23,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
+//========================================================================
 	//-----查詢所有使用者-----
 	@Override
 	public List<User> findAllUsers() {
@@ -30,6 +31,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
 	}
 	
+//========================================================================
 	//-----透過使用者ID查找使用者-----
 	@Override
 	public Optional<User> findUserById(Integer userId) {
@@ -44,6 +46,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 	    }
 	}
 	
+//========================================================================
 	//-----新增使用者-----
 	@Override
 	public void addUser(User user) {
@@ -51,6 +54,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 		jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), 1, user.getEmail(), user.getPhoneNumber());
 	}
 	
+//========================================================================
 	//-----新增員工-----
 	@Override
 	public void addEmp(User user) {
@@ -58,6 +62,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 		jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), 2, user.getEmail(), user.getPhoneNumber());
 	}
 	
+//========================================================================
 	//-----更改使用者密碼-----
 	@Override
 	public Boolean updateUserPassword(Integer userId, String newPassword) {
@@ -66,6 +71,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 		return rowcount > 0;
 	}
 	
+//========================================================================
 	//-----更改使用者名稱-----
 	@Override
 	public Boolean updateUserName(Integer userId, String newName) {
@@ -74,6 +80,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 		return rowcount > 0;
 	}
 	
+//========================================================================
 	//-----更改使用者信箱-----
 	@Override
 	public Boolean updateUserEmail(Integer userId, String newEmail) {
@@ -82,6 +89,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 		return rowcount > 0;
 	}
 	
+//========================================================================
 	//-----更改使用者Tel-----
 	@Override
 	public Boolean updateUserNumber(Integer userId, String newNumber) {
@@ -89,7 +97,8 @@ public class SqUserDaoMySQL implements SqUserDao {
 		int rowcount = jdbcTemplate.update(sql, newNumber, userId);
 		return rowcount > 0;
 	}
-
+	
+//========================================================================
 	//-----根據使用者名稱查找使用者(登入用-單筆)-----
 	@Override
 	public Optional<User> findUserByUsernameOrEmail(String username, String email) {
@@ -102,7 +111,8 @@ public class SqUserDaoMySQL implements SqUserDao {
 	    	return Optional.empty();
 	    }
 	}
-
+	
+//========================================================================
 	//-----根據使用者名稱查找使用者(註冊檢查及登入用-單筆)-----
 	public Optional<User> findUserByUsername(String username){
 		String sql = "select userId, username, password, levelId, email, phoneNumber from user where username = ?";
@@ -114,7 +124,8 @@ public class SqUserDaoMySQL implements SqUserDao {
             return Optional.empty();
         }
 	}
-		
+	
+//========================================================================
 	//-----根據使用者信箱查找使用者(註冊檢查及登入用-單筆)-----
 	public Optional<User> findUserByEmail(String email){
 		String sql = "select userId, username, password, levelId, email, phoneNumber from user where email = ?";
@@ -127,6 +138,7 @@ public class SqUserDaoMySQL implements SqUserDao {
         }
 	}
 	
+//========================================================================
 	//-----刪除使用者-----
 	@Override
 	public Boolean removeUserById(Integer userId) {
@@ -134,6 +146,9 @@ public class SqUserDaoMySQL implements SqUserDao {
 		return jdbcTemplate.update(sql, userId) == 1;
 	}
 	
+//========================================================================	
+	//-----查找未結帳的購物車-----
+	@Override
 	public Optional<Cart> findNoneCheckoutCartByUserId(Integer userId) {
 	    try {
 	        String sql = "select cartId, checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount from cart "
@@ -151,6 +166,8 @@ public class SqUserDaoMySQL implements SqUserDao {
 	        return Optional.empty();
 	    }
 	}
+	
+	
 	
 //========================================================================
 	//-----根據產品ID來查找商品(單筆)-----
