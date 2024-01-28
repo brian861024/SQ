@@ -14,26 +14,7 @@ body {
 </style>
 
 <body>
-<script>
-    
-    function updateStock(button) {
-        var productId = $(button).data("productid");
-        var newStockQty = parseInt($(".newstockQty").val());
 
-        $.ajax({
-            type: "POST",
-            url: "/backend/changeProdQty",
-            data: { productId: productId, newStockQty: newStockQty },
-            success: function (response) {
-                alert("更新成功！");
-            },
-            error: function (error) {
-                alert("更新失敗：" + JSON.stringify(error));
-            }
-        });
-    }
-    
-</script>
     <!--======================================
           EVENTS SECTION
     ==========================================-->
@@ -62,23 +43,29 @@ body {
                                             <td style="width: 600px;">品名</td>
                                             <td style="width: 200px;">數量</td>
                                             <td style="width: 200px;">價格</td>
-                                            <td>更新庫存</td>
-                                            <td></td>
+                                           
+                                           
 											<td></td>
                                         </thead>
-
+                                        
+										
                                         <!-- 單個商品列 -->
                                         <c:forEach var="product" items="${products}">
-                                        <tr>
-                                            <td>${ product.productId }</td>
-                                            <td>${ product.productName }</td>
-                                            <td>${ product.stockQty }</td>
-                                            <td><input type="number" style="width: 80px;" id="price" name="price" value="${ product.price }"> /元</td>
-											<td><input type="number" style="width: 50px;margin:0 10px;" class="newstockQty" name="newStockQty" value="1"></td>
-											<td><button type="button" class="pure-button update-button" data-productid="${product.productId}" onclick="updateStock(this)">更新</button></td>
-       										<td><button type="submit" class="pure-button">刪除</button></td>
-                                        </tr>
-                                        </c:forEach>
+    									<tr>
+        								<td>${ product.productId }</td>
+        								<td>${ product.productName }</td>
+        								<td>${ product.stockQty }</td>
+       									<td>${ product.price } /元</td>
+        								<!-- 添加隱藏的輸入欄位以包含產品ID -->
+        								<td>
+            							<form method="post" action="/SpiritQuest/mvc/sq/staff/backend/deletProd">
+                						<input type="hidden" name="productId" value="${product.productId}">
+                						<button type="submit" class="pure-button">刪除</button>
+            							</form>
+								        </td>
+								   		</tr>
+										</c:forEach>
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -88,7 +75,7 @@ body {
                 </div>
             
         </div>
-        </div>
+        
     </section>
 </body>
 

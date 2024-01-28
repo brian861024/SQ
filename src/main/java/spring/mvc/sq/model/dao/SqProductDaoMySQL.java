@@ -69,9 +69,9 @@ public class SqProductDaoMySQL implements SqProductDao {
     // 7. 新增產品
     @Override
     public void addProduct(Product product) {
-        String sql = "INSERT INTO Product (ProductName, Price, StockQuantity, Description, isLaunch, CategoryId) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Product (ProductName, Price, stockQty, Description, isLaunch, CategoryId, image) VALUES (?, ?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql, product.getProductName(), product.getPrice(), product.getStockQty(),
-                product.getDescription(), product.getIsLaunch(), product.getCategoryId());
+                product.getDescription(), product.getIsLaunch(), product.getCategoryId(), product.getImage());
     }
 
     // 8. 更新產品上架狀態

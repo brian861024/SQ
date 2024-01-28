@@ -298,6 +298,12 @@
 		    <version>2.6.7</version>
 		</dependency>
 		
+		<dependency>
+    		<groupId>org.apache.commons</groupId>
+    		<artifactId>commons-collections4</artifactId>
+    		<version>4.4</version> <!-- 使用最新的版本 -->
+		</dependency>
+		
   	</dependencies>
   
   

@@ -36,6 +36,8 @@ public interface SqUserDao {
 	Boolean removeUserById(Integer userId);
 //-----根據使用者ID來查找其未結帳的購物車資料(單筆)-----
 	public Optional<Cart> findNoneCheckoutCartByUserId(Integer userId);
+//-----根據使用者ID來查找其未結帳的購物車資料(多筆)-----
+	public List<Cart> findCheckoutCartByUserId(Integer userId);
 //-----根據產品ID來查找商品(單筆)-----
 	Optional<Product> findProductbyId(Integer productId);
 	

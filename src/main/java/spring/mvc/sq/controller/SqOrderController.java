@@ -23,8 +23,11 @@ import spring.mvc.sq.model.entity.*;
 import spring.mvc.sq.model.dao.SqCartDao;
 import spring.mvc.sq.model.dao.SqCartItemDao;
 import spring.mvc.sq.model.dao.SqContactDao;
+import spring.mvc.sq.model.dao.SqNoticeDao;
 import spring.mvc.sq.model.dao.SqProductDao;
 import spring.mvc.sq.model.dao.SqUserDao;
+import spring.mvc.sq.model.entity.Notice;
+
 
 //OrderController處理以下之功能：
 //購物車前台：購物車頁面、增加購物車商品、購物車結帳、訂單確認+完成、查詢訂單
@@ -44,6 +47,8 @@ public class SqOrderController {
 	private SqCartDao sqCartDao;
 	@Autowired
 	private SqCartItemDao sqCartItemDao;
+	@Autowired
+	private SqNoticeDao sqNoticeDao;
 	
 //======================= 購物車前台 =======================
 //=======================================================	

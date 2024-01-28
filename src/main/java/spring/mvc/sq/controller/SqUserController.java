@@ -31,11 +31,14 @@ import spring.mvc.sq.model.entity.Contact;
 import spring.mvc.sq.model.dao.SqCartDao;
 import spring.mvc.sq.model.dao.SqCartItemDao;
 import spring.mvc.sq.model.dao.SqContactDao;
+import spring.mvc.sq.model.dao.SqNoticeDao;
 import spring.mvc.sq.model.dao.SqProductDao;
 import spring.mvc.sq.model.dao.SqUserDao;
 import spring.mvc.sq.model.dao.SqUserDaoMySQL;
 import spring.mvc.sq.model.entity.Product;
 import spring.mvc.sq.model.entity.User;
+import spring.mvc.sq.model.entity.Notice;
+
 
 //UserController處理以下之功能：
 //帳號相關：會員註冊、會員登入、會員登出、個人資料修改、查詢密碼
@@ -54,6 +57,8 @@ public class SqUserController {
 	private SqCartDao sqCartDao;
 	@Autowired
 	private SqCartItemDao sqCartItemDao;
+	@Autowired
+	private SqNoticeDao sqNoticeDao;
 
 	
 	

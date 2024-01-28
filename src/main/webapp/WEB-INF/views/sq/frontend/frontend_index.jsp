@@ -55,7 +55,7 @@
 		<!-- 上方搜索列 -->
 		<div class="search">
 			<form class="d-flex justify-content-end align-items-end" style="width: 100%;">
-			<select class="category">
+			<select class="category"  id="stacked-state">
 				<option value="0" class="select1">請選擇分類</option>
 				<option>威士忌</option>
 				<option>清酒</option>
@@ -64,7 +64,7 @@
 				<option>調酒</option>
 				<option>酒器</option>
 			</select>
-			<select class="category">
+			<select class="category"  id="stacked-state">
 				<option value="0" class="select1">請選擇價格</option>
 				<option>&nbsp&nbsp&nbsp0&nbsp&nbsp&nbsp ~ 1000</option>
 				<option>1000 ~ 2000</option>
@@ -79,106 +79,9 @@
 		</div>
 
 		<div class="main-area" style="display: flex;">
-			<!-- 左方導覽列 -->
-			<div class="left-prod-class-area">
+		<!-- 左方導覽列 -->
+		<%@ include file="/WEB-INF/views/sq/fragements/leftcategory.jspf" %>
 
-				<!-- 公告消息 -->
-				<p class="w3-padding-large" style="margin: 10px; margin-top: 20px;">
-				<h5>公告消息</h5>
-				</p>
-
-				<hr class="dropdown-divider">
-				<!-- 公告 -->
-				<a class="prod-class-link" href="#">《主題酒單》醉暖聖誕節🎄微醺的季節 又來囉❗️</a>
-
-				<hr class="dropdown-divider">
-				<!-- 公告 -->
-
-				<a class="prod-class-link" href="#"> 《好朋友專區》我來惹~ 好朋友幫您把包裹變免運！</a>
-
-				<hr class="dropdown-divider">
-				<!-- 商品分類 -->
-				<p class="w3-padding-large" style="margin: 10px; margin-top: 20px;">
-				<h5>商品分類</h5>
-				</p>
-
-				<hr class="dropdown-divider">
-				<!-- 導覽列按鈕 威士忌 -->
-
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-					role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					威士忌<img src="./icon/list.svg" alt="">
-				</a>
-				<ul class="dropdown-menu left-prod-class-dropdown-menu"
-					aria-labelledby="navbarDropdown">
-					<li><a class="dropdown-item" href="">蘇格蘭威士忌</a></li>
-					<li><a class="dropdown-item" href="">日本威士忌</a></li>
-					<li><a class="dropdown-item" href="">台灣威士忌</a></li>
-					<!-- <hr class="dropdown-divider">
-                     <li><a class="dropdown-item" href="#">雪莉桶</a></li>
-                     <li><a class="dropdown-item" href="#">波本桶</a></li>
-                     <hr class="dropdown-divider">
-                     <li><a class="dropdown-item" href="#">泥煤</a></li>
-                     <li><a class="dropdown-item" href="#">煙燻</a></li> -->
-				</ul>
-
-				<hr class="dropdown-divider">
-				<!-- 導覽列按鈕 清酒 -->
-
-				<a class="prod-class-link" href="#">清酒</a>
-
-				<hr class="dropdown-divider">
-				<!-- 導覽列按鈕 果實酒 -->
-
-				<a class="prod-class-link" href="#">果實酒</a>
-
-				<hr class="dropdown-divider">
-				<!-- 導覽列按鈕 葡萄酒 -->
-
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-					role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					葡萄酒<img src="./icon/list.svg" alt="">
-				</a>
-				<ul class="dropdown-menu left-prod-class-dropdown-menu"
-					aria-labelledby="navbarDropdown">
-					<li><a class="dropdown-item" href="">Whiskey</a></li>
-					<li><a class="dropdown-item" href="">Rum</a></li>
-					<li><a class="dropdown-item" href="">Gin</a></li>
-					<li><a class="dropdown-item" href="">Tequila</a></li>
-					<li><a class="dropdown-item" href="">Vodka</a></li>
-					<li><a class="dropdown-item" href="">Liqueur</a></li>
-					<hr class="dropdown-divider">
-					<li><a class="dropdown-item" href="#">Cocktail</a></li>
-					<li><a class="dropdown-item" href="#">Plum Wine</a></li>
-				</ul>
-
-				<hr class="dropdown-divider">
-				<!-- 導覽列按鈕 調酒 -->
-
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-					role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					調酒<img src="./icon/list.svg" alt="">
-				</a>
-				<ul class="dropdown-menu left-prod-class-dropdown-menu"
-					aria-labelledby="navbarDropdown">
-					<li><a class="dropdown-item" href="">Whiskey</a></li>
-					<li><a class="dropdown-item" href="">Rum</a></li>
-					<li><a class="dropdown-item" href="">Gin</a></li>
-					<li><a class="dropdown-item" href="">Tequila</a></li>
-					<li><a class="dropdown-item" href="">Vodka</a></li>
-					<li><a class="dropdown-item" href="">Liqueur</a></li>
-					<hr class="dropdown-divider">
-					<li><a class="dropdown-item" href="#">Cocktail</a></li>
-					<li><a class="dropdown-item" href="#">Plum Wine</a></li>
-				</ul>
-
-				<hr class="dropdown-divider">
-				<!-- 導覽列按鈕 酒器 -->
-
-				<a class="prod-class-link" href="#">酒器</a>
-
-				<hr class="dropdown-divider">
-			</div>
 			<!-- =============================================================================== -->
 			<!-- 右方商品列表 -->
 			<div style="display: block; text-align: center;">
@@ -195,8 +98,12 @@
 				            <div class="card-body">
 				                <h5 class="card-title">${product.productName}</h5>
 				                <p class="card-text">${product.description}</p>
+				               	<form Method="post" action="/SpiritQuest/mvc/sq/prodInfo">
+				                <input type="hidden" name="productId" value="${product.productId}">
 				                <!-- 添加點擊事件，呼叫 JavaScript 函數 -->
 				                <button onclick="redirectToProdPage(${product.productId})" class="pure-button">更多商品資料</button>
+				                </form>
+				                
 				            </div>
 				        </div>
 				    </c:forEach>
@@ -250,14 +157,5 @@
 	</div>
 	</div>
 </section>
-
-<script>
-function redirectToProdPage(productId) {
-    // 將 productId 填充到隱藏的 input 中
-    document.getElementById("productIdInput").value = productId;
-    // 提交表單
-    document.getElementById("redirectToProdForm").submit();
-}
-</script>
 
 <%@ include file="/WEB-INF/views/sq/fragements/footer.jspf" %>

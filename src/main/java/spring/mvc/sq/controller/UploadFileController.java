@@ -36,11 +36,12 @@ public class UploadFileController {
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 */
-	@PostMapping("/single")
-	@ResponseBody
+	@RequestMapping("/single")
 	public String upload(@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
 		file.transferTo(new File("C:/uploads/"+file.getOriginalFilename()));
-		return file.getOriginalFilename();
+		return "/sq/backend/backend_plusProd";
+		
+		
 	}
 	
 	/**
@@ -50,7 +51,7 @@ public class UploadFileController {
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 */
-	@PostMapping("/multi")
+	@RequestMapping("/multi")
 	@ResponseBody
 	public String upload(@RequestParam("formId") Integer formId,
 			@RequestParam("file") List<MultipartFile> files) throws IllegalStateException, IOException {

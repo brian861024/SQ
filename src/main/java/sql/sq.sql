@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `mytopicsdb`.`cart` (
   `deliveryStatus` ENUM('處理中', '運送中', '已完成', '已取消') NULL DEFAULT NULL,
   `deliveryAddress` VARCHAR(255) NULL DEFAULT NULL,
   `userId` INT NOT NULL,
-  `amount` INT NOT NULL,
+  `amount` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`cartId`),
   INDEX `cart_userId_idx` (`userId` ASC) VISIBLE,
   CONSTRAINT `cart_userId`
@@ -135,23 +135,22 @@ DROP TABLE IF EXISTS `mytopicsdb`.`cartItem` ;
 
 CREATE TABLE IF NOT EXISTS `mytopicsdb`.`cartItem` (
   `itemId` INT NOT NULL AUTO_INCREMENT,
-  `cartId` INT NOT NULL,
-  `productId` INT NOT NULL,
-  `price` INT NOT NULL,
-  `qty` INT NOT NULL,
+  `cartId` INT NOT NULL DEFAULT '1',
+  `productId` INT NOT NULL DEFAULT '1',
+  `price` INT NOT NULL DEFAULT '0',
+  `qty` INT NOT NULL DEFAULT '0',
   PRIMARY KEY (`itemId`),
   INDEX `cartItem_productId_idx` (`productId` ASC) VISIBLE,
   INDEX `cartItem_cartId_idx` (`cartId` ASC) VISIBLE,
   CONSTRAINT `cartItem_productId`
     FOREIGN KEY (`productId`)
-    REFERENCES `mytopicsdb`.`product` (`productId`)
-    ON DELETE NO ACTION
+    REFERENCES `mytopicsdb`.`product` (`productId`) ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `cartItem_cartId`
     FOREIGN KEY (`cartId`)
-    REFERENCES `mytopicsdb`.`cart` (`cartId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `mytopicsdb`.`cart` (`cartId`) ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+)
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
@@ -171,6 +170,23 @@ CREATE TABLE IF NOT EXISTS `mytopicsdb`.`contact` (
   `contactContext` VARCHAR(1000) NOT NULL,
   PRIMARY KEY (`contactId`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `mytopicsdb`.`notice`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mytopicsdb`.`notice` ;
+
+CREATE TABLE IF NOT EXISTS `mytopicsdb`.`notice` (
+  `noticeId` INT NOT NULL AUTO_INCREMENT,
+  `noticeTitle` VARCHAR(1000) NOT NULL DEFAULT '公告',
+  `noticeContext` VARCHAR(1000) NOT NULL,
+  PRIMARY KEY (`noticeId`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -194,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `mytopicsdb`.`favorite` (
   CONSTRAINT `favorite_productId`
     FOREIGN KEY (`productId`)
     REFERENCES `mytopicsdb`.`product` (`productId`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION
 ) ENGINE = InnoDB
   DEFAULT CHARACTER SET = utf8mb4

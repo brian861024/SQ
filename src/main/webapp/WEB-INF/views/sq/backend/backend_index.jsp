@@ -22,9 +22,18 @@ body {
 
                         <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
                             <div class="card-body">
-                                <h5 class="card-title">商品管理</h5>
+                                <h5 class="card-title">商品新增</h5>
                                 <p class="card-text">
-                                    商品管理功能包括商品的快速增加、庫存更改、上下架管理以及刪除。
+                                    商品新增包括新增商品圖片、庫存、價格以及描述等等。
+                                </p>
+                            </div>
+                        </div>
+
+						<div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
+                            <div class="card-body">
+                                <h5 class="card-title">商品列表</h5>
+                                <p class="card-text">
+                                   總攬您的商品列表，並且得以刪除商品。
                                 </p>
                             </div>
                         </div>
@@ -62,16 +71,6 @@ body {
                                 <p class="card-text">
                                 	可以新增後臺之管理員。    
                                 </p>
-                            </div>
-                        </div>
-
-                        <div class="card" style="width:auto; max-width: 18rem;background: #ffffffb7;">
-                            <div class="card-body">
-                                <h5 class="card-title">商品列表</h5>
-                                <p class="card-text">
-                                   總攬您的商品列表。
-                                </p>
-                                
                             </div>
                         </div>
 

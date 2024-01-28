@@ -42,7 +42,7 @@ select * from product;
 insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Mojito', 200 , 20 , '由穀物糖漿蒸餾，如波本、蘇格蘭、裡爾等，風味獨特。' , 1 , 2, 'LongIslandIcedTea.webp');
 insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Taiwanese_Whisky', 200 , 20 , '由穀物糖漿蒸餾，如波本、蘇格蘭、裡爾等，風味獨特。' , 0 , 23, 'wis-2.png');
 insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Gintonic', 200 , 20 , '由穀物糖漿蒸餾，如波本、蘇格蘭、裡爾等，風味獨特。' , 1 , 22, 'gintonic.webp');
-insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Rum', 150 , 18 , '由甘蔗副產品製成，淺色、深色、香料風味多樣。' , 1 , 5, 'rum-2.png');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Rum', 150 , 18 , '由甘蔗副產品製成，淺色、深色、香料風味多樣。' , 1 , 5, 'Screwdriver.webp');
 insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Rum', 350 , 10 , '由甘蔗副產品製成，淺色、深色、香料風味多樣。' , 1 , 5, 'rum-1.png');
 insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('長島冰茶', 450 , 13 , '由甘蔗副產品製成，淺色、深色、香料風味多樣。' , 1 , 5, 'mojido.webp');
 insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Gintonic', 100 , 30 , '以杜松子為主，加入香草和柑橘皮，風味清新。' , 1 , 5,'stdog.webp');
@@ -155,3 +155,9 @@ insert into contact (customerName, customerEmail, contactTitle, contactContext) 
 insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('王大藍' , 'monica4051@yahoo.com' , '有品酒課程嗎？' , '我想參加一些品酒活動或酒類課程，您能推薦一些好的選擇嗎？');
 insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('王小藍' , '0978164872' , '導覽活動詢問' , '我對於酒的產區和製作過程很感興趣，您有提供有關這方面的知識分享或導覽活動嗎？');
 
+-- notice
+
+select * from notice;
+
+insert into notice (noticeTitle, noticeContext) values ('《主題酒單》醉暖聖誕節🎄微醺的季節 又來囉！' , '🎄《主題酒單》醉暖聖誕節，微醺的季節又來囉！在這個溫馨的時刻，讓我們為您準備了精選的主題酒品，讓您在節慶中品味微醺的美好。來店感受節慶氛圍，一起度過溫馨愉快的聖誕時光！🍷🎁');
+insert into notice (noticeTitle, noticeContext) values ('《好朋友專區》我來惹~ 好朋友幫您把包裹變免運！' , '🎉《好朋友專區》我來惹~ 現在購物更方便！好朋友們幫您把包裹變成免運費！不論是送禮還是自用，讓好朋友幫您省下運費，一同分享購物的樂趣。快來參加好朋友專區，享受輕鬆愉快的購物體驗！🎁🚚');

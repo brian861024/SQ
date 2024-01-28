@@ -1,6 +1,7 @@
 package spring.mvc.sq.controller;
 
 import java.text.Collator;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import spring.mvc.sq.model.dao.SqCartDao;
 import spring.mvc.sq.model.dao.SqCartItemDao;
 import spring.mvc.sq.model.dao.SqContactDao;
+import spring.mvc.sq.model.dao.SqNoticeDao;
 import spring.mvc.sq.model.dao.SqProductDao;
 import spring.mvc.sq.model.dao.SqUserDao;
 import spring.mvc.sq.model.entity.Cart;
@@ -28,6 +30,7 @@ import spring.mvc.sq.model.entity.CartItem;
 import spring.mvc.sq.model.entity.Product;
 import spring.mvc.sq.model.entity.User;
 import spring.mvc.sq.model.entity.Contact;
+import spring.mvc.sq.model.entity.Notice;
 
 @Controller
 @RequestMapping("/sq")
@@ -48,6 +51,9 @@ public class SqController {
 	@Autowired
 	private SqCartItemDao sqCartItemDao;
 
+	@Autowired
+	private SqNoticeDao sqNoticeDao;
+	
 // ================== 進入各種前台頁面 ==================
 
 	/**
@@ -62,6 +68,7 @@ public class SqController {
 	//-----進入首頁(前台商品列表)-----
 	@RequestMapping("/index")
 	public String goToIndex(HttpSession session, Model model,
+			
 			@RequestParam(value = "currentPage", required = false, defaultValue = "1") Integer currentPage) {
 
 		// 過濾出只有上架的商品
@@ -73,8 +80,10 @@ public class SqController {
 		Pageable page = new PageRequest((currentPage - 1), pageSize); // 0:第一頁(1-1=0) 10:每頁幾筆
 		
 		List<Product> products = sqProductDao.findProductsByPage(true, page);
-		model.addAttribute("products", products);
+		List<Notice> notices = sqNoticeDao.findAllNotice();
 		
+		model.addAttribute("products", products);
+		model.addAttribute("notices", notices);
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("currentPage", currentPage);
@@ -117,16 +126,23 @@ public class SqController {
 
 //======================================================
 	// 進入商品頁面
-	@RequestMapping("/prodInfo/{productId}")
-	public String goToProdInfo(@PathVariable("productId") Integer productId,
-			HttpSession session,Model model) {
-	
-		Optional<Product> product = sqProductDao.findProductbyId(productId);
-		
-		model.addAttribute(product);
-			
-		return "sq/frontend/frontend_prod";
-		}
+	@RequestMapping("/prodInfo")
+	public String goToProdInfo(@RequestParam("productId") Integer productId,
+	        HttpSession session, Model model) {
+
+	    Product product = sqProductDao.findProductbyId(productId).orElse(null);
+	    List<Notice> notices = sqNoticeDao.findAllNotice();
+
+	    model.addAttribute("notices", notices);
+	    if (product != null) {
+	        model.addAttribute("product", product);
+	        return "sq/frontend/frontend_prod";
+	    } else {
+	        // 处理找不到产品的情况，可以重定向到错误页面或提供默认产品
+	        // 以下是一个重定向到错误页面的示例
+	        return "redirect:/error";
+	    }
+	}
 	
 //======================================================
 	// 進入購物車頁面
@@ -183,7 +199,44 @@ public class SqController {
 	// 進入訂單頁面
 	@RequestMapping("/order")
 	public String goToOrder(HttpSession session, Model model) {
-		return "sq/frontend/frontend_order";
+	    User user = (User) session.getAttribute("user");
+
+	    // 找到 user 的已經結帳的購物車
+	    List<Cart> carts = sqUserDao.findCheckoutCartByUserId(user.getUserId());
+	    
+	    if(carts == null) {
+	    	model.addAttribute("successMessage", "尚未有訂單");		
+			
+	    	return "sq/frontend/frontend_checkPage";
+			
+	    } else {
+	    // 其他相關修改
+	    List<Integer> cartIds = sqCartDao.findCartsByUserId(user.getUserId())
+	            .stream()
+	            .map(cart2 -> cart2.getCartId())
+	            .collect(Collectors.toList());
+
+	    List<List<CartItem>> cartItemsList = cartIds.stream()
+	            .map(cartId -> sqCartItemDao.findCartItemsById(cartId))
+	            .collect(Collectors.toList());
+
+	    List<CartItem> flattenedList = cartItemsList.stream()
+	            .flatMap(List::stream)
+	            .collect(Collectors.toList());
+
+	    List<Integer> productIds = flattenedList.stream()
+	            .map(cartItem -> cartItem.getProductId())
+	            .collect(Collectors.toList());
+
+	    List<Product> products = productIds.stream()
+	            .map(productId -> sqProductDao.findProductbyId(productId).orElse(null))
+	            .collect(Collectors.toList());
+
+	    model.addAttribute("products", products);
+	    model.addAttribute("cartItems", flattenedList);
+	    model.addAttribute("carts", carts);
+	    }	    
+	    return "sq/frontend/frontend_order";
 	}
 
 //======================================================
@@ -221,6 +274,15 @@ public class SqController {
 		return "sq/frontend/frontend_contact";
 	}
 
+//======================================================
+	// 進入公告欄頁面
+	@RequestMapping("/notice/{noticeId}")
+    public String showNotice(@PathVariable Integer noticeId, Model model) {
+        // 根据 noticeId 查询公告信息，将公告信息传递给前端
+        Notice notice = sqNoticeDao.findNoticeById(noticeId); // 请替换成实际的方法
+        model.addAttribute("notice", notice);
+        return "sq/frontend/frontend_notice"; // 显示公告的页面，路径根据实际情况调整
+    }
 //======================================================
 //======================================================
 	// 進入威士忌介紹頁面

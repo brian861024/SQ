@@ -74,6 +74,8 @@
             <mvc:mapping path="/**"/>
             <mvc:exclude-mapping path="/sq/login"/>
             <mvc:exclude-mapping path="/sq/index"/>
+            <mvc:exclude-mapping path="/sq/notice/{noticeId}"/>
+            <mvc:exclude-mapping path="/sq/prodInfo"/>
             <mvc:exclude-mapping path="/user/login"/>
             <mvc:exclude-mapping path="/user/getcode"/>
             <mvc:exclude-mapping path="/user/register"/>

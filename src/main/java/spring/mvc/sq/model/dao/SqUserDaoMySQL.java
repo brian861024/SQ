@@ -1,5 +1,6 @@
 package spring.mvc.sq.model.dao;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -167,7 +168,24 @@ public class SqUserDaoMySQL implements SqUserDao {
 	    }
 	}
 	
-	
+//========================================================================	
+	@Override
+	public List<Cart> findCheckoutCartByUserId(Integer userId) {
+	    try {
+	        String sql = "SELECT cartId, checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount FROM cart "
+	                   + "WHERE userId = ? AND isCheckout = true";
+
+	        List<Cart> carts = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Cart.class), userId);
+
+	        for (Cart cart : carts) {
+	            enrichCartWithDetails(cart);
+	        }
+
+	        return carts;
+	    } catch (EmptyResultDataAccessException e) {
+	        return Collections.emptyList();
+	    }
+	}
 	
 //========================================================================
 	//-----根據產品ID來查找商品(單筆)-----

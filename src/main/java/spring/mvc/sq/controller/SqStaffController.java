@@ -1,5 +1,7 @@
 package spring.mvc.sq.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Optional;
@@ -20,11 +22,14 @@ import org.springframework.web.multipart.MultipartFile;
 import spring.mvc.sq.model.dao.SqCartDao;
 import spring.mvc.sq.model.dao.SqCartItemDao;
 import spring.mvc.sq.model.dao.SqContactDao;
+import spring.mvc.sq.model.dao.SqNoticeDao;
 import spring.mvc.sq.model.dao.SqProductDao;
 import spring.mvc.sq.model.dao.SqUserDao;
 import spring.mvc.sq.model.entity.Contact;
 import spring.mvc.sq.model.entity.Product;
 import spring.mvc.sq.model.entity.User;
+import spring.mvc.sq.model.entity.Notice;
+
 
 @Controller
 @RequestMapping("/sq/staff")
@@ -40,6 +45,8 @@ public class SqStaffController {
 	private SqCartDao sqCartDao;
 	@Autowired
 	private SqCartItemDao sqCartItemDao;
+	@Autowired
+	private SqNoticeDao sqNoticeDao;
 	
 //======================= 進入各種頁面 =======================
 	
@@ -63,14 +70,23 @@ public class SqStaffController {
 			  			  @RequestParam("isLaunch") Boolean isLaunch,
 			  			  @RequestParam("categoryId") Integer categoryId,
 			  			  @RequestParam("file") MultipartFile file,
-			  			  HttpSession session, Model model) {
+			  			  HttpSession session, Model model) throws IllegalStateException, IOException  {
+	
+	file.transferTo(new File("C:/uploads/"+file.getOriginalFilename()));
+		
 	Product product = new Product();
 	
 	product.setProductName(productName);
 	product.setPrice(price);
 	product.setStockQty(stockQty);
 	product.setDescription(description);
-	product.setIsLaunch(isLaunch);
+	if (isLaunch) {
+        // 商品上架逻辑
+		product.setIsLaunch(true);
+    } else {
+        // 商品下架逻辑
+    	product.setIsLaunch(false);
+    }
 	product.setCategoryId(categoryId);
 	product.setImage(file.getOriginalFilename());
 	
@@ -82,8 +98,13 @@ public class SqStaffController {
 	}
 	
 	//-----刪除上架商品-----
-	
-	
+	@PostMapping("/backend/deletProd")
+	public String deleteProduct(@RequestParam("productId") Integer productId) {
+	    // 在這裡執行刪除數據庫中相應產品的操作
+	    sqProductDao.removeProductById(productId);
+	    // 重定向到商品列表頁面或其他頁面
+	    return "redirect:/mvc/sq/backend/prodList";
+	}
 	
 	//-----更改商品庫存數量-----
 	@PostMapping("/backend/changeProdQty")
@@ -97,8 +118,7 @@ public class SqStaffController {
 	    
 		return "/sq/backend/backend_prodList";
 	}
-	
-	
+
 	
 	//-----顯示商品列表-----
 	@RequestMapping("/backend/showProdList")

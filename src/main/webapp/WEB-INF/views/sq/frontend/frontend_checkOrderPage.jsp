@@ -52,54 +52,8 @@ body {
 
                 <div class="main-area" style="display: flex;">
 <!-- ==================================================================================================== -->                
-                                        <!-- 左方導覽列 -->
-                    <div class="left-prod-class-area">
-                        <p class="w3-padding-large" style="margin: 10px;margin-top: 20px;">
-                        <h5>會員管理</h5>
-                        </p>
-
-                        <hr class="dropdown-divider">
-                        
-                        <!-- 導覽列按鈕 購物車 -->
-                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/cart">購物車</a>
-
-                        <hr class="dropdown-divider">
-                        
-                        <!-- 導覽列按鈕 歷史訂單 -->
-                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/order">訂單查詢</a>
-
-                        <hr class="dropdown-divider">
-                        
-                        <!-- 導覽列按鈕 收藏商品 -->
-                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/favoriteProd">收藏商品</a>
-
-                        <hr class="dropdown-divider">
-                      
-                        <!-- 導覽列按鈕 修改會員資料 -->
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            修改會員資料<img src=<c:url value="/resources/img/icon/list.svg"/> alt="">
-                        </a>
-                        <ul class="dropdown-menu left-prod-class-dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserName">修改會員姓名</a></li>
-                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/editUserTel">修改會員電話</a></li>
-                            <hr class="dropdown-divider">
-                            <li><a class="dropdown-item" href="/SpiritQuest/mvc/sq/findpassword">查詢密碼</a></li>
-
-                        </ul>
-
-                        <hr class="dropdown-divider">
-                        
-                        <!-- 導覽列按鈕 當前會員優惠
-                        <a class="prod-class-link" href="#" >當前會員優惠</a>
-             
-                        <hr class="dropdown-divider"> -->
-                        
-                        <!-- 導覽列按鈕 聯絡客服 -->
-                        <a class="prod-class-link" href="/SpiritQuest/mvc/sq/contact">聯絡客服</a>
-
-                        <hr class="dropdown-divider">
-                    </div>
+                    <!-- 左邊會員管理表單 -->
+                    <%@ include file="/WEB-INF/views/sq/fragements/leftmember.jspf" %>
 <!-- ==================================================================================================== --> 
 
                     <!-- 右邊訂單確認表單 -->
