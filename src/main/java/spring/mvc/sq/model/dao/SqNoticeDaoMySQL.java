@@ -14,24 +14,28 @@ public class SqNoticeDaoMySQL implements SqNoticeDao{
 
 	@Autowired
     private JdbcTemplate jdbcTemplate;
-	
-	//創造公告
+
+//========================================================================
+	//-----創造公告-----
 	@Override
 	public void addNotice(Notice notice) {
 		String sql = "INSERT INTO notice(noticeTitle, noticeContext) VALUES (?, ?)";
 		jdbcTemplate.update(sql, notice.getNoticeTitle(), notice.getNoticeContext());
 	}
-	
-	//顯示公告
+
+//========================================================================
+	//-----顯示公告-----
 	@Override
 	public List<Notice> findAllNotice() {
-		String sql = "select noticeTitle, noticeContext from notice";
+		String sql = "select noticeId, noticeTitle, noticeContext from notice";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Notice.class));
 	}
 
+//========================================================================
+	//-----透過id找公告-----
 	@Override
 	public Notice findNoticeById(Integer noticeId) {
-	    String sql = "SELECT noticeTitle, noticeContext FROM notice WHERE noticeId = ?";
+	    String sql = "SELECT noticeId, noticeTitle, noticeContext FROM notice WHERE noticeId = ?";
 	    return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Notice.class), noticeId);
 	}
 	

@@ -57,10 +57,8 @@ a.pure-button:hover {
                                             class="pure-input-1" name="password" />
                                         <hr>
                                         <hr>
-                                        <label for="stacked-name" style="color: red;">${loginMessage}</label>
+                                        <label style="color: red;"> ${loginMessage} </label>
 										<hr>
-										<div>
-										</div>
 										<div>
                                         <button type="submit" class="pure-button">Login</button>                                    
                                   		</div>

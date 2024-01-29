@@ -29,6 +29,8 @@ import spring.mvc.sq.model.entity.Contact;
 import spring.mvc.sq.model.entity.Product;
 import spring.mvc.sq.model.entity.User;
 import spring.mvc.sq.model.entity.Notice;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @Controller
@@ -210,6 +212,22 @@ public class SqStaffController {
 		        return "sq/backend/backend_login";
 		    }
 		}
-	
-	
+//========================================================
+		//-----增加公告-----
+		@PostMapping("/addNotice")
+		public String addNotice(@RequestParam("noticeTitle") String noticeTitle,
+								@RequestParam("noticeContext") String noticeContext,
+								Model model) {
+		Notice notice = new Notice();
+		
+		notice.setNoticeTitle(noticeTitle);
+		notice.setNoticeContext(noticeContext);
+		
+		sqNoticeDao.addNotice(notice);
+		
+		model.addAttribute("successMessage", "公告新增成功");
+			
+		return "sq/backend/backend_checkPage";
+		}
+		
 }

@@ -49,8 +49,8 @@ insert into product (productName, price, stockQty, description, isLaunch, catego
 insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Gin', 200 , 27 , '以杜松子為主，加入香草和柑橘皮，風味清新。' , 1 , 5,'gin-2.png');
 insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Gin', 300 , 21 , '以杜松子為主，加入香草和柑橘皮，風味清新。' , 1 , 5,'gin-3.png');
 insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Tequila', 200 , 4 , '由藍龍舌蘭植物發酵，風味獨特，包括白龍舌蘭和陳年款。' , 1 , 5,'liq-2.png');
-insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Vodka', 200 , 12 , '無色無味的烈酒，適合製作各種雞尾酒。' , 1 , 5,'vod1.png');
-insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Vodka', 200 , 12 , '無色無味的烈酒，適合製作各種雞尾酒。' , 1 , 5,'vod1.png');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Vodka', 200 , 12 , '無色無味的烈酒，適合製作各種雞尾酒。' , 1 , 5,'vod-1.png');
+insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Vodka', 200 , 12 , '無色無味的烈酒，適合製作各種雞尾酒。' , 1 , 5,'vod-1.png');
 insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Mojito', 200 , 0 , '甜美且風味豐富的複合型烈酒。' , 0 , 5,'stdog.webp');
 insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Pinklady', 250 , 12 , '甜美且風味豐富的複合型烈酒。' , 1 , 5,'liq-3.png');
 insert into product (productName, price, stockQty, description, isLaunch, categoryId, image) values ('Pinklady', 220 , 3 , '甜美且風味豐富的複合型烈酒。' , 1 , 5,'gintonic.webp');

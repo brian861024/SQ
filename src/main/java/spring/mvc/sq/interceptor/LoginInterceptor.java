@@ -40,12 +40,11 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
     if(isValid) {
     	return true;
     }
-    
     // 未登入, 導入到登入頁面
-    String loginPath = "/mvc/sq/login";
-    if (url.contains("backend")) {
+    String loginPath;
+    if (url.contains("staff")) {
     	loginPath = "/mvc/sq/backend/login";
-    }
+    } else { loginPath = "/mvc/sq/login";}
     response.sendRedirect(request.getServletContext().getContextPath() + loginPath + "?loginMessage=" + URLEncoder.encode("請先登入"));
     return false;
 }

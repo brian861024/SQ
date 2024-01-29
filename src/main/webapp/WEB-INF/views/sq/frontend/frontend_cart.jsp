@@ -6,6 +6,16 @@
 
 <link rel="stylesheet" href=<c:url value="/resources/css/frontend_Cart.css" /> />
 
+<style>
+	body {
+	    background-image: url(<c:url value="/resources/img/bg/bg.jpg"/>);
+	    background-repeat: no-repeat;
+	    background-attachment: fixed;
+	    background-position: top;
+	    background-size: cover;
+	}
+</style>
+
 <body>
 
 	<!--======================================

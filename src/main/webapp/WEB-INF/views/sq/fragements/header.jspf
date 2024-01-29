@@ -26,7 +26,7 @@
 
 <style>
 	body {
-	    background-image: url("/SpiritQuest/resources/img/bg/bg.jpg");
+	    background-image: url(<c:url value="/resources/img/bg/bg.jpg"/>);
 	    background-repeat: no-repeat;
 	    background-attachment: fixed;
 	    background-position: top;

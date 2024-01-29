@@ -91,7 +91,29 @@ public class SqController {
 		model.addAttribute("currentPage", currentPage);
 
 		return "sq/frontend/frontend_index";
+	}	
+//======================================================	
+	// -----進入經過商品分類過後的商品頁面(前台商品頁面)-----	
+	@RequestMapping("category/index")
+	public String goToCategoryIndex(HttpSession session, Model model,
+	        @RequestParam(value = "categoryId", required = true) Integer categoryId,
+	        @RequestParam(value = "currentPage", required = false, defaultValue = "1") Integer currentPage) {
+	    int pageSize = 9;
+
+	    List<Product> products = sqProductDao.findProductsbyCategory(true, categoryId, new PageRequest(currentPage - 1, pageSize));
+	    int totalPage = sqProductDao.totalPageByCategory(true, categoryId, pageSize);
+
+	    List<Notice> notices = sqNoticeDao.findAllNotice();
+
+	    model.addAttribute("products", products);
+	    model.addAttribute("notices", notices);
+	    model.addAttribute("pageSize", pageSize);
+	    model.addAttribute("totalPage", totalPage);
+	    model.addAttribute("currentPage", currentPage);
+
+	    return "sq/frontend/frontend_index";
 	}
+	
 
 //======================================================	
 	// -----進入商品頁面(前台商品頁面)-----
@@ -145,7 +167,7 @@ public class SqController {
 
 
 //======================================================
-	
+	//-----增加商品至購物車-----
     @PostMapping("/addToCart")
     public String addToCart(@RequestParam("productId") Integer productId, @RequestParam("quantity") Integer quantity,HttpSession session, Model model) {
     	
@@ -174,7 +196,7 @@ public class SqController {
     	return "redirect:/mvc/sq/cart";
     }
 	
-	
+//======================================================	
 	// -----進入購物車頁面-----
 	//
 	@RequestMapping("/cart")
@@ -216,7 +238,8 @@ public class SqController {
 //		}
 		// List<CartItem> cartItems= carts.stream().collect(cart -> cart.getCartId());
 
-		// 計算購物車總金額
+//======================================================	
+	//-----計算購物車總金額-----
 		int total = 0;
 		if (cart.getCartItems()!=null &&cart.getCartItems().size() > 0) {
 			total = cart.getCartItems().stream().mapToInt(item -> item.getQty() * item.getPrice()).sum();
@@ -227,6 +250,9 @@ public class SqController {
 
 		return "sq/frontend/frontend_cart";
 	}
+
+//======================================================	
+	//-----購物車結帳-----
 
 	@GetMapping("/checkOut")
 	public String checkOut(@RequestParam("cartId") Integer cartId,HttpSession session) {
@@ -304,12 +330,15 @@ public class SqController {
 
 //======================================================
 	// -----進入公告欄頁面-----
-	@RequestMapping("/notice/{noticeId}")
-	public String showNotice(@PathVariable Integer noticeId, Model model) {
+	@RequestMapping("/notice")
+	public String showNotice(@RequestParam("noticeId") Integer noticeId, Model model) {
 		// 根据 noticeId 查询公告信息，将公告信息传递给前端
-		Notice notice = sqNoticeDao.findNoticeById(noticeId); // 请替换成实际的方法
+		Notice notice = sqNoticeDao.findNoticeById(noticeId); 
 		model.addAttribute("notice", notice);
-		return "sq/frontend/frontend_notice"; // 显示公告的页面，路径根据实际情况调整
+		List<Notice> notices = sqNoticeDao.findAllNotice(); 
+		model.addAttribute("notices", notices);
+		
+		return "sq/frontend/frontend_notice"; 
 	}
 
 //======================================================
