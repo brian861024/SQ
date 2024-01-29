@@ -191,7 +191,7 @@ public class SqUserDaoMySQL implements SqUserDao {
 	//-----根據產品ID來查找商品(單筆)-----
     @Override
     public Optional<Product> findProductbyId(Integer productId) {
-        String sql = "SELECT * FROM Products WHERE productId = ?";
+        String sql = "SELECT * FROM Product WHERE productId = ?";
         try {
             // 使用 queryForObject 方法來獲取單個結果
             Product product = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Product.class), productId);

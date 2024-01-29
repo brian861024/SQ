@@ -84,13 +84,14 @@ body {
                                     <p />
                                     
                                     
-                              <form method="post" action="">
+                              <form method="post" action="/SpiritQuest/mvc/sq/addToCart">
+                                    <input type="hidden" name="productId" value="${ product.productId }">
                                     <div>
                                         <p style="margin: 5px 10px;">數量：
                                         
                                         <input type="number"
-                                                style="width: 50px;margin:0 10px;" id="quantity" name="quantity"
-                                                value="1">  
+                                               style="width: 50px;margin:0 10px;" id="quantity" name="quantity"
+                                               value="1">  
                                         </p>
                                         <button type="submit" class="pure-button">加入購物車</button>
                                     </div>

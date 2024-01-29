@@ -10,10 +10,6 @@
     <link rel="icon" href=<c:url value="/resources/img/icon/logo.png"/> type="image/x-icon" />
     <link rel="shortcut icon" href="" type="image/x-icon" />
     <title>SpiritQuest</title>
-    <!-- jQuery載入 -->
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <!-- w3.css載入 -->
-    <link rel="stylesheet" href="css/w3.css">
     <!-- Bootstrap載入 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -30,7 +26,7 @@
 
 <style>
 	body {
-	    background-image: url(<c:url value="/resources/img/bg/bg.jpg"/>);
+	    background-image: url("/SpiritQuest/resources/img/bg/bg.jpg");
 	    background-repeat: no-repeat;
 	    background-attachment: fixed;
 	    background-position: top;
