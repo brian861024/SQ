@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `mytopicsdb`.`cart` (
   `cartId` INT NOT NULL AUTO_INCREMENT,
   `checkoutTime` DATETIME NULL DEFAULT NULL,
   `isCheckout` TINYINT NULL DEFAULT 0 COMMENT '0:未結帳,1:結帳', 
-  `deliveryStatus` ENUM('處理中', '運送中', '已完成', '已取消') NULL DEFAULT NULL,
+  `deliveryStatus` ENUM('處理中', '運送中', '已完成', '已取消') NULL DEFAULT '處理中',
   `deliveryAddress` VARCHAR(255) NULL DEFAULT NULL,
   `userId` INT NOT NULL,
   `amount` INT NOT NULL DEFAULT 0,

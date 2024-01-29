@@ -229,9 +229,6 @@ public class SqController {
 		List<Product> products = productIds.stream().map(productId -> sqProductDao.findProductbyId(productId).get())
 				.collect(Collectors.toList());
 
-		model.addAttribute("products", products);
-		model.addAttribute("cartItems", cartItems);
-
 //		for (Cart cart2 : carts) {
 //			cartIds.add(cart2.getCartId());
 //			
@@ -241,16 +238,59 @@ public class SqController {
 //======================================================	
 	//-----計算購物車總金額-----
 		int total = 0;
-		if (cart.getCartItems()!=null &&cart.getCartItems().size() > 0) {
+		if (cart.getCartItems()!=null && cart.getCartItems().size() > 0) {
 			total = cart.getCartItems().stream().mapToInt(item -> item.getQty() * item.getPrice()).sum();
 		}
-
+		
+		model.addAttribute("products", products);
+		model.addAttribute("cartItems", cartItems);
 		model.addAttribute("cart", cart);
 		model.addAttribute("total", total);
-
+		
+		
+		
 		return "sq/frontend/frontend_cart";
 	}
 
+//======================================================	
+		//-----購物車結帳頁面-----
+
+	@RequestMapping("/check")
+	public String check(HttpSession session, Model model) {
+			
+		User user = (User) session.getAttribute("user");
+
+		Integer cartId = sqCartDao.findNoneCheckoutCartByUserId(user.getUserId()).get().getCartId();
+		List<CartItem> cartItems = sqCartItemDao.findCartItemsById(cartId);
+
+		List<Integer> productIds = cartItems.stream().map(cartItem -> cartItem.getProductId())
+				.collect(Collectors.toList());
+		List<Product> products = productIds.stream().map(productId -> sqProductDao.findProductbyId(productId).get())
+				.collect(Collectors.toList());
+		
+		
+		Optional<Cart> cartOpt = sqUserDao.findNoneCheckoutCartByUserId(user.getUserId());
+		Cart cart = cartOpt.get();
+		
+		if(cartOpt.isPresent() && cartOpt.get().getCartId().equals(cartId)) {
+
+			int total = cartOpt.get().getCartItems().stream()
+					.mapToInt(item -> item.getQty() * item.getProduct().getPrice())
+					.sum();	
+			
+			model.addAttribute("products", products);
+			model.addAttribute("cartItems", cartItems);
+			model.addAttribute("cart", cart);
+			model.addAttribute("total", total);
+
+			return "sq/frontend/frontend_checkOrderPage";
+			
+		}
+			
+		return "redirect:/mvc/sq/cart";
+		
+	}		
+	
 //======================================================	
 	//-----購物車結帳-----
 
@@ -258,10 +298,13 @@ public class SqController {
 	public String checkOut(@RequestParam("cartId") Integer cartId,HttpSession session) {
 		
 		User user = (User) session.getAttribute("user");
+		
 		Optional<Cart> cartOpt = sqUserDao.findNoneCheckoutCartByUserId(user.getUserId());
+		Cart cart = cartOpt.get();
 		if(cartOpt.isPresent() && cartOpt.get().getCartId().equals(cartId)) {
-			sqCartDao.checkoutCartById(cartId);
+			sqCartDao.checkoutCartById(cartId);	
 		}
+		
 		return "redirect:/mvc/sq/cart";
 	}
 	

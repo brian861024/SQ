@@ -87,13 +87,15 @@
 												<c:forEach items="${ cartItems }" var="cartitem">
 													<c:if test="${ cartitem.productId == product.productId }">
 														<p style="margin: 5px 10px;">
-															數量： <input type="number"
-																style="width: 50px; margin: 0 10px;" id="quantity"
-																name="quantity" value="${cartitem.qty}">
+															數量：${cartitem.qty} 
+<!-- 															<input type="number" -->
+<!-- 																style="width: 50px; margin: 0 10px;" id="quantity" -->
+<!-- 																name="quantity" value=""> -->
 														</p>
+														
 													</c:if>
 												</c:forEach>
-												<button type="submit" class="pure-button">修改數量</button>
+<!-- 												<button type="submit" class="pure-button">修改數量</button> -->
 												<button type="submit" class="pure-button">刪除</button>
 											</div>
 										</form>
@@ -101,7 +103,8 @@
 								</div>
 							</c:forEach>
 							<div style="display: flex; justify-content: flex-end;">
-								<button type="button" class="pure-button" onclick="window.location.href='/SpiritQuest/mvc/sq/checkOut?cartId=${ cart.cartId }'">結帳</button>
+								<button type="button" class="pure-button" style="margin-right: 100px;">總金額：${ total }</button>
+								<button type="button" class="pure-button" onclick="window.location.href='/SpiritQuest/mvc/sq/check'">結帳</button>
 								<button type="button" class="pure-button" style="margin-right: 100px;">刪除購物車</button>
 							</div>
 						</div>

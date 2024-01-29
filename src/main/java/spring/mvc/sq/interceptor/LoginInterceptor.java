@@ -44,7 +44,7 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
     String loginPath;
     if (url.contains("staff")) {
     	loginPath = "/mvc/sq/backend/login";
-    } else { loginPath = "/mvc/sq/login";}
+    } loginPath = "/mvc/sq/login";
     response.sendRedirect(request.getServletContext().getContextPath() + loginPath + "?loginMessage=" + URLEncoder.encode("請先登入"));
     return false;
 }

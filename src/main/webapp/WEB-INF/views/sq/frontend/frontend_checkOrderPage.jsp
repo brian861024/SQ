@@ -2,7 +2,8 @@
 
 <%@ include file="/WEB-INF/views/sq/fragements/header.jspf" %>
 
-<link rel="stylesheet" href="../include/css/frontend_Login.css">
+<link rel="stylesheet" href=<c:url value="/resources/css/frontend_Login.css"/> />
+
 <style>
 body {
     background-image: url(<c:url value="/resources/img/bg/bg.jpg"/>);
@@ -42,10 +43,10 @@ body {
                         <option>4000 ~ 5000</option>
                         <option>5000 以上</option>
                     </select>
-                    <form class="d-flex" style="width: 50%;margin: 10px">
+                    <div class="d-flex" style="width: 50%;margin: 10px">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-light" type="submit">Search</button>
-                    </form>
+                    </div>
                 </div>
 
                 <!-- 下方區域 -->
@@ -65,30 +66,25 @@ body {
                         <div class="login-register-form-area">
                             <div class="login-form-area">
                                 <form class="pure-form pure-form-stacked">
-                                    <fieldset>  
-                                        <label for="stacked-email" style="color: rgb(255, 255, 255);">訂購人姓名：</label>
-                                        <input type="text" id="Prod-price" placeholder="商品價格"class="pure-input-1-3" name=""/>
+                                    <fieldset> 
+                                    	
+                                    	<c:forEach items="${ products }" var="product">
+                                    	<label for="stacked-password" style="color: rgb(255, 255, 255);">購買品項：${ product.productName }</label>
+                                    	<c:forEach items="${ cartItems }" var="cartitem">
+											<c:if test="${ cartitem.productId == product.productId }">
+												<label for="stacked-password" style="color: rgb(255, 255, 255);">數量：${cartitem.qty} </label>
+											</c:if>
+										</c:forEach>
+                                    	</c:forEach>
+                                    	
+                                    	<label for="stacked-password" style="color: rgb(255, 255, 255);">總金額：${ total }</label>
 
-                                        <label for="stacked-password" style="color: rgb(255, 255, 255);">寄送地址：</label>
-                                        <input type="text" id="Prod-price" placeholder="商品價格"class="pure-input-1-3" name=""/>
-
-                                        <label for="stacked-password" style="color: rgb(255, 255, 255);">付款方式：</label>
-                                        <select>
-                                        <option value="0" class="select1">請選擇付款方式</option>
-                                        <option>轉帳</option>
-                                        <option>付現</option>
-                                        </select>
-
-                                        <label for="stacked-password" style="color: rgb(255, 255, 255);">寄送方式：</label>
-                                        <select>
-                                        <option value="0" class="select1">請選擇取貨方式</option>
-                                        <option>郵寄</option>
-                                        <option>自取</option>
-                                        </select>
                                         
                                         <hr>
                                         <hr>
-                                        <button type="submit" class="pure-button">確認</button>   
+                                        <button type="button" class="pure-button" onclick="window.location.href='/SpiritQuest/mvc/sq/checkOut?cartId=${ cart.cartId }'">確認</button>
+                                        
+                                        
                                         <button type="submit" class="pure-button">返回修改</button>                                  
                                     </fieldset>
                                 </form>
