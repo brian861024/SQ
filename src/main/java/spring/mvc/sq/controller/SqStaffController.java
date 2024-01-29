@@ -94,9 +94,10 @@ public class SqStaffController {
 		
 	model.addAttribute("successMessage", "商品新增成功");
 	
-		return "sq/frontend/backend_checkPage";
+		return "sq/backend/backend_checkPage";
 	}
 	
+//======================================================
 	//-----刪除上架商品-----
 	@PostMapping("/backend/deletProd")
 	public String deleteProduct(@RequestParam("productId") Integer productId) {
@@ -106,6 +107,7 @@ public class SqStaffController {
 	    return "redirect:/mvc/sq/backend/prodList";
 	}
 	
+//======================================================
 	//-----更改商品庫存數量-----
 	@PostMapping("/backend/changeProdQty")
 	public String changeProdQty(@RequestParam("productId") Integer productId,
@@ -119,7 +121,7 @@ public class SqStaffController {
 		return "/sq/backend/backend_prodList";
 	}
 
-	
+//======================================================
 	//-----顯示商品列表-----
 	@RequestMapping("/backend/showProdList")
 	public String showProdList(Model model) {

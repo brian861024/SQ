@@ -12,12 +12,12 @@ insert into level (levelId, levelName) values ( 2, '員工');
 
 select * from user;
 
-insert into user (username, password, levelId, email, phoneNumber) values ('王大明', '123456' , 1 , 'aaa@gmail.com' , '0911111111' );
-insert into user (username, password, levelId, email, phoneNumber) values ('王小明', '234567' , 1 , 'bbb@gmail.com' , '0922222222' );
-insert into user (username, password, levelId, email, phoneNumber) values ('王大黑', '345678' , 2 , 'ccc@gmail.com' , '0933333333' );
-insert into user (username, password, levelId, email, phoneNumber) values ('王小黑', '456789' , 1 , 'ddd@gmail.com' , '0944444444' );
-insert into user (username, password, levelId, email, phoneNumber) values ('王大白', '567891' , 2 , 'eee@gmail.com' , '0955555555' );
-insert into user (username, password, levelId, email, phoneNumber) values ('王小白', '678912' , 1 , 'fff@gmail.com' , '0966666666' );
+insert into user (username, password, levelId, email, phoneNumber) values ('陳美玲', '123456' , 1 , 'ava.yang@yahoo.com' , '0911111111' );
+insert into user (username, password, levelId, email, phoneNumber) values ('林建宏', '234567' , 1 , 'bbb@gmail.com' , '0922222222' );
+insert into user (username, password, levelId, email, phoneNumber) values ('王怡萱', '345678' , 2 , 'ccc@gmail.com' , '0933333333' );
+insert into user (username, password, levelId, email, phoneNumber) values ('李明杰', '456789' , 1 , 'ddd@gmail.com' , '0944444444' );
+insert into user (username, password, levelId, email, phoneNumber) values ('吳佳慧', '567891' , 2 , 'eee@gmail.com' , '0955555555' );
+insert into user (username, password, levelId, email, phoneNumber) values ('許宗憲', '678912' , 1 , 'fff@gmail.com' , '0966666666' );
 
 
 -- category
@@ -104,7 +104,7 @@ select * from cart;
 insert into cart (checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount) values ('2024-01-18 12:34:56' , TRUE , '處理中' , 'aaa市aaa區aaa路aa號' , 2 , 250);
 insert into cart (checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount) values ( null, false , null , null , 1 , 400);
 insert into cart (checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount) values ('2024-01-18 15:34:56' , TRUE , null , null  , 4 , 250);
-insert into cart (checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount) values ( null, false , '已完成' , 'bbb市bbb區bbb路bb號' , 1 , 250);
+insert into cart (checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount) values ( null, TRUE , '已完成' , 'bbb市bbb區bbb路bb號' , 1 , 250);
 insert into cart (checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount) values ('2024-01-18 14:34:56' , TRUE , '已取消' , 'ccc市ccc區ccc路cc號' , 3 , 400);
 insert into cart (checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount) values ('2024-01-18 13:34:56' , TRUE , '運送中' , 'ddd市ddd區ddd路dd號' , 3 , 400);
 insert into cart (checkoutTime, isCheckout, deliveryStatus, deliveryAddress, userId, amount) values ( null , false ,  null , null , 6 , 250);
@@ -143,17 +143,17 @@ insert into favorite (userId, productId) values (6,5);
 
 select * from contact;
 
-insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('王大紅' , 'ggg@gmail.com' , '求建議' , '我應該選擇哪一款酒來搭配我的晚餐？有什麼建議嗎？');
-insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('王小紅' , 'hhh@gmail.com' , '葡萄酒該怎麼選' , '我喜歡葡萄酒，但對於不同的葡萄品種和產區不太了解，有沒有推薦的品牌或款式？');
-insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('王大橙' , 'iii@gmail.com' , '派對酒套裝推薦' , '我正在籌備一個派對，需要購買一些特別的酒，有什麼優惠或套裝推薦嗎？');
-insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('王小橙' , 'jjj@gmail.com' , '送酒建議' , '我想送禮給一位酒愛好者朋友，有沒有適合送禮的高品質酒款推薦？');
-insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('王小橙' , 'aaa@gmail.com' , '請問價格' , '請問有賣asb vodka嗎？那價格是多少呢？');
-insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('王大黃' , 'jjj@gmail.com' , '送酒建議' , '我想送禮給一位酒愛好者朋友，有沒有適合送禮的高品質酒款推薦？');
-insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('王小黃' , '0924587648' , '如何辨識不同年份的葡萄酒' , '如題，聽說葡萄酒的年份很重要，我應該如何辨識不同年份的葡萄酒？');
-insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('王大綠' , '0945816789' , '選品問題' , '我最近品嚐了一款很好的威士忌，想知道是否還有其他類似風格的推薦？');
-insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('王小綠' , 'jeff1235@gmail.com' , '儲藏問題' , '我在家中儲藏了一些酒，想知道最佳的保存方法和時間，以確保酒的品質？');
-insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('王大藍' , 'monica4051@yahoo.com' , '有品酒課程嗎？' , '我想參加一些品酒活動或酒類課程，您能推薦一些好的選擇嗎？');
-insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('王小藍' , '0978164872' , '導覽活動詢問' , '我對於酒的產區和製作過程很感興趣，您有提供有關這方面的知識分享或導覽活動嗎？');
+insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('鄭雅琪' , 'john.doe@gmail.com' , '求建議' , '我應該選擇哪一款酒來搭配我的晚餐？有什麼建議嗎？');
+insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('湯志偉' , 'emily.jones@hotmail.com' , '葡萄酒該怎麼選' , '我喜歡葡萄酒，但對於不同的葡萄品種和產區不太了解，有沒有推薦的品牌或款式？');
+insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('蔡佳玲' , 'sophia.kim@example.net' , '派對酒套裝推薦' , '我正在籌備一個派對，需要購買一些特別的酒，有什麼優惠或套裝推薦嗎？');
+insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('郭宜萱' , 'michael.chen@yahoo.com' , '送酒建議' , '我想送禮給一位酒愛好者朋友，有沒有適合送禮的高品質酒款推薦？');
+insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('陳志明' , 'ethan.liu@gmail.com' , '請問價格' , '請問有賣asb vodka嗎？那價格是多少呢？');
+insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('黃美玲' , 'william.huang@hotmail.com' , '送酒建議' , '我想送禮給一位酒愛好者朋友，有沒有適合送禮的高品質酒款推薦？');
+insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('楊建文' , '0924587648' , '如何辨識不同年份的葡萄酒' , '如題，聽說葡萄酒的年份很重要，我應該如何辨識不同年份的葡萄酒？');
+insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('林惠婷' , '0945816789' , '選品問題' , '我最近品嚐了一款很好的威士忌，想知道是否還有其他類似風格的推薦？');
+insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('劉宗翰' , 'jeff1235@gmail.com' , '儲藏問題' , '我在家中儲藏了一些酒，想知道最佳的保存方法和時間，以確保酒的品質？');
+insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('邱雅婷' , 'monica4051@yahoo.com' , '有品酒課程嗎？' , '我想參加一些品酒活動或酒類課程，您能推薦一些好的選擇嗎？');
+insert into contact (customerName, customerEmail, contactTitle, contactContext) values ('鍾偉明' , '0978164872' , '導覽活動詢問' , '我對於酒的產區和製作過程很感興趣，您有提供有關這方面的知識分享或導覽活動嗎？');
 
 -- notice
 

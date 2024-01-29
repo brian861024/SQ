@@ -15,6 +15,9 @@ import spring.mvc.sq.model.entity.User;
 
 public class LoginInterceptor implements HandlerInterceptor{
 
+//===============================================================================================================
+//===============================================================================================================
+	//-----登入權限管理-----
 @Override
 public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
         throws Exception {
@@ -42,7 +45,8 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
     response.sendRedirect(request.getServletContext().getContextPath() + loginPath + "?loginMessage=" + URLEncoder.encode("請先登入"));
     return false;
 }
-
+//===============================================================================================================
+//===============================================================================================================
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
