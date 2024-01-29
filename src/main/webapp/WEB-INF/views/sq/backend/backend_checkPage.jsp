@@ -46,7 +46,7 @@ body {
                                     </fieldset>
                                 </form>    
                                     
-                                    <button href="/SpiritQuest/mvc/sq/index" class="pure-button">點此回首頁</button>          
+                                    <a href="/SpiritQuest/mvc/sq/backend/index"><button class="pure-button">點此回首頁</button></a>          
                             </div>
 
                         </div>

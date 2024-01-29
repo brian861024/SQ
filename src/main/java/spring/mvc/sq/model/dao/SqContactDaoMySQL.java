@@ -14,6 +14,7 @@ import spring.mvc.sq.model.entity.Contact;
 @Repository
 public class SqContactDaoMySQL implements SqContactDao {
 
+//========================================================================
     @Override
 	public List<Contact> findAllContact() {
     	String sql = "select contactId, customerName, customerEmail, contactTitle, contactContext from contact";
@@ -22,15 +23,17 @@ public class SqContactDaoMySQL implements SqContactDao {
 
 	@Autowired
     private JdbcTemplate jdbcTemplate;
-
-    // 創造聯絡單
+	
+//========================================================================
+    //-----創造聯絡單-----
     @Override
     public void addContact(Contact contact) {
         String sql = "INSERT INTO contact(customerName, customerEmail, contactTitle, contactContext) VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(sql, contact.getCustomerName(), contact.getCustomerEmail(), contact.getContactTitle(), contact.getContactContext());
     }
 
-    // 根據聯絡單ID找出聯絡單(單筆)
+//========================================================================
+    //-----根據聯絡單ID找出聯絡單(單筆)-----
     @Override
     public Optional<Contact> findContactByContactId(Integer contactId) {
         String sql = "SELECT * FROM contact WHERE contactId = ?";
@@ -42,7 +45,8 @@ public class SqContactDaoMySQL implements SqContactDao {
         }
     }
 
-    // 根據主旨找出聯絡單
+//========================================================================
+    //-----根據主旨找出聯絡單-----
     @Override
     public Optional<Contact> findContactByTitle(String title) {
         String sql = "SELECT * FROM contact WHERE contactTitle = ?";

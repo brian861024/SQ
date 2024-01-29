@@ -29,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/upload")
 public class UploadFileController {
 
+//==========================================================================================================
 	/**
 	 * http://localhost:8080/SpiritQuest/mvc/upload/single POST
 	 * @param file
@@ -44,6 +45,7 @@ public class UploadFileController {
 		
 	}
 	
+//==========================================================================================================
 	/**
 	 * http://localhost:8080/SpiritQuest/mvc/upload/multi POST
 	 * @param files

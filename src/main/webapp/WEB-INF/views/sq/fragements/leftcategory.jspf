@@ -11,11 +11,12 @@
 
 				<hr class="dropdown-divider">
 				
-				<c:forEach items="${ notices }" var="notice">
-				<!-- 公告 -->
-				<a class="prod-class-link" href="<c:url value='/sq/notice/${ notice.noticeId }'/>" target="_blank">${ notice.noticeTitle }</a>
-				<hr class="dropdown-divider">
-
+				<c:forEach items="${notices}" var="notice">
+				    <form method="post" action="/SpiritQuest/mvc/sq/notice" id="form1">
+				        <a onclick="submitForm('${notice.noticeId}')" class="prod-class-link">${notice.noticeTitle}</a>
+				        <input type="hidden" name="noticeId" id="noticeId" value="${notice.noticeId}">
+				        <hr class="dropdown-divider">
+				    </form>
 				</c:forEach>
 				
 				<!-- 商品分類 -->
@@ -26,8 +27,11 @@
 				<hr class="dropdown-divider">
 				<!-- 導覽列按鈕 威士忌 -->
 
-				<a class="prod-class-link" href="#">威士忌</a>
-
+				<form>
+				<a class="prod-class-link" href="sq/category/index">威士忌</a>
+				</form>
+				
+				
 				<hr class="dropdown-divider">
 				<!-- 導覽列按鈕 清酒 -->
 
@@ -55,3 +59,11 @@
 
 				<hr class="dropdown-divider">
 			</div>
+			
+			
+<script>
+    function submitForm(noticeId) {
+        document.getElementById('noticeId').value = noticeId;
+        document.getElementById('form1').submit();
+    }
+</script>

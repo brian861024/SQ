@@ -26,7 +26,6 @@ import spring.mvc.sq.model.dao.SqContactDao;
 import spring.mvc.sq.model.dao.SqNoticeDao;
 import spring.mvc.sq.model.dao.SqProductDao;
 import spring.mvc.sq.model.dao.SqUserDao;
-import spring.mvc.sq.model.entity.Notice;
 
 
 //OrderController處理以下之功能：
@@ -83,11 +82,10 @@ public class SqOrderController {
 		});
 		return "sq/frontend/frontend_cart";
 	 }
-//======================================================
+	
 //======================================================	
 	//-----訂單確認以及填寫資訊-----
 	
-//======================================================
 //======================================================	
 	//-----訂單完成-----
 	//。先找到 user 登入者
@@ -114,7 +112,6 @@ public class SqOrderController {
 			return "sq/frontend/frontend_checkPage";
 	}
 	
-//======================================================
 //======================================================
 	//-----查詢訂單-----
 	//。有 user 則透過 userid 去找到 屬於他的購物車並傳至 jsp
@@ -150,4 +147,22 @@ public class SqOrderController {
 		return "sq/frontend/frontend_order";
 		}	
 		
+//=========================================================
+	//-----查詢所有已結帳訂單-----
+	// -----進入訂單頁面-----
+	@RequestMapping("/order")
+	public String goToOrder(HttpSession session, Model model) {
+		
+		List<Cart> carts = sqCartDao.findCartbyisCheckout(true);
+		
+		if (carts == null) {
+			model.addAttribute("successMessage", "尚未有訂單");
+			return "sq/backend/backend_checkPage";
+		} else {
+			model.addAttribute("carts", carts);
+		}
+		return "sq/backend/backend_order";
+	}
+	
+	
 	}

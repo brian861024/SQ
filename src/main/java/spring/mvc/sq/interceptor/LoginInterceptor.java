@@ -15,34 +15,41 @@ import spring.mvc.sq.model.entity.User;
 
 public class LoginInterceptor implements HandlerInterceptor{
 
+//===============================================================================================================
+//===============================================================================================================
+//-----登入權限管理-----
 @Override
 public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
         throws Exception {
     
     System.out.println("RequestURI = " + request.getRequestURI());
     
+    boolean isValid = false;
+    String url = request.getRequestURI().toString();
     HttpSession session = request.getSession();
     // 檢查 session 中是否有 user 的物件資料(意味著用戶已經登入)
     if(session.getAttribute("user") != null) {
         User user = (User) session.getAttribute("user");
         int levelId = user.getLevelId();
-        
-        // 根據 levelId 做不同的處理
-        if (levelId == 1) {
-            return true;
-        } else if (levelId == 2) {
-            return true;
+        isValid = true;
+        if(url.contains("backend") && levelId == 1 ) {
+        	isValid = false;
         }
     }
-    // 未登入, 導入到登入頁面
-    String loginPath = "/mvc/sq/login";
-    if (request.getRequestURI().contains("backend")) {
-    	loginPath = "/mvc/sq/backend/login";
+    
+    if(isValid) {
+    	return true;
     }
+    // 未登入, 導入到登入頁面
+    String loginPath;
+    if (url.contains("staff")) {
+    	loginPath = "/mvc/sq/backend/login";
+    } else { loginPath = "/mvc/sq/login";}
     response.sendRedirect(request.getServletContext().getContextPath() + loginPath + "?loginMessage=" + URLEncoder.encode("請先登入"));
     return false;
 }
-
+//===============================================================================================================
+//===============================================================================================================
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {

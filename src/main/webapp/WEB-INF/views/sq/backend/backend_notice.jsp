@@ -36,10 +36,10 @@ body {
                         
  <!-- ==================================================================================================== -->                        
  <!-- ==================================================================================================== -->                       
-                            <form class="pure-form" method="post" action="/SpiritQuest/mvc/user/contact">
+                            <form class="pure-form" method="post" action="/SpiritQuest/mvc/sq/staff/addNotice">
                                 <fieldset>
-                                    <input name="title" type="text" class="pure-input-1" style="margin:10px 0;height: 50px;" placeholder="主旨" />
-                                    <textarea name="text" class="pure-input-1" style="height: 400px;" placeholder="文字輸入區"></textarea>
+                                    <input name="noticeTitle" type="text" class="pure-input-1" style="margin:10px 0;height: 50px;" placeholder="主旨" />
+                                    <textarea name="noticeContext" class="pure-input-1" style="height: 400px;" placeholder="文字輸入區"></textarea>
                                 </fieldset>
                                 <hr class="dropdown-divider">
                                 <button type="submit" class="pure-button">送出</button>
