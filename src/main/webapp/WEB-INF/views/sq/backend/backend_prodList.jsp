@@ -13,6 +13,12 @@ body {
 }
 </style>
 
+<script>
+    function confirmDelete() {
+        return confirm("確定要刪除嗎？");
+    }
+</script>
+
 <body>
 
     <!--======================================
@@ -58,7 +64,7 @@ body {
        									<td>${ product.price } /元</td>
         								<!-- 添加隱藏的輸入欄位以包含產品ID -->
         								<td>
-            							<form method="post" action="/SpiritQuest/mvc/sq/staff/backend/deletProd">
+            							<form method="post" action="/SpiritQuest/mvc/sq/staff/backend/deletProd" onsubmit="return confirmDelete()">
                 						<input type="hidden" name="productId" value="${product.productId}">
                 						<button type="submit" class="pure-button">刪除</button>
             							</form>

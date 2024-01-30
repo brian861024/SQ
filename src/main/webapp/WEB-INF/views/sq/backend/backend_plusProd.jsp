@@ -96,10 +96,11 @@ body {
 
 							<div style="display: flex; justify-content: flex-end;">
 								<button type="submit" class="pure-button">確認</button>
-								<button type="submit" class="pure-button" style="margin-right: 100px;">回商品列表</button>
-							</div>
+							
+							
 							</form>
-
+							<a href="/SpiritQuest/mvc/sq/backend/prodList"><button type="submit" class="pure-button" style="margin-right: 100px;">回商品列表</button></a>
+							</div>
 						</div>
 					</div>
 
